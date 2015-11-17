@@ -5,3 +5,5 @@ Na razie to wyglada tak: ciag%
 Powinno tak %ciag%
 Kto zrobi niech wysle jakos na mastera
 # I wyslijcie Natalii te pomysly na GUI
+
+W bazie auto increment jest jeszcze źle napisany
