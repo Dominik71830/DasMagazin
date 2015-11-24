@@ -14,11 +14,10 @@ public class ModelTablicyProduktow extends AbstractTableModel {
 	public static final  int VAT_COL   = 2;
 	public static final  int CENA_COL   = 3;
 	public static final  int KATEGORIA_COL   = 4;
-	public static final  int OBJETOSC_COL = 5;
 	
 
 	private String[] nazwykolumn = {"Nazwa", "Iloœæ",
-	"Vat","Cena","Kategoria","Objêtoœæ"};
+	"Vat","Cena","Kategoria" };
 	private List<Produkt> produkty;
 
 
@@ -56,8 +55,6 @@ public class ModelTablicyProduktow extends AbstractTableModel {
 			return tempprodukt.getCena();
 		case KATEGORIA_COL:
 			return tempprodukt.getKategoria();
-		case OBJETOSC_COL:
-			return tempprodukt.getObjetosc();
 		case OBJECT_COL:
 			return tempprodukt;
 		default:

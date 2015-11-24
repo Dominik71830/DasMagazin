@@ -30,7 +30,7 @@ public class Funkcje {
 		
 		try{
 			myStmt = myConn.prepareStatement("update produkty"
-					+ " set nazwa=?, ilosc=?, vat=?, cena=?, kategoria=?, objetosc=?"
+					+ " set nazwa=?, ilosc=?, vat=?, cena=?, kategoria=?"
 					+ " where id=?");
 			
 			myStmt.setString(1, _produkt.getNazwa());
@@ -38,8 +38,7 @@ public class Funkcje {
 			myStmt.setDouble(3, _produkt.getVat());
 			myStmt.setDouble(4, _produkt.getCena());
 			myStmt.setString(5, _produkt.getKategoria());
-			myStmt.setDouble(6, _produkt.getObjetosc());
-			myStmt.setInt(7, _produkt.getId());
+			myStmt.setInt(6, _produkt.getId());
 			
 			myStmt.executeUpdate();
 		}
@@ -54,7 +53,7 @@ public class Funkcje {
 		
 		try{
 		myStmt = myConn.prepareStatement("insert into produkty"
-				+ " (nazwa,ilosc,vat,cena,kategoria,objetosc)"
+				+ " (nazwa,ilosc,vat,cena,kategoria)"
 				+ " values (?, ?, ?, ?, ?)");//, Statement.RETURN_GENERATED_KEYS);
 		
 		myStmt.setString(1, _produkt.getNazwa());
@@ -62,7 +61,6 @@ public class Funkcje {
 		myStmt.setDouble(3, _produkt.getVat());
 		myStmt.setDouble(4, _produkt.getCena());
 		myStmt.setString(5, _produkt.getKategoria());
-		myStmt.setDouble(6, _produkt.getObjetosc());
 		
 		myStmt.executeUpdate();
 		
@@ -88,9 +86,8 @@ public class Funkcje {
 		Double cena = myRs.getDouble("cena");
 		String kategoria = myRs.getString("kategoria");
 		Double vat = myRs.getDouble("vat");
-		Double objetosc = myRs.getDouble("objetosc");
 		
-		Produkt tempProdukt = new Produkt(id, nazwa, ilosc,vat,cena,kategoria,objetosc);
+		Produkt tempProdukt = new Produkt(id, nazwa, ilosc,vat,cena,kategoria);
 		
 		return tempProdukt;
 	}

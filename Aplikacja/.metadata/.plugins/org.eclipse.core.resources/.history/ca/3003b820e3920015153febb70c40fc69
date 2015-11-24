@@ -7,33 +7,22 @@ public class Produkt {
 	private int ilosc;
 	private String kategoria;
 	private Double vat;
-	private Double objetosc;
 	
-	public Produkt(String _nazwa,int _ilosc, Double _vat,Double _cena,  String _kategoria, Double _objetosc){//konstruktor
+	public Produkt(String _nazwa,int _ilosc, Double _vat,Double _cena,  String _kategoria){//konstruktor
 		nazwa=_nazwa;
 		cena=_cena;
 		ilosc=_ilosc;
 		kategoria=_kategoria;
 		vat = _vat;
-		objetosc = _objetosc;
 	}
 	
-	public Produkt(int _id,String _nazwa, int _ilosc, Double _vat,Double _cena, String _kategoria, Double _objetosc){//konstruktor pelny
+	public Produkt(int _id,String _nazwa, int _ilosc, Double _vat,Double _cena, String _kategoria){//konstruktor pelny
 		id=_id;
 		nazwa=_nazwa;
 		cena=_cena;
 		ilosc=_ilosc;
 		kategoria=_kategoria;
 		vat = _vat;
-		objetosc = _objetosc;
-	}
-
-	public Double getObjetosc() {
-		return objetosc;
-	}
-
-	public void setObjetosc(Double objetosc) {
-		this.objetosc = objetosc;
 	}
 
 	public String getKategoria() {
