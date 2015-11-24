@@ -163,9 +163,9 @@ public class Funkcje {
 		close(null, myStmt, null);		
 	}
 	
-	/*public void ustawiloscnazero(Produkt _produkt){
+	public void ustawiloscnazero(Produkt _produkt){
 		_produkt.setIlosc(0);
-	}*/
+	}
 
 /*public static void main(String[] args) throws Exception {
 	
@@ -183,27 +183,6 @@ public void deleteProdukt(int _id) throws SQLException {
 		myStmt = myConn.prepareStatement("delete from produkty where id = ?");
 		
 		myStmt.setInt(1, _id);
-		
-		myStmt.executeUpdate();
-	}
-	finally{
-		close(myStmt);
-	}
-	
-}
-
-public void wyzeruj(Produkt _produkt) throws SQLException {
-	int _id = _produkt.getId();
-	PreparedStatement myStmt = null;
-	
-	try{
-		
-		myStmt = myConn.prepareStatement("update produkty"
-				+ " set ilosc=?"
-				+ " where id=?");
-		
-		myStmt.setInt(1,0);
-		myStmt.setInt(2,_id);
 		
 		myStmt.executeUpdate();
 	}

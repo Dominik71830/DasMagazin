@@ -145,7 +145,6 @@ public class TempOkno {
 					}
 					
 					funkcje.wyzeruj(tempprodukt);
-					odswiez();
 				} catch (Exception e1) {
 					
 					e1.printStackTrace();
