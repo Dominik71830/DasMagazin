@@ -222,11 +222,6 @@ public class MagazynOkno extends JDialog {
 		getContentPane().add(ButtonDodajProdukt);
 		
 		JButton ButtonZmien = new JButton("Zmie\u0144");
-		ButtonZmien.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
 		ButtonZmien.setBounds(121, 342, 89, 23);
 		getContentPane().add(ButtonZmien);
 		

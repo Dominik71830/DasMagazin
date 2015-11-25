@@ -174,7 +174,7 @@ public class MagazynOkno extends JDialog {
 				aktywujPola();
 				JOptionPane.showMessageDialog(null, "W³¹czy³em okna");
 				JOptionPane.showMessageDialog(null, "A teraz je wy³¹cze");
-				dezaktywujPola();
+				//dezaktywujPola();
 			}
 /////////////////////////////////////////////////// Funkcji od cholery
 			private void dezaktywujPola() {
@@ -222,11 +222,6 @@ public class MagazynOkno extends JDialog {
 		getContentPane().add(ButtonDodajProdukt);
 		
 		JButton ButtonZmien = new JButton("Zmie\u0144");
-		ButtonZmien.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-			}
-		});
 		ButtonZmien.setBounds(121, 342, 89, 23);
 		getContentPane().add(ButtonZmien);
 		
