@@ -3,6 +3,7 @@ package GUIe;
 import java.awt.EventQueue;
 
 import javax.swing.JDialog;
+import javax.swing.JScrollBar;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -132,7 +133,6 @@ public class MagazynOkno extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				aktywujPola();
 				JOptionPane.showMessageDialog(null, "W³¹czy³em okna");
-				JOptionPane.showMessageDialog(null, "A teraz je wy³¹cze");
 				dezaktywujPola();
 			}
 

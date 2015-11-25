@@ -3,14 +3,12 @@ package GUIe;
 import java.awt.EventQueue;
 
 import javax.swing.JDialog;
+import javax.swing.JScrollBar;
 import javax.swing.JComboBox;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class MagazynOkno extends JDialog {
 	private JTextField textFieldWyszukiwarka;
@@ -128,36 +126,6 @@ public class MagazynOkno extends JDialog {
 		textFieldObjetosc.setColumns(10);
 		
 		JButton ButtonDodajProdukt = new JButton("Dodaj produkt");
-		ButtonDodajProdukt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				aktywujPola();
-				JOptionPane.showMessageDialog(null, "W³¹czy³em okna");
-				JOptionPane.showMessageDialog(null, "A teraz je wy³¹cze");
-				dezaktywujPola();
-			}
-
-			private void dezaktywujPola() {
-				
-				textFieldNazwa.setEditable(false);
-				textFieldIlosc.setEditable(false);
-				textFieldCena.setEditable(false);
-				textFieldObjetosc.setEditable(false);
-				
-				comboBoxKategoria.setEditable(false);
-				comboBoxVat.setEditable(false);
-			}
-
-			private void aktywujPola() {
-				
-				textFieldNazwa.setEditable(true);
-				textFieldIlosc.setEditable(true);
-				textFieldCena.setEditable(true);
-				textFieldObjetosc.setEditable(true);
-				
-				comboBoxKategoria.setEditable(true);
-				comboBoxVat.setEditable(true);
-			}
-		});
 		ButtonDodajProdukt.setBounds(10, 342, 101, 23);
 		getContentPane().add(ButtonDodajProdukt);
 		
