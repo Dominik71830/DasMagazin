@@ -55,7 +55,7 @@ public class Funkcje {
 		try{
 		myStmt = myConn.prepareStatement("insert into produkty"
 				+ " (nazwa,ilosc,vat,cena,kategoria,objetosc)"
-				+ " values (?, ?, ?, ?, ?, ?)");//, Statement.RETURN_GENERATED_KEYS);
+				+ " values (?, ?, ?, ?, ?)");//, Statement.RETURN_GENERATED_KEYS);
 		
 		myStmt.setString(1, _produkt.getNazwa());
 		myStmt.setInt(2, _produkt.getIlosc());
