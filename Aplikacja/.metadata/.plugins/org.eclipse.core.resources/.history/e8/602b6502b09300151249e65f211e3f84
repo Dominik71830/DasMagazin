@@ -127,8 +127,8 @@ public class MagazynOkno extends JDialog {
 				String nazwa = textFieldNazwa.getText();
 				Double cena = Double.parseDouble(textFieldCena.getText());
 				int ilosc = Integer.parseInt(textFieldIlosc.getText());
-				String kategoria = comboBoxKategoria.getSelectedItem().toString();
-				Double vat = Double.parseDouble(comboBoxVat.getSelectedItem().toString());
+				String kategoria = comboBoxKategoria.getName();
+				Double vat = Double.parseDouble(comboBoxVat.getName());
 				Double objetosc = Double.parseDouble(textFieldObjetosc.getText());
 				
 				Produkt tempprodukt = null;
