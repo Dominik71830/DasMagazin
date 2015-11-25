@@ -14,6 +14,10 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 
 import pakiet.*;
+import javax.swing.JList;
+import javax.swing.JScrollPane;
+import javax.swing.JScrollBar;
+import javax.swing.JTable;
 
 public class MagazynOkno extends JDialog {
 	private JTextField textFieldWyszukiwarka;
@@ -23,6 +27,7 @@ public class MagazynOkno extends JDialog {
 	private JTextField textFieldObjetosc;
 	
 	private static Funkcje funkcje;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -68,12 +73,8 @@ public class MagazynOkno extends JDialog {
 		textFieldWyszukiwarka.setColumns(10);
 		
 		JButton ButtonOpcjeZaaw = new JButton("Opcje zaaw.");
-		ButtonOpcjeZaaw.setBounds(550, 11, 108, 25);
+		ButtonOpcjeZaaw.setBounds(550, 11, 101, 25);
 		getContentPane().add(ButtonOpcjeZaaw);
-		
-		JTextArea ListaProduktow = new JTextArea();
-		ListaProduktow.setBounds(283, 47, 375, 284);
-		getContentPane().add(ListaProduktow);
 		
 		JButton ButtonSzukaj = new JButton("Szukaj");
 		ButtonSzukaj.addActionListener(new ActionListener() {
@@ -92,7 +93,7 @@ public class MagazynOkno extends JDialog {
 					
 					ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
 					
-					//ListaProduktow.setModel(model);
+					table.setModel(model);
 					}
 					catch(Exception exc) {
 						JOptionPane.showMessageDialog(null,exc); 
@@ -233,6 +234,16 @@ public class MagazynOkno extends JDialog {
 		JButton ButtonHistoriaZmian = new JButton("Historia zmian");
 		ButtonHistoriaZmian.setBounds(220, 342, 101, 23);
 		getContentPane().add(ButtonHistoriaZmian);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(291, 62, 358, 267);
+		getContentPane().add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
+		
+		
 
 	}
 }
