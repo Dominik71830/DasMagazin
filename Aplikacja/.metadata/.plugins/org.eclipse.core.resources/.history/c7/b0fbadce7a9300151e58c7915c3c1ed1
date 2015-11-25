@@ -92,7 +92,7 @@ public class MagazynOkno extends JDialog {
 					
 					ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
 					
-					//ListaProduktow.setModel(model);
+					//ListaProduktow.set
 					}
 					catch(Exception exc) {
 						JOptionPane.showMessageDialog(null,exc); 
