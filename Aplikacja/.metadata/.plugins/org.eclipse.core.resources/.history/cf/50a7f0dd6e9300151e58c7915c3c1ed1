@@ -202,10 +202,11 @@ public void wyzeruj(Produkt _produkt) throws SQLException {
 	try{
 		
 		myStmt = myConn.prepareStatement("update produkty"
-				+ " set ilosc=0"
+				+ " set ilosc=?"
 				+ " where id=?");
 		
-		myStmt.setInt(1,_id);
+		myStmt.setInt(1,0);
+		myStmt.setInt(2,_id);
 		
 		myStmt.executeUpdate();
 	}

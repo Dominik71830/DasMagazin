@@ -152,8 +152,6 @@ public class ProduktOkienko extends JDialog {
 							tempprodukt.setVat(vat);
 							
 						}else{
-							// tu tak musi byæ bo nie dzia³a po dodaniu objetoœci
-							//póŸniej wróciæ
 						//tempprodukt = new Produkt(nazwa, ilosc, vat, cena, kategoria); // tu trzeba wróciæ przy updacie
 						}
 						
