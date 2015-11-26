@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -96,13 +97,62 @@ public class MagazynOkno extends JDialog {
 		ButtonOpcjeZaaw.setBounds(550, 11, 101, 25);
 		getContentPane().add(ButtonOpcjeZaaw);
 		
-		JButton btnOk = new JButton("Ok");
+		JButton btnOk = new JButton("OK");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+				if(!updatemode){
 				zapiszProdukt();
+				}
+				else if(updatemode){
+					try {
+						edytujProdukt();
+					} catch (SQLException exc) {
+						JOptionPane.showMessageDialog(null,"Blad przy edytowaniu " + exc);
+					} 
+				}
 				//JOptionPane.showMessageDialog(null, "A teraz je wy³¹cze");
 				dezaktywujPola();
+			}
+
+			private void edytujProdukt() throws SQLException {
+				
+				int row = table.getSelectedRow();
+				
+				if (row < 0) {
+					JOptionPane.showMessageDialog(null,"Wybierz produkt");				
+					return;
+				}
+				
+				poprzedniprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
+				
+				
+				String nazwa = textFieldNazwa.getText();
+				Double cena = Double.parseDouble(textFieldCena.getText());
+				int ilosc = Integer.parseInt(textFieldIlosc.getText());
+				String kategoria = comboBoxKategoria.getSelectedItem().toString();
+				Double vat = Double.parseDouble(comboBoxVat.getSelectedItem().toString());
+				Double objetosc = Double.parseDouble(textFieldObjetosc.getText());
+				
+				Produkt tempprodukt = poprzedniprodukt;
+						
+				tempprodukt.setNazwa(nazwa);;
+				tempprodukt.setCena(cena);
+				tempprodukt.setIlosc(ilosc);
+				tempprodukt.setKategoria(kategoria);
+				tempprodukt.setVat(vat);
+				tempprodukt.setObjetosc(objetosc);
+				
+				try {
+					
+					funkcje.updateProdukt(tempprodukt);
+				
+					odswiez();
+					JOptionPane.showMessageDialog(null,"Produkt zaktualizowany");
+					}
+				 catch (Exception exc) {
+					JOptionPane.showMessageDialog(null,"Blad przy edytowaniu " + exc);
+				}
+				
 			}
 
 			private void dezaktywujPola() {
@@ -133,32 +183,17 @@ public class MagazynOkno extends JDialog {
 				
 				Produkt tempprodukt = null;
 				
-				/*if(updatemode){
-					tempprodukt = poprzedniprodukt;
-					
-					tempprodukt.setNazwa(nazwa);;
-					tempprodukt.setCena(cena);
-					tempprodukt.setIlosc(ilosc);
-					//tempprodukt.setKategoria(kategoria);
-					//tempprodukt.setVat(vat);
-					tempprodukt.setObjetosc(objetosc);
-					
-				}else{*/
+				
 				tempprodukt = new Produkt(nazwa, ilosc, vat, cena, kategoria, objetosc);
-				//}
+			
 				
 				try {
-					/*if(updatemode){
-						funkcje.updateProdukt(tempprodukt);
-					}else{*/
-						funkcje.addProdukt(tempprodukt);
-					//}
+					
+					funkcje.addProdukt(tempprodukt);
 				
 					odswiez();
 					
-					/*if(updatemode){
-						JOptionPane.showMessageDialog(null,"Zaktualizowano");
-					}else{*/
+				
 						JOptionPane.showMessageDialog(null,"Produkt dodany");
 					}
 				 catch (Exception exc) {
@@ -218,6 +253,11 @@ public class MagazynOkno extends JDialog {
 		
 		
 		JButton ButtonPowrot = new JButton("Powr\u00F3t");
+		ButtonPowrot.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
 		ButtonPowrot.setBounds(562, 342, 89, 23);
 		getContentPane().add(ButtonPowrot);
 		
@@ -271,6 +311,7 @@ public class MagazynOkno extends JDialog {
 		ButtonDodajProdukt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				aktywujPola();
+				updatemode=false;
 				//JOptionPane.showMessageDialog(null, "W³¹czy³em okna");	
 			}
 			
@@ -287,22 +328,7 @@ public class MagazynOkno extends JDialog {
 				btnOk.setEnabled(true);
 			}
 			
-			private void wypelnijOkno(Produkt _poprzedniprodukt) {
-				textFieldNazwa.setText(_poprzedniprodukt.getNazwa());
-				textFieldIlosc.setText(Integer.toString(_poprzedniprodukt.getIlosc()));
-				textFieldCena.setText(Double.toString(_poprzedniprodukt.getCena()));
-				textFieldObjetosc.setText(Double.toString(_poprzedniprodukt.getObjetosc()));
-
-				 //comboBoxVat.setSelectedIndex(anIndex);
-				 //comboBoxKategoria.setSelectedIndex(anIndex);
-				 
-				
-				//NazwaTextField.setText(_poprzedniprodukt.getNazwa());
-				//CenaTextField.setText(Double.toString(_poprzedniprodukt.getCena()));
-				//IloscTextField.setText(Integer.toString(_poprzedniprodukt.getIlosc()));
-				//KategriaTextField.setText(_poprzedniprodukt.getKategoria());
-				//VatTextField.setText(Double.toString(_poprzedniprodukt.getVat()));
-			}
+			
 			
 		});
 		ButtonDodajProdukt.setBounds(10, 342, 101, 23);
@@ -312,7 +338,48 @@ public class MagazynOkno extends JDialog {
 		ButtonZmien.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				int row = table.getSelectedRow();
+				
+				if (row < 0) {
+					JOptionPane.showMessageDialog(null,"Wybierz produkt");				
+					return;
+				}
+				
+				Produkt tempprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
+				
+				aktywujPola();
+				updatemode=true;
+				wypelnijOkno(tempprodukt);
+				
+				
 			}
+
+			private void aktywujPola() {
+				
+				textFieldNazwa.setEditable(true);
+				textFieldIlosc.setEditable(true);
+				textFieldCena.setEditable(true);
+				textFieldObjetosc.setEditable(true);
+				
+				comboBoxKategoria.setEnabled(true);
+				comboBoxVat.setEnabled(true);
+				
+				btnOk.setEnabled(true);
+			}
+
+
+
+			private void wypelnijOkno(Produkt _poprzedniprodukt) {
+				textFieldNazwa.setText(_poprzedniprodukt.getNazwa());
+				textFieldIlosc.setText(Integer.toString(_poprzedniprodukt.getIlosc()));
+				textFieldCena.setText(Double.toString(_poprzedniprodukt.getCena()));
+				textFieldObjetosc.setText(Double.toString(_poprzedniprodukt.getObjetosc()));
+
+				 //comboBoxVat.setSelectedIndex(anIndex);
+				 //comboBoxKategoria.setSelectedIndex(anIndex);
+				 
+			}
+			
 		});
 		ButtonZmien.setBounds(121, 342, 89, 23);
 		getContentPane().add(ButtonZmien);

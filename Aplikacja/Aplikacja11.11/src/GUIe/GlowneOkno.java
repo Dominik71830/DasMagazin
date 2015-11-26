@@ -10,6 +10,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Button;
 import java.awt.Canvas;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class GlowneOkno {
 
@@ -49,6 +51,12 @@ public class GlowneOkno {
 		frmTytuwiczebny.getContentPane().setLayout(null);
 		
 		JButton Przycisk1 = new JButton("Dzia\u0142 magazynowy");
+		Przycisk1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				MagazynOkno magazynokno = new MagazynOkno();
+				magazynokno.setVisible(true);
+			}
+		});
 		Przycisk1.setBounds(104, 39, 291, 378);
 		frmTytuwiczebny.getContentPane().add(Przycisk1);
 		
