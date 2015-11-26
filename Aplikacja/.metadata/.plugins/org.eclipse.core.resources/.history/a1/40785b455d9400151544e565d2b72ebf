@@ -375,7 +375,7 @@ public class MagazynOkno extends JDialog {
 				textFieldIlosc.setText(Integer.toString(_tempprodukt.getIlosc()));
 				textFieldCena.setText(Double.toString(_tempprodukt.getCena()));
 				textFieldObjetosc.setText(Double.toString(_tempprodukt.getObjetosc()));
-				////////////////////////////
+
 				switch(Double.toString(_tempprodukt.getVat())){
 				case "0.05":
 					comboBoxVat.setSelectedIndex(0);
@@ -387,21 +387,8 @@ public class MagazynOkno extends JDialog {
 					comboBoxVat.setSelectedIndex(2);
 					break;
 				}
-				////////////////////////////
-				switch(_tempprodukt.getKategoria()){
-				case "spo¿ywcze":
-					comboBoxKategoria.setSelectedIndex(0);
-					break;
-				case "meble":
-					comboBoxKategoria.setSelectedIndex(1);
-					break;
-				case "przemys³owe":
-					comboBoxKategoria.setSelectedIndex(2);
-					break;
-				case "elektroniczne":
-					comboBoxKategoria.setSelectedIndex(3);
-					break;
-				}
+				 //comboBoxVat.set(_tempprodukt.getVat())
+				 //comboBoxKategoria.set(_tempprodukt.getKategoria());
 				 
 			}
 			

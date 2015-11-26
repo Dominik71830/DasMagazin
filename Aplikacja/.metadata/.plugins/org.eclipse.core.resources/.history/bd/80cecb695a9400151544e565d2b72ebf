@@ -347,7 +347,6 @@ public class MagazynOkno extends JDialog {
 				
 				Produkt tempprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
-				
 				aktywujPola();
 				updatemode=true;
 				wypelnijOkno(tempprodukt);
@@ -370,38 +369,14 @@ public class MagazynOkno extends JDialog {
 
 
 
-			private void wypelnijOkno(Produkt _tempprodukt) {
-				textFieldNazwa.setText(_tempprodukt.getNazwa());
-				textFieldIlosc.setText(Integer.toString(_tempprodukt.getIlosc()));
-				textFieldCena.setText(Double.toString(_tempprodukt.getCena()));
-				textFieldObjetosc.setText(Double.toString(_tempprodukt.getObjetosc()));
-				////////////////////////////
-				switch(Double.toString(_tempprodukt.getVat())){
-				case "0.05":
-					comboBoxVat.setSelectedIndex(0);
-					break;
-				case "0.08":
-					comboBoxVat.setSelectedIndex(1);
-					break;
-				case "0.23":
-					comboBoxVat.setSelectedIndex(2);
-					break;
-				}
-				////////////////////////////
-				switch(_tempprodukt.getKategoria()){
-				case "spo¿ywcze":
-					comboBoxKategoria.setSelectedIndex(0);
-					break;
-				case "meble":
-					comboBoxKategoria.setSelectedIndex(1);
-					break;
-				case "przemys³owe":
-					comboBoxKategoria.setSelectedIndex(2);
-					break;
-				case "elektroniczne":
-					comboBoxKategoria.setSelectedIndex(3);
-					break;
-				}
+			private void wypelnijOkno(Produkt _poprzedniprodukt) {
+				textFieldNazwa.setText(_poprzedniprodukt.getNazwa());
+				textFieldIlosc.setText(Integer.toString(_poprzedniprodukt.getIlosc()));
+				textFieldCena.setText(Double.toString(_poprzedniprodukt.getCena()));
+				textFieldObjetosc.setText(Double.toString(_poprzedniprodukt.getObjetosc()));
+
+				 //comboBoxVat.setSelectedIndex(anIndex);
+				 //comboBoxKategoria.setSelectedIndex(anIndex);
 				 
 			}
 			
