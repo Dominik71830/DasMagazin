@@ -3,7 +3,7 @@ create database if not exists baza;
 use baza;
 
 drop table if exists produkty;
-drop table if exists klienci;
+drop table if exists fakturyDetal;
 drop table if exists auta;
 
 create table produkty
@@ -60,24 +60,23 @@ insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (3
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (39, 'Odkurzacz USB', 50,0.23, 4.99, 'elektroniczne',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (40, 'Odtwarzacz mp3', 50, 0.23,29.99, 'elektroniczne',0.0);
 
-/*create table klienci
+create table fakturyDetal
 (
 id int NOT NULL AUTO_INCREMENT,
-Imie Varchar(20) NOT NULL,
-Nazwisko Varchar(40) NOT NULL,
-Ulica Varchar(20) NOT NULL,
-Nr_lokalu Int NOT NULL,
-Miejscowosc Varchar(30) NOT NULL,
-Kod_pocztowy Varchar(6) NOT NULL,
-Telefon Int(9) NOT NULL,
-Email Varchar(30),
-Nazwa_sklepu Varchar(40)
+imie Varchar(20) NOT NULL,
+nazwisko Varchar(40) NOT NULL,
+produkty Varchar(500) NOT NULL,
+cena float NOT NULL,
+data_dodania varchar(10), 
+primary key (id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
+insert into fakturyDetal (id, imie, nazwisko, produkty, cena, data_dodania) values (1, 'Łukasz', 'Cieślak', '',3.50, '27/11/2015');
 
+select * from fakturyDetal;
 
-create table auta
+/*create table auta
 (
 id int NOT NULL AUTO_INCREMENT,
 Marka Varchar(15) NOT NULL,
