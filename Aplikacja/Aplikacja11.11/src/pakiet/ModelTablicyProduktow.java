@@ -19,6 +19,7 @@ public class ModelTablicyProduktow extends AbstractTableModel {
 
 	private String[] nazwykolumn = {"Nazwa", "Iloœæ",
 	"Vat","Cena","Kategoria","Objêtoœæ"};
+	
 	private List<Produkt> produkty;
 
 
