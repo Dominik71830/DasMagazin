@@ -1,0 +1,84 @@
+package GUIe;
+
+import java.awt.EventQueue;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.Font;
+import javax.swing.SwingConstants;
+
+import pakiet.Funkcje;
+import pakiet.Produkt;
+
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.awt.event.ActionEvent;
+
+public class ZatwierdzenieOUsuwaniuOkienko extends JDialog {
+
+Funkcje funkcje;
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					ZatwierdzenieOUsuwaniuOkienko dialog = new ZatwierdzenieOUsuwaniuOkienko(null);
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the dialog.
+	 * @param tempprodukt 
+	 */
+	public ZatwierdzenieOUsuwaniuOkienko(Produkt tempprodukt) {
+		setBounds(100, 100, 450, 300);
+		getContentPane().setLayout(null);
+		
+		JLabel JLabeltekst = new JLabel("Czy aby napewno chcesz usun\u0105\u0107 ten obiekt?");
+		JLabeltekst.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabeltekst.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		JLabeltekst.setBounds(21, 30, 384, 75);
+		getContentPane().add(JLabeltekst);
+		
+		JButton btnTak = new JButton("Tak");
+		btnTak.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try
+				{
+				funkcje= new Funkcje();
+				}
+				catch(Exception exc)
+				{
+					JOptionPane.showMessageDialog(null,"B³¹d przy inicjalizacji okna " + exc);
+				}
+				
+				try {
+					funkcje.wyzeruj(tempprodukt);
+				} catch (SQLException exc) {
+					JOptionPane.showMessageDialog(null,"B³¹d przy usuwaniu produktu " + exc);
+				}
+				
+			}
+		});
+		btnTak.setBounds(89, 169, 89, 23);
+		getContentPane().add(btnTak);
+		
+		JButton btnNie = new JButton("Nie");
+		btnNie.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnNie.setBounds(255, 169, 89, 23);
+		getContentPane().add(btnNie);
+
+	}
+}

@@ -65,6 +65,14 @@ public class MagazynOkno extends JDialog {
 			JOptionPane.showMessageDialog(null,"B³¹d przy inicjalizacji okna " + exc);
 		}
 		
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(291, 62, 358, 267);
+		getContentPane().add(scrollPane);
+		
+		table = new JTable();
+		scrollPane.setViewportView(table);
+		
 		setBounds(100, 100, 684, 417);
 		getContentPane().setLayout(null);
 		
@@ -146,7 +154,7 @@ public class MagazynOkno extends JDialog {
 					
 					funkcje.updateProdukt(tempprodukt);
 				
-					odswiez();
+					funkcje.odswiezProdukty(table);
 					JOptionPane.showMessageDialog(null,"Produkt zaktualizowany");
 					}
 				 catch (Exception exc) {
@@ -191,7 +199,7 @@ public class MagazynOkno extends JDialog {
 					
 					funkcje.addProdukt(tempprodukt);
 				
-					odswiez();
+					funkcje.odswiezProdukty(table);
 					
 				
 						JOptionPane.showMessageDialog(null,"Produkt dodany");
@@ -202,20 +210,7 @@ public class MagazynOkno extends JDialog {
 				
 			}
 
-			private void odswiez() {
-				try{
-					List<Produkt> produkty = funkcje.getAllProdukty();
-					
-					ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
-					
-					table.setModel(model);
-				}
-				catch(Exception exc){
-					JOptionPane.showMessageDialog(null,"Blad przy odswiezaniu " + exc);
-				}
-				
-				
-			}
+			
 		});
 		btnOk.setEnabled(false);
 		btnOk.setBackground(Color.RED);
@@ -258,7 +253,7 @@ public class MagazynOkno extends JDialog {
 				setVisible(false);
 			}
 		});
-		ButtonPowrot.setBounds(562, 342, 89, 23);
+		ButtonPowrot.setBounds(544, 342, 107, 23);
 		getContentPane().add(ButtonPowrot);
 		
 		JLabel JLabelNazwaDodaj = new JLabel("Nazwa:");
@@ -331,7 +326,7 @@ public class MagazynOkno extends JDialog {
 			
 			
 		});
-		ButtonDodajProdukt.setBounds(10, 342, 101, 23);
+		ButtonDodajProdukt.setBounds(10, 342, 107, 23);
 		getContentPane().add(ButtonDodajProdukt);
 		
 		JButton ButtonZmien = new JButton("Zmie\u0144");
@@ -406,19 +401,33 @@ public class MagazynOkno extends JDialog {
 			}
 			
 		});
-		ButtonZmien.setBounds(121, 342, 89, 23);
+		ButtonZmien.setBounds(127, 342, 107, 23);
 		getContentPane().add(ButtonZmien);
 		
 		JButton ButtonHistoriaZmian = new JButton("Historia zmian");
-		ButtonHistoriaZmian.setBounds(220, 342, 101, 23);
+		ButtonHistoriaZmian.setBounds(244, 342, 107, 23);
 		getContentPane().add(ButtonHistoriaZmian);
+	
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(291, 62, 358, 267);
-		getContentPane().add(scrollPane);
-		
-		table = new JTable();
-		scrollPane.setViewportView(table);
+		JButton buttonUsun = new JButton("Usu\u0144 produkt");
+		buttonUsun.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int row = table.getSelectedRow();
+				
+				if (row < 0) {
+					JOptionPane.showMessageDialog(null,"Wybierz produkt");				
+					return;
+				}
+				
+				Produkt tempprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
+				
+				ZatwierdzenieOUsuwaniuOkienko zat = new ZatwierdzenieOUsuwaniuOkienko(tempprodukt,table);
+				zat.setVisible(true);
+			}
+		});
+		buttonUsun.setBounds(361, 342, 107, 23);
+		getContentPane().add(buttonUsun);
 		
 		
 		

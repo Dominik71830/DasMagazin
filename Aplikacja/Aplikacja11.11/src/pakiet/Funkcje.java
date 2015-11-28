@@ -5,6 +5,7 @@ import java.sql.*;
 import java.util.*;
 
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 
 
 
@@ -214,5 +215,23 @@ public void wyzeruj(Produkt _produkt) throws SQLException {
 	}
 	
 }
+
+public void odswiezProdukty(JTable table) {
+	
+	try{
+		List<Produkt> produkty = getAllProdukty();
+		
+		ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
+		
+		table.setModel(model);
+	}
+	catch(Exception exc){
+		JOptionPane.showMessageDialog(null,"Blad przy odswiezaniu " + exc);
+	}
+	
+}
+
+
+
 
 }
