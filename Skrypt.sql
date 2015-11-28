@@ -67,14 +67,23 @@ imie Varchar(20) NOT NULL,
 nazwisko Varchar(40) NOT NULL,
 produkty Varchar(500) NOT NULL,
 cena float NOT NULL,
-data_dodania varchar(10), 
+data_dodania timestamp, 
 primary key (id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-insert into fakturyDetal (id, imie, nazwisko, produkty, cena, data_dodania) values (1, 'Łukasz', 'Cieślak', '',3.50, '27/11/2015');
+insert into fakturyDetal (id, imie, nazwisko, produkty, cena, data_dodania) values (1, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
 
 select * from fakturyDetal;
+
+create table logi
+(
+id int NOT NULL AUTO_INCREMENT,
+data_powstania TIMESTAMP NOT NULL,
+zmiana Varchar(30) NOT NULL,
+primary key (id)
+)
+ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 /*create table auta
 (
