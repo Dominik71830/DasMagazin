@@ -102,13 +102,6 @@ public class MagazynOkno extends JDialog {
 		textFieldWyszukiwarka.setColumns(10);
 		
 		JButton ButtonOpcjeZaaw = new JButton("Opcje zaaw.");
-		ButtonOpcjeZaaw.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String _nazwa = textFieldWyszukiwarka.getText();
-				OpcjeZaawOkno zaaw = new OpcjeZaawOkno(_nazwa,table);
-				zaaw.setVisible(true);
-			}
-		});
 		ButtonOpcjeZaaw.setBounds(550, 11, 101, 25);
 		getContentPane().add(ButtonOpcjeZaaw);
 		
