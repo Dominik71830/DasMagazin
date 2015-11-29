@@ -80,7 +80,7 @@ create table logi
 (
 id int NOT NULL AUTO_INCREMENT,
 data_powstania TIMESTAMP NOT NULL,
-zmiana Varchar(30) NOT NULL,
+akcja Varchar(30) NOT NULL,
 primary key (id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
