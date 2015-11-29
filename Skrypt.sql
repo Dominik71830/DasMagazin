@@ -5,6 +5,7 @@ use baza;
 drop table if exists produkty;
 drop table if exists fakturyDetal;
 drop table if exists auta;
+drop table if exists logi;
 
 create table produkty
 (
