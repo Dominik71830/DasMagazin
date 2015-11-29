@@ -81,6 +81,7 @@ create table logi
 id int NOT NULL AUTO_INCREMENT,
 data_powstania TIMESTAMP NOT NULL,
 akcja Varchar(30) NOT NULL,
+produkt_id int NOT NULL,
 primary key (id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
