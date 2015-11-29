@@ -102,13 +102,6 @@ public class MagazynOkno extends JDialog {
 		textFieldWyszukiwarka.setColumns(10);
 		
 		JButton ButtonOpcjeZaaw = new JButton("Opcje zaaw.");
-		ButtonOpcjeZaaw.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				String _nazwa = textFieldWyszukiwarka.getText();
-				OpcjeZaawOkno zaaw = new OpcjeZaawOkno(_nazwa,table);
-				zaaw.setVisible(true);
-			}
-		});
 		ButtonOpcjeZaaw.setBounds(550, 11, 101, 25);
 		getContentPane().add(ButtonOpcjeZaaw);
 		
@@ -412,6 +405,40 @@ public class MagazynOkno extends JDialog {
 		getContentPane().add(ButtonZmien);
 		
 		JButton ButtonHistoriaZmian = new JButton("Historia zmian");
+		ButtonHistoriaZmian.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				int row = table.getSelectedRow();
+				
+				
+				if (row < 0) {
+					JOptionPane.showMessageDialog(null, "Zaznacz produkt");				
+					return;
+				}
+				
+				
+				Produkt tempprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
+
+				try {
+					
+					int produktId = tempprodukt.getId();
+					List<Log> listalogi = funkcje.getLogi(tempprodukt.getId());
+
+					
+					LogiOkienko dialog = new LogiOkienko();
+					dialog.populate(tempprodukt, listalogi);
+					
+					dialog.setVisible(true);
+				}
+				catch (Exception exc) {
+					JOptionPane.showMessageDialog(null, "B³¹d przy wyœwieltaniu historii " + exc);					
+				}
+				
+			}
+			
+		});
+		
 		ButtonHistoriaZmian.setBounds(244, 342, 107, 23);
 		getContentPane().add(ButtonHistoriaZmian);
 	

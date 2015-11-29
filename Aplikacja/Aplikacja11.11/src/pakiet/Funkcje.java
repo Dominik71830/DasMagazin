@@ -9,6 +9,7 @@ import javax.swing.JTable;
 
 
 
+
 public class Funkcje {
 
 	private Connection myConn;
@@ -56,7 +57,7 @@ public class Funkcje {
 		try{
 		myStmt = myConn.prepareStatement("insert into produkty"
 				+ " (nazwa,ilosc,vat,cena,kategoria,objetosc)"
-				+ " values (?, ?, ?, ?, ?, ?)");//, Statement.RETURN_GENERATED_KEYS);
+				+ " values (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);//, Statement.RETURN_GENERATED_KEYS);
 		
 		myStmt.setString(1, _produkt.getNazwa());
 		myStmt.setInt(2, _produkt.getIlosc());
@@ -67,18 +68,34 @@ public class Funkcje {
 		
 		myStmt.executeUpdate();
 		
-		/*ResultSet generatedKeys = myStmt.getGeneratedKeys();
-		if (generatedKeys.next()) {
-			_produkt.setId(generatedKeys.getInt(1));
+		ResultSet kluczeId = myStmt.getGeneratedKeys();
+		if (kluczeId.next()) {
+			_produkt.setId(kluczeId.getInt(1));
 		} else {
-			throw new SQLException("Error generating key for produkt");
-		}*/
+			throw new SQLException("B³¹d przy generowaniu klucza Id dla produktu");
+		}
+		
+		// LOGI
+		
+				myStmt = myConn.prepareStatement("insert into logi"
+						+ " (data_powstania,akcja,produkt_id)"
+						+ " values (?, ?,?)");
+				
+				
+				myStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+				myStmt.setString(2, "Dodano produkt do bazy.");
+				myStmt.setInt(3, _produkt.getId());
+				
+				
+				myStmt.executeUpdate();
+				
 		}
 		catch(SQLException exc)
 		{
 			JOptionPane.showMessageDialog(null,"B³¹d przy dodawaniu produktu do bazy " + exc); 
 		}
 		
+			
 	}
 
 	private Produkt convertRowToProdukt(ResultSet myRs) throws SQLException {
@@ -137,6 +154,40 @@ public class Funkcje {
 			}
 			
 			return lista;
+		}
+		finally {
+			close(myStmt, myRs);
+		}
+	}
+	
+	public List<Log> getLogi(int _produktId) throws Exception {
+		List<Log> listalogow = new ArrayList<Log>();
+		
+		Statement myStmt = null;
+		ResultSet myRs = null;
+		
+		try {
+			myStmt = myConn.createStatement();
+			
+			String sql = "SELECT data_powstania,akcja "
+					+ "FROM logi "
+					+ "WHERE produkt_id=" + _produktId;
+			
+			myRs = myStmt.executeQuery(sql);
+			
+			while (myRs.next()) {
+				
+				String akcja = myRs.getString("logi.akcja");
+				
+				Timestamp timestamp = myRs.getTimestamp("logi.data_powstania");
+				java.util.Date dataakcji = new java.util.Date(timestamp.getTime());
+				
+				Log temp = new Log(_produktId,dataakcji,akcja);
+				
+				listalogow.add(temp);
+			}
+
+			return listalogow;		
 		}
 		finally {
 			close(myStmt, myRs);

@@ -1,0 +1,51 @@
+package pakiet;
+
+public class Log {
+	private int id;
+	private String data_powstania;
+	private String akcja;
+	
+	public Log(String data_powstania, String akcja) {
+		super();
+		this.data_powstania = data_powstania;
+		this.akcja = akcja;
+	}
+
+	public Log(int id, String data_powstania, String akcja) {
+		super();
+		this.id = id;
+		this.data_powstania = data_powstania;
+		this.akcja = akcja;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getData_powstania() {
+		return data_powstania;
+	}
+
+	public void setData_powstania(String data_powstania) {
+		this.data_powstania = data_powstania;
+	}
+
+	public String getAkcja() {
+		return akcja;
+	}
+
+	public void setAkcja(String akcja) {
+		this.akcja = akcja;
+	}
+
+	@Override
+	public String toString() {
+		return "Log [id=" + id + ", data_powstania=" + data_powstania + ", akcja=" + akcja + "]";
+	}
+
+	
+}

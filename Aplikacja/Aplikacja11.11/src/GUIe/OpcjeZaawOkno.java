@@ -1,14 +1,9 @@
 package GUIe;
 
 import java.awt.EventQueue;
-import pakiet.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JDialog;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JButton;
@@ -24,10 +19,7 @@ public class OpcjeZaawOkno extends JDialog {
 	private JTextField textFieldObjetosc_Od;
 	private JTextField textFieldObjetosc_Do;
 
-	public OpcjeZaawOkno(String _nazwa, JTable table) {
-		
-		
-		
+	public OpcjeZaawOkno() {
 		setTitle("Opcje Zaawansowane");
 		setBounds(100, 100, 394, 328);
 		getContentPane().setLayout(null);
@@ -40,8 +32,6 @@ public class OpcjeZaawOkno extends JDialog {
 		textFieldNazwaZaaw.setBounds(82, 27, 183, 20);
 		getContentPane().add(textFieldNazwaZaaw);
 		textFieldNazwaZaaw.setColumns(10);
-		
-		textFieldNazwaZaaw.setText(_nazwa); // kopiowanie nazwy
 		
 		JLabel lblCenaOd = new JLabel("Cena          od");
 		lblCenaOd.setBounds(28, 61, 77, 14);
@@ -119,23 +109,13 @@ public class OpcjeZaawOkno extends JDialog {
 		
 		JButton btnAnuluj = new JButton("Anuluj");
 		btnAnuluj.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
+			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
 		btnAnuluj.setBounds(261, 256, 89, 23);
 		getContentPane().add(btnAnuluj);
 		
 		JButton btnSzukaj = new JButton("Szukaj");
-		btnSzukaj.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				List<Produkt> lista = new ArrayList<Produkt>();
-				// 2 sposoby
-				// albo przeczesaæ t¹ listê za pomoc¹ zapytañ SQLowych
-				// albo za pomoc¹ funckji Javowych
-				
-			}
-		});
 		btnSzukaj.setBounds(157, 256, 89, 23);
 		getContentPane().add(btnSzukaj);
 

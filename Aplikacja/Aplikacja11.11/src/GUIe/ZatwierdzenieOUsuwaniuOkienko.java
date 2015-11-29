@@ -63,6 +63,7 @@ Funkcje funkcje;
 
 				funkcje.odswiezProdukty(table);
 				
+				setVisible(false);
 				dispose();
 			}
 			

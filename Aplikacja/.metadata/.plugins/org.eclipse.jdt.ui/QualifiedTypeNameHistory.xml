@@ -4,13 +4,14 @@
 <fullyQualifiedTypeName name="java.awt.List"/>
 <fullyQualifiedTypeName name="GUIe.MagazynOkno"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="pakiet.Produkt"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="javax.swing.AbstractAction"/>
 <fullyQualifiedTypeName name="javax.swing.table.AbstractTableModel"/>
-<fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="pakiet.Formularz"/>
 <fullyQualifiedTypeName name="GUIe.ZatwierdzenieOUsuwaniuOkienko"/>
 <fullyQualifiedTypeName name="pakiet.Funkcje"/>
 <fullyQualifiedTypeName name="javax.swing.JTable"/>
+<fullyQualifiedTypeName name="GUIe.OpcjeZaawOkno"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="pakiet.Produkt"/>
 </qualifiedTypeNameHistroy>
