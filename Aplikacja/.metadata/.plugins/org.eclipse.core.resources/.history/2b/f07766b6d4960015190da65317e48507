@@ -1,14 +1,12 @@
 package pakiet;
 
-import java.util.Date;
-
 public class FormularzDetal {
 	private int id;
 	private String imie;
 	private String nazwisko;
 	private String produkty;
 	private Double cena;
-	private Date data_dodania;
+	private String data_dodania;
 	
 	public int getId() {
 		return id;
@@ -60,17 +58,17 @@ public class FormularzDetal {
 	}
 
 
-	public Date getData_dodania() {
+	public String getData_dodania() {
 		return data_dodania;
 	}
 
 
-	public void setData_dodania(Date data_dodania) {
+	public void setData_dodania(String data_dodania) {
 		this.data_dodania = data_dodania;
 	}
 	
 	
-	public FormularzDetal(int id, String imie, String nazwisko, String produkty, Double cena, Date data_dodania) {
+	public FormularzDetal(int id, String imie, String nazwisko, String produkty, Double cena, String data_dodania) {
 		super();
 		this.id = id;
 		this.imie = imie;
@@ -81,7 +79,7 @@ public class FormularzDetal {
 	}
 
 
-	public FormularzDetal(String imie, String nazwisko, String produkty, Double cena, Date data_dodania) {
+	public FormularzDetal(String imie, String nazwisko, String produkty, Double cena, String data_dodania) {
 		super();
 		this.imie = imie;
 		this.nazwisko = nazwisko;

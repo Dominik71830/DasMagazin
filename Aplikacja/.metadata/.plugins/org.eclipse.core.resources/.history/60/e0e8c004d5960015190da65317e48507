@@ -2,14 +2,10 @@ package pakiet;
 
 import java.io.FileInputStream;
 import java.sql.*;
-import java.sql.Date;
-import java.text.Normalizer.Form;
 import java.util.*;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-
-import org.omg.CORBA.DATA_CONVERSION;
 
 
 
@@ -138,41 +134,6 @@ public class Funkcje {
 		}
 	}
 	
-	public List<FormularzDetal> getAllFormularzeDetal() throws SQLException {
-		List<FormularzDetal> lista = new ArrayList<FormularzDetal>();
-		
-		Statement myStmt = null;
-		ResultSet myRs = null;
-		
-		try{
-			myStmt = myConn.createStatement();
-			myRs = myStmt.executeQuery("select * from formularzeDetal");
-			
-			while(myRs.next()){
-				FormularzDetal temp = convertRowToFormularzDetal(myRs);
-				lista.add(temp);
-			}
-		return lista;
-		}
-		finally{
-			close(myStmt);
-		}
-	}
-	
-	private FormularzDetal convertRowToFormularzDetal(ResultSet myRs) throws SQLException {
-		
-		int id = myRs.getInt("id");
-		String imie = myRs.getString("imie");
-		String nazwisko = myRs.getString("nazwisko");
-		String produkty = myRs.getString("produkty");
-		Double cena = myRs.getDouble("cena");
-		Date data_dodania = myRs.getDate("data_dodania");
-		
-		FormularzDetal temp = new FormularzDetal(imie, nazwisko, produkty, cena, data_dodania);
-		
-		return temp;
-	}
-
 	public List<Produkt> searchProdukt(String _nazwa) throws SQLException {
 		List<Produkt> lista = new ArrayList<Produkt>();
 

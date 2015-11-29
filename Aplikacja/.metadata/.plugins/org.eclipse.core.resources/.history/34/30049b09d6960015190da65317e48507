@@ -15,7 +15,7 @@ public class ModelTablicyFormularzyDetal extends AbstractTableModel{
 	public static final  int CENA_COL   = 3;
 	public static final  int DATA_DODANIA_COL = 4;
 	
-	private String[] nazwykolumn = {"Imie",
+	private String[] nazwykolumn = {"Nazwa", "Imie",
 			"Nazwisko","Produkty","Cena","Data dodania"};
 	
 	private List<FormularzDetal> formularze;
