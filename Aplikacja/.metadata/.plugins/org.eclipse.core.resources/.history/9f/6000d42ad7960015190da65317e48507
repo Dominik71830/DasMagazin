@@ -12,8 +12,8 @@ public class ModelTablicyFormularzyDetal extends AbstractTableModel{
 	public static final  int IMIE_COL  = 0;
 	public static final  int NAZWISKO_COL   = 1;
 	//public static final  int PRODUKTY_COL   = 2;
-	public static final  int CENA_COL   = 2;
-	public static final  int DATA_DODANIA_COL = 3;
+	public static final  int CENA_COL   = 3;
+	public static final  int DATA_DODANIA_COL = 4;
 	
 	private String[] nazwykolumn = {"Imie",
 			"Nazwisko","Cena","Data dodania"};
