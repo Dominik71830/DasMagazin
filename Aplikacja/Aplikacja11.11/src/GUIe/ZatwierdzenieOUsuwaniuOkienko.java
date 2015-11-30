@@ -10,6 +10,7 @@ import javax.swing.JTable;
 import java.awt.Font;
 import javax.swing.SwingConstants;
 
+import pakiet.FormularzDetal;
 import pakiet.Funkcje;
 import pakiet.ModelTablicyProduktow;
 import pakiet.Produkt;
@@ -30,7 +31,7 @@ Funkcje funkcje;
 	 * @param tempprodukt 
 	 * @param table 
 	 */
-	public ZatwierdzenieOUsuwaniuOkienko(Produkt tempprodukt, JTable table) {
+	public ZatwierdzenieOUsuwaniuOkienko(Produkt _produkt,FormularzDetal _formularzDetal, JTable _table,int _i) {
 		
 		try
 		{
@@ -53,15 +54,26 @@ Funkcje funkcje;
 		JButton btnTak = new JButton("Tak");
 		btnTak.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				try {
-					funkcje.wyzeruj(tempprodukt);
-				} catch (SQLException exc) {
-					JOptionPane.showMessageDialog(null,"B³¹d przy usuwaniu produktu " + exc);
+				if(_i==1){//usuwanie produktu
+					try {
+						funkcje.wyzeruj(_produkt);
+					} catch (SQLException exc) {
+						JOptionPane.showMessageDialog(null,"B³¹d przy usuwaniu produktu " + exc);
+					}
+					funkcje.odswiezProdukty(_table);
+
 				}
-
-
-				funkcje.odswiezProdukty(table);
+				else if(_i==2){//tu usuwanie formularza
+					try {
+						
+						funkcje.deleteFormularzDetal(_formularzDetal);
+					} catch (SQLException exc) {
+						JOptionPane.showMessageDialog(null,"B³¹d przy usuwaniu formularza " + exc);
+					}
+					funkcje.odswiezFormularzeDetal(_table);
+				}
+				
+				
 				
 				setVisible(false);
 				dispose();
@@ -74,6 +86,7 @@ Funkcje funkcje;
 		JButton btnNie = new JButton("Nie");
 		btnNie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
 				dispose();
 			}
 		});
@@ -81,4 +94,6 @@ Funkcje funkcje;
 		getContentPane().add(btnNie);
 
 	}
+
+
 }
