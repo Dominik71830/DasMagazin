@@ -74,12 +74,11 @@ primary key (id)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (1, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
+insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (2, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
+insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (3, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
 
-<<<<<<< HEAD
-=======
 select * from formularzedetal;
 
->>>>>>> f0b13302a4311c7cbc3eaa8896ea7e15e504f7d6
 create table logi
 (
 id int NOT NULL AUTO_INCREMENT,
