@@ -68,8 +68,6 @@ public class IloscOkienko extends JDialog {
 				
 				Produkt kupiony = new Produkt(nazwa,ilosc,cena);
 				
-				
-				
 				suma += kupiony.getCena();
 				_textFieldSuma.setText(Double.toString(suma));
 				//JOptionPane.showMessageDialog(null, kupiony.getCena());

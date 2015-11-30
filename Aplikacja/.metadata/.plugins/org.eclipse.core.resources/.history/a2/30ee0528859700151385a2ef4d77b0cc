@@ -108,7 +108,7 @@ public class DodajFormularzDetalOkno extends JDialog {
 				
 				Produkt temp = (Produkt)tableProdukty.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
-				IloscOkienko okno = new IloscOkienko(temp,kupione,tableDodane,textFieldSuma);
+				IloscOkienko okno = new IloscOkienko(temp,kupione,tableDodane,suma,textFieldSuma);
 				okno.setVisible(true);
 			}
 		});

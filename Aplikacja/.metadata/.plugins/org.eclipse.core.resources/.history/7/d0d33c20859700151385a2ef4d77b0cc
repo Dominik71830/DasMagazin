@@ -68,7 +68,6 @@ public class DodajFormularzDetalOkno extends JDialog {
 		textFieldSuma.setBounds(415, 298, 59, 20);
 		getContentPane().add(textFieldSuma);
 		textFieldSuma.setColumns(10);
-		textFieldSuma.setText("0.0");
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(506, 26, 283, 292);
@@ -108,7 +107,7 @@ public class DodajFormularzDetalOkno extends JDialog {
 				
 				Produkt temp = (Produkt)tableProdukty.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
-				IloscOkienko okno = new IloscOkienko(temp,kupione,tableDodane,textFieldSuma);
+				IloscOkienko okno = new IloscOkienko(temp,kupione,tableDodane,suma,textFieldSuma);
 				okno.setVisible(true);
 			}
 		});

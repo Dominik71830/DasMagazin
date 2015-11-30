@@ -28,7 +28,7 @@ public class IloscOkienko extends JDialog {
 	public static void main(String[] args) {
 		try {
 			funkcje = new Funkcje();
-			IloscOkienko dialog = new IloscOkienko(null,null,null,null);
+			IloscOkienko dialog = new IloscOkienko(null,null,null,(Double) null,null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -41,7 +41,7 @@ public class IloscOkienko extends JDialog {
 	 * @param textFieldSuma 
 	 * @param suma 
 	 */
-	public IloscOkienko(Produkt _temp, List<Produkt> _kupione, JTable _tabela, JTextField _textFieldSuma) {
+	public IloscOkienko(Produkt _temp, List<Produkt> _kupione, JTable _tabela, Double _suma, JTextField _textFieldSuma) {
 		setBounds(100, 100, 250, 145);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -60,7 +60,6 @@ public class IloscOkienko extends JDialog {
 		JButton btnOk = new JButton("Ok");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Double suma = Double.parseDouble(_textFieldSuma.getText());
 				
 				String nazwa = _temp.getNazwa();
 				int ilosc = Integer.parseInt(textField.getText());
@@ -68,11 +67,9 @@ public class IloscOkienko extends JDialog {
 				
 				Produkt kupiony = new Produkt(nazwa,ilosc,cena);
 				
-				
-				
-				suma += kupiony.getCena();
-				_textFieldSuma.setText(Double.toString(suma));
-				//JOptionPane.showMessageDialog(null, kupiony.getCena());
+				//suma += kupiony.getCena();
+				_textFieldSuma.setText(Double.toString(_suma));
+				JOptionPane.showMessageDialog(null, kupiony.getCena());
 				_kupione.add(kupiony);
 	
 				ModelTablicyProduktowDodanych model = new ModelTablicyProduktowDodanych(_kupione);
