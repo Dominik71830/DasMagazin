@@ -5,9 +5,6 @@ import java.awt.Image;
 import java.io.IOException;
 
 import javax.swing.JFrame;
-
-import org.omg.PortableServer.ServantRetentionPolicyValue;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -64,12 +61,6 @@ public class GlowneOkno {
 		frmTytuwiczebny.getContentPane().add(Przycisk1);
 		
 		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				SprzedazDetalicznaOkno okno = new SprzedazDetalicznaOkno();
-				okno.setVisible(true);
-			}
-		});
 		btnNewButton_1.setBounds(499, 39, 291, 378);
 		frmTytuwiczebny.getContentPane().add(btnNewButton_1);
 		
@@ -78,11 +69,6 @@ public class GlowneOkno {
 		frmTytuwiczebny.getContentPane().add(btnNewButton_2);
 		
 		JButton btnWyloguj = new JButton("wyloguj");
-		btnWyloguj.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-		
-			}
-		});
 		btnWyloguj.setBounds(965, 447, 220, 91);
 		frmTytuwiczebny.getContentPane().add(btnWyloguj);
 	}

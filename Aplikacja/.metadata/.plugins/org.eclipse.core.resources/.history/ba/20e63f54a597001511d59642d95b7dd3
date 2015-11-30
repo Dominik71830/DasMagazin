@@ -78,16 +78,6 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		JButton btnWywietlFormularz = new JButton("Wy\u015Bwietl formularz");
 		btnWywietlFormularz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int row = tableformularz.getSelectedRow();
-				
-				if (row < 0) {
-					JOptionPane.showMessageDialog(null,"Wybierz formularz");				
-					return;
-				}
-				
-				FormularzDetal tempformularz = (FormularzDetal)tableformularz.getValueAt(row, ModelTablicyFormularzyDetal.OBJECT_COL);
-				
-				//tutaj musi wyskoczyæ jakieœ okienko do wypisania szczegó³ów formularzu
 			}
 		});
 		btnWywietlFormularz.setBounds(33, 21, 147, 23);
