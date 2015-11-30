@@ -77,13 +77,6 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		getContentPane().add(btnWywietlFormularz);
 		
 		JButton btnDodajFormularz = new JButton("Dodaj formularz");
-		btnDodajFormularz.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				DodajFormularzDetalOkno okno = new DodajFormularzDetalOkno();
-				okno.setVisible(true);
-			}
-		});
 		btnDodajFormularz.setBounds(33, 55, 147, 23);
 		getContentPane().add(btnDodajFormularz);
 		
@@ -108,12 +101,6 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		getContentPane().add(btnUsunFormularz);
 		
 		JButton btnPowrt = new JButton("Powr\u00F3t");
-		btnPowrt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
-			}
-		});
 		btnPowrt.setBounds(488, 339, 89, 23);
 		getContentPane().add(btnPowrt);
 

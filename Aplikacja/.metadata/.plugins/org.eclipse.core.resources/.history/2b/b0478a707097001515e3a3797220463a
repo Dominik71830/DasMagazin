@@ -43,7 +43,7 @@ public class SprzedazDetalicznaOkno extends JDialog {
 					
 					ModelTablicyFormularzyDetal model = new ModelTablicyFormularzyDetal(formularzeDetal);
 					
-					tableformularz.setModel(model);
+					tableProdukty.setModel(model);
 					
 				
 				} catch (Exception e) {

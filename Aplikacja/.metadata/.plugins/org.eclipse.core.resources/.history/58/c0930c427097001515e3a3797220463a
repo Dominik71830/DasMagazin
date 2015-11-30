@@ -1,0 +1,40 @@
+package GUIe;
+
+import java.awt.EventQueue;
+
+import javax.swing.JDialog;
+import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class DodajFormularzDetalOkno extends JDialog {
+	public DodajFormularzDetalOkno() {
+		setTitle("Dodaj formularz");
+		setBounds(100, 100, 840, 420);
+		getContentPane().setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(506, 26, 283, 292);
+		getContentPane().add(scrollPane);
+		
+		JScrollPane scrollPane_1 = new JScrollPane();
+		scrollPane_1.setBounds(191, 26, 283, 292);
+		getContentPane().add(scrollPane_1);
+		
+		JButton btnPowrt = new JButton("Powr\u00F3t");
+		btnPowrt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				dispose();
+			}
+		});
+		btnPowrt.setBounds(700, 329, 89, 23);
+		getContentPane().add(btnPowrt);
+		
+		JLabel lblDodajProduktZ = new JLabel("Dodaj produkt z listy");
+		lblDodajProduktZ.setBounds(25, 26, 135, 14);
+		getContentPane().add(lblDodajProduktZ);
+	}
+}
