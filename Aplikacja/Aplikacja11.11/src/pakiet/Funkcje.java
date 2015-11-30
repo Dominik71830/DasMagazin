@@ -102,6 +102,52 @@ public class Funkcje {
 		
 			
 	}
+	
+	public void addFormularzDetal(FormularzDetal _formularz) throws Exception {
+		PreparedStatement myStmt = null;
+		
+		try{
+		myStmt = myConn.prepareStatement("insert into formularzedetal"
+				+ " (imie,nazwisko,produkty,cena,data_dodania)"
+				+ " values (?, ?, ?, ?, ?)");
+		
+		myStmt.setString(1, _formularz.getImie());
+		myStmt.setString(2, _formularz.getNazwisko());
+		myStmt.setString(3, _formularz.getProdukty());
+		myStmt.setDouble(4, _formularz.getCena());
+		myStmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+		
+		myStmt.executeUpdate();
+		
+		/*ResultSet kluczeId = myStmt.getGeneratedKeys();
+		if (kluczeId.next()) {
+			_produkt.setId(kluczeId.getInt(1));
+		} else {
+			throw new SQLException("B³¹d przy generowaniu klucza Id dla produktu");
+		}
+		
+		// LOGI
+		
+				myStmt = myConn.prepareStatement("insert into logi"
+						+ " (data_powstania,akcja,produkt_id)"
+						+ " values (?, ?,?)");
+				
+				
+				myStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+				myStmt.setString(2, "Dodano produkt do bazy.");
+				myStmt.setInt(3, _produkt.getId());
+				
+				
+				myStmt.executeUpdate();
+			*/	
+		}
+		catch(SQLException exc)
+		{
+			JOptionPane.showMessageDialog(null,"B³¹d przy dodawaniu faktury detalicznej do bazy " + exc); 
+		}
+		
+			
+	}
 
 	private Produkt convertRowToProdukt(ResultSet myRs) throws SQLException {
 		
@@ -348,8 +394,46 @@ public void odswiezFormularzeDetal(JTable _table) {
 		_table.setModel(model);
 	}
 	catch(Exception exc){
-		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu " + exc);
+		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu formularzy detalicznych " + exc);
 	}
+}
+
+public void odejmijIlosc(Produkt _tempProdukt, int roznica) throws SQLException {
+	int _id = _tempProdukt.getId();
+	PreparedStatement myStmt = null;
+	
+	try{
+		
+		myStmt = myConn.prepareStatement("update produkty"
+				+ " set ilosc=?"
+				+ " where id=?");
+		
+		myStmt.setInt(1, roznica);
+		myStmt.setInt(2,_id);
+		
+		myStmt.executeUpdate();
+	}
+	finally{
+		close(myStmt);
+	}
+	
+}
+
+public String wypiszListe(List<Produkt> kupione) {
+	String napis= new String();
+	
+	String nazwa=null;
+	String ilosc=null;
+	String cena=null;
+	for(Produkt p : kupione){
+		nazwa = p.getNazwa();
+		ilosc = Integer.toString(p.getIlosc());
+		cena = Double.toString(p.getCena());
+		
+		napis += nazwa +", Sztuk: "+ ilosc +", Cena: "+ cena +'\n';
+	}
+	
+	return napis;
 }
 
 

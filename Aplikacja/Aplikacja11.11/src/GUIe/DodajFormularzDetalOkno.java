@@ -34,22 +34,11 @@ public class DodajFormularzDetalOkno extends JDialog {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
-					funkcje = new Funkcje();
-					DodajFormularzDetalOkno dialog = new DodajFormularzDetalOkno();
+									
+					DodajFormularzDetalOkno dialog = new DodajFormularzDetalOkno(null);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
-					
-					
-					
-					produkty = funkcje.getAllProdukty();
-					
-					
-					ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
-					
-					tableProdukty.setModel(model);
-					
-				
+						
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -58,7 +47,7 @@ public class DodajFormularzDetalOkno extends JDialog {
 	}
 
 	
-	public DodajFormularzDetalOkno() {
+	public DodajFormularzDetalOkno(JTable _tableformularz) {
 		setTitle("Dodaj formularz");
 		setBounds(100, 100, 840, 420);
 		getContentPane().setLayout(null);
@@ -84,6 +73,20 @@ public class DodajFormularzDetalOkno extends JDialog {
 		tableDodane = new JTable();
 		scrollPane_1.setViewportView(tableDodane);
 		
+		try {
+			funkcje = new Funkcje();
+			produkty = funkcje.getAllProdukty();
+			ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
+			tableProdukty.setModel(model);
+
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		
+				
 		JButton btnPowrt = new JButton("Powr\u00F3t");
 		btnPowrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -106,16 +109,56 @@ public class DodajFormularzDetalOkno extends JDialog {
 					return;
 				}
 				
-				Produkt temp = (Produkt)tableProdukty.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
+				Produkt tempProdukt = (Produkt)tableProdukty.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
-				IloscOkienko okno = new IloscOkienko(temp,kupione,tableDodane,textFieldSuma);
+				IloscOkienko okno = null;
+				try {
+					okno = new IloscOkienko(tempProdukt,kupione,tableDodane,textFieldSuma,tableProdukty);
+				} catch (Exception exc) {
+					JOptionPane.showMessageDialog(null,"B³¹d przy dodawaniu formularzu " + exc);
+				}
+				
 				okno.setVisible(true);
+				
 			}
 		});
 		btnDodaj.setBounds(428, 329, 117, 23);
 		getContentPane().add(btnDodaj);
 		
 		JButton btnZrobione = new JButton("Zrobione");
+		btnZrobione.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// zapisywanie formularzu
+				
+			zapiszFormularzDetal();
+			}
+
+			private void zapiszFormularzDetal() {
+				String imie = textFieldImie.getText();
+				String nazwisko = textFieldNazwisko.getText();
+				Double cena = Double.parseDouble(textFieldSuma.getText());
+				String produkty = funkcje.wypiszListe(kupione);
+				
+				FormularzDetal tempformularz = null;
+				
+				
+				tempformularz = new FormularzDetal(imie, nazwisko, produkty, cena);
+			
+				
+				try {
+					
+					funkcje.addFormularzDetal(tempformularz);
+					
+				
+						JOptionPane.showMessageDialog(null,"Formularz dodany");
+					}
+				 catch (Exception exc) {
+					JOptionPane.showMessageDialog(null,"Blad przy zapisywaniu formularza detalicznego " + exc);
+				}
+				////////// odswiezanie tabeli formularzy
+				funkcje.odswiezFormularzeDetal(_tableformularz);
+			}
+		});
 		btnZrobione.setBounds(52, 329, 89, 23);
 		getContentPane().add(btnZrobione);
 		

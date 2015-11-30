@@ -14,6 +14,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -28,7 +29,7 @@ public class IloscOkienko extends JDialog {
 	public static void main(String[] args) {
 		try {
 			funkcje = new Funkcje();
-			IloscOkienko dialog = new IloscOkienko(null,null,null,null);
+			IloscOkienko dialog = new IloscOkienko(null,null,null,null,null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -38,10 +39,13 @@ public class IloscOkienko extends JDialog {
 
 	/**
 	 * Create the dialog.
+	 * @param tableProdukty 
 	 * @param textFieldSuma 
 	 * @param suma 
+	 * @throws Exception 
 	 */
-	public IloscOkienko(Produkt _temp, List<Produkt> _kupione, JTable _tabela, JTextField _textFieldSuma) {
+	public IloscOkienko(Produkt _tempProdukt, List<Produkt> _kupione, JTable _tableDodane, JTextField _textFieldSuma, JTable _tableProdukty) throws Exception {
+		funkcje = new Funkcje();
 		setBounds(100, 100, 250, 145);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -60,15 +64,21 @@ public class IloscOkienko extends JDialog {
 		JButton btnOk = new JButton("Ok");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				int roznica;
 				Double suma = Double.parseDouble(_textFieldSuma.getText());
 				
-				String nazwa = _temp.getNazwa();
+				String nazwa = _tempProdukt.getNazwa();
 				int ilosc = Integer.parseInt(textField.getText());
-				Double cena = ilosc * _temp.getCena();
+				Double cena = ilosc * _tempProdukt.getCena();
 				
 				Produkt kupiony = new Produkt(nazwa,ilosc,cena);
 				
-				
+				roznica = _tempProdukt.getIlosc()-ilosc;
+				try {
+					funkcje.odejmijIlosc(_tempProdukt,roznica);
+				} catch (SQLException exc) {
+					JOptionPane.showMessageDialog(null, "B³¹d przy odejmowaniu iloœci produktu "+exc);
+				}
 				
 				suma += kupiony.getCena();
 				_textFieldSuma.setText(Double.toString(suma));
@@ -76,8 +86,9 @@ public class IloscOkienko extends JDialog {
 				_kupione.add(kupiony);
 	
 				ModelTablicyProduktowDodanych model = new ModelTablicyProduktowDodanych(_kupione);
-				_tabela.setModel(model);
+				_tableDodane.setModel(model);
 				/////////////////////
+				funkcje.odswiezProdukty(_tableProdukty);
 				setVisible(false);
 				dispose();
 			}

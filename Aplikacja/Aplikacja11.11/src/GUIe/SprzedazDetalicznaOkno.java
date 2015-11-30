@@ -80,8 +80,9 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		btnDodajFormularz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				DodajFormularzDetalOkno okno = new DodajFormularzDetalOkno();
+				DodajFormularzDetalOkno okno = new DodajFormularzDetalOkno(tableformularz);
 				okno.setVisible(true);
+				
 			}
 		});
 		btnDodajFormularz.setBounds(33, 55, 147, 23);

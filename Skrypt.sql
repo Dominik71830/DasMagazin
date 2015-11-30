@@ -37,7 +37,7 @@ insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (1
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (15, 'Półka na ściane Sonoma', 35,0.23, 69.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (16, 'Stół Granas', 15,0.23, 349.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (17, 'Łóżko Select hilding', 5,0.23, 959.99, 'meble',0.0);
-insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (18, 'Kanapa Madryt3', 6,0.23, 1199.99, 'meble',0.0);
+insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (18, 'Kanapa Madryt', 6,0.23, 1199.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (19, 'Szuflada Gotland', 40,0.23, 29.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (20, 'Lustro Venge', 25,0.23, 239.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (21, 'Proszek do prania Ajax', 150,0.23, 49.99, 'przemysłowe',0.0);

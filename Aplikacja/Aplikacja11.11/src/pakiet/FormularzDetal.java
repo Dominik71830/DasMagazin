@@ -80,12 +80,12 @@ public class FormularzDetal {
 	}
 
 
-	public FormularzDetal(String imie, String nazwisko, String produkty, Double cena, Date data_dodania) {
+	public FormularzDetal(String imie, String nazwisko, String produkty, Double cena){//, Date data_dodania) {
 		this.imie = imie;
 		this.nazwisko = nazwisko;
 		this.produkty = produkty;
 		this.cena = cena;
-		this.data_dodania = data_dodania;
+		//this.data_dodania = data_dodania;
 	}
 
 
