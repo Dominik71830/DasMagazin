@@ -12,6 +12,9 @@
 <fullyQualifiedTypeName name="pakiet.Funkcje"/>
 <fullyQualifiedTypeName name="javax.swing.JTable"/>
 <fullyQualifiedTypeName name="GUIe.OpcjeZaawOkno"/>
+<fullyQualifiedTypeName name="GUIe.DodajFormularzDetalOkno"/>
+<fullyQualifiedTypeName name="pakiet.ModelTablicyProduktowDodanych"/>
 <fullyQualifiedTypeName name="java.util.List"/>
 <fullyQualifiedTypeName name="pakiet.Produkt"/>
+<fullyQualifiedTypeName name="pakiet.ModelTablicyProduktow"/>
 </qualifiedTypeNameHistroy>

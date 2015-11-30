@@ -18,6 +18,12 @@ public class Produkt {
 		objetosc = _objetosc;
 	}
 	
+	public Produkt(String _nazwa,int _ilosc,Double _cena ){//konstruktor dla kupionego
+		nazwa=_nazwa;
+		cena=_cena;
+		ilosc=_ilosc;
+	}
+	
 	public Produkt(int _id,String _nazwa, int _ilosc, Double _vat,Double _cena, String _kategoria, Double _objetosc){//konstruktor pelny
 		id=_id;
 		nazwa=_nazwa;
