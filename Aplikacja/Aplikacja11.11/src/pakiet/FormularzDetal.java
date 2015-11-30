@@ -71,7 +71,6 @@ public class FormularzDetal {
 	
 	
 	public FormularzDetal(int id, String imie, String nazwisko, String produkty, Double cena, Date data_dodania) {
-		super();
 		this.id = id;
 		this.imie = imie;
 		this.nazwisko = nazwisko;
@@ -82,7 +81,6 @@ public class FormularzDetal {
 
 
 	public FormularzDetal(String imie, String nazwisko, String produkty, Double cena, Date data_dodania) {
-		super();
 		this.imie = imie;
 		this.nazwisko = nazwisko;
 		this.produkty = produkty;

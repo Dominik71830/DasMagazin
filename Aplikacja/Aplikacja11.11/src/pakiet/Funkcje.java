@@ -7,6 +7,7 @@ import java.text.Normalizer.Form;
 import java.util.*;
 
 import javax.swing.JOptionPane;
+import javax.swing.JPanel;
 import javax.swing.JTable;
 
 import org.omg.CORBA.DATA_CONVERSION;
@@ -168,7 +169,7 @@ public class Funkcje {
 		Double cena = myRs.getDouble("cena");
 		Date data_dodania = myRs.getDate("data_dodania");
 		
-		FormularzDetal temp = new FormularzDetal(imie, nazwisko, produkty, cena, data_dodania);
+		FormularzDetal temp = new FormularzDetal(id, imie, nazwisko, produkty, cena, data_dodania);
 		
 		return temp;
 	}
@@ -316,9 +317,39 @@ public void odswiezProdukty(JTable table) {
 		table.setModel(model);
 	}
 	catch(Exception exc){
-		JOptionPane.showMessageDialog(null,"Blad przy odswiezaniu " + exc);
+		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu " + exc);
 	}
 	
+}
+
+public void deleteFormularzDetal(FormularzDetal _formularzDetal) throws SQLException {
+	PreparedStatement myStmt = null;
+	int id = _formularzDetal.getId();
+	
+	
+	try{
+		myStmt = myConn.prepareStatement("delete from formularzedetal where id = ?");
+		
+		myStmt.setInt(1, id);
+		
+		myStmt.executeUpdate();
+	}
+	finally{
+		close(myStmt);
+	}
+}
+
+public void odswiezFormularzeDetal(JTable _table) {
+	try{
+		List<FormularzDetal> formularzeDetal = getAllFormularzeDetal();
+		
+		ModelTablicyFormularzyDetal model = new ModelTablicyFormularzyDetal(formularzeDetal);
+		
+		_table.setModel(model);
+	}
+	catch(Exception exc){
+		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu " + exc);
+	}
 }
 
 

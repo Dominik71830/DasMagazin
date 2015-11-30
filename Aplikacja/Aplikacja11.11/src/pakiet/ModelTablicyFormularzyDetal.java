@@ -50,8 +50,6 @@ public class ModelTablicyFormularzyDetal extends AbstractTableModel{
 			return tempformularz.getImie();
 		case NAZWISKO_COL:
 			return tempformularz.getNazwisko();
-		//case PRODUKTY_COL:
-			//return tempformularz.getProdukty();
 		case CENA_COL:
 			return tempformularz.getCena();
 		case DATA_DODANIA_COL:

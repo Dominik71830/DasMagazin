@@ -3,6 +3,7 @@ package GUIe;
 import java.awt.EventQueue;
 
 import javax.swing.JDialog;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
@@ -37,6 +38,8 @@ public class SprzedazDetalicznaOkno extends JDialog {
 					List<FormularzDetal> formularzeDetal = null;
 					
 					formularzeDetal = funkcje.getAllFormularzeDetal();
+					
+					
 					
 					ModelTablicyFormularzyDetal model = new ModelTablicyFormularzyDetal(formularzeDetal);
 					
@@ -78,6 +81,22 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		getContentPane().add(btnDodajFormularz);
 		
 		JButton btnUsunFormularz = new JButton("Usu\u0144 formularz");
+		btnUsunFormularz.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				int row = tableformularz.getSelectedRow();
+				
+				if (row < 0) {
+					JOptionPane.showMessageDialog(null,"Wybierz formularz");				
+					return;
+				}
+				
+				FormularzDetal tempformularz = (FormularzDetal)tableformularz.getValueAt(row, ModelTablicyFormularzyDetal.OBJECT_COL);
+				
+				ZatwierdzenieOUsuwaniuOkienko zat = new ZatwierdzenieOUsuwaniuOkienko(null,tempformularz,tableformularz,2);
+				zat.setVisible(true);
+			}
+		});
 		btnUsunFormularz.setBounds(33, 89, 147, 23);
 		getContentPane().add(btnUsunFormularz);
 		
