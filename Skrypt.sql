@@ -75,8 +75,6 @@ ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 insert into formularzeDetal (id, imie, nazwisko, produkty, cena, data_dodania) values (1, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
 
-select * from formularzeDetal;
-
 create table logi
 (
 id int NOT NULL AUTO_INCREMENT,
