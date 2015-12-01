@@ -49,6 +49,21 @@ public class Funkcje {
 			myStmt.setInt(7, _produkt.getId());
 			
 			myStmt.executeUpdate();
+			
+			// LOGI
+			
+			myStmt = myConn.prepareStatement("insert into logi"
+					+ " (data_powstania,akcja,produkt_id)"
+					+ " values (?, ?,?)");
+			
+			
+			myStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+			myStmt.setString(2, "Aktualizacja produktu.");
+			myStmt.setInt(3, _produkt.getId());
+			
+			
+			myStmt.executeUpdate();
+			
 		}
 		finally{
 			close(myStmt);
@@ -344,6 +359,20 @@ public void wyzeruj(Produkt _produkt) throws SQLException {
 				+ " where id=?");
 		
 		myStmt.setInt(1,_id);
+		
+		myStmt.executeUpdate();
+		
+		//LOGI
+		
+		myStmt = myConn.prepareStatement("insert into logi"
+				+ " (data_powstania,akcja,produkt_id)"
+				+ " values (?, ?,?)");
+		
+		
+		myStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+		myStmt.setString(2, "Iloœæ produktu wyzerowana.");
+		myStmt.setInt(3, _produkt.getId());
+		
 		
 		myStmt.executeUpdate();
 	}
