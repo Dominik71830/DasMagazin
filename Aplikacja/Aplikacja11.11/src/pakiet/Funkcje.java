@@ -1,11 +1,13 @@
 package pakiet;
 
+import java.awt.Component;
 import java.io.FileInputStream;
 import java.sql.*;
 import java.sql.Date;
 import java.text.Normalizer.Form;
 import java.util.*;
 
+import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
@@ -465,7 +467,12 @@ public String wypiszListe(List<Produkt> kupione) {
 	return napis;
 }
 
-
-
+public void wypelnijComboboxaProduktami(JComboBox<Produkt> _comboBox) throws SQLException {
+	List<Produkt> lista = new ArrayList<Produkt>();
+	lista = getAllProdukty();
+	for(Produkt p : lista){
+		_comboBox.addItem(p);
+	}	
+}
 
 }

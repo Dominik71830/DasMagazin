@@ -92,8 +92,9 @@ public class Produkt {
 
 	@Override
 	public String toString() {
-		return "Produkt [id=" + id + ", nazwa=" + nazwa + ", cena=" + cena + ", ilosc=" + ilosc + ", kategoria="
-				+ kategoria + ", vat=" + vat + "]";
+		/*return "Produkt [id=" + id + ", nazwa=" + nazwa + ", cena=" + cena + ", ilosc=" + ilosc + ", kategoria="
+				+ kategoria + ", vat=" + vat + "]";*/
+		return nazwa; // to na potrzeby comboboxa
 	}
 
 

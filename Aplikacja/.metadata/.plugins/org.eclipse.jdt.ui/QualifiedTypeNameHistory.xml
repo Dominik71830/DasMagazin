@@ -23,4 +23,7 @@
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="pakiet.FormularzDetal"/>
 <fullyQualifiedTypeName name="GUIe.DodajFormularzDetalOkno"/>
+<fullyQualifiedTypeName name="GUIe.SprzedazDetalicznaOkno"/>
+<fullyQualifiedTypeName name="org.omg.PortableServer.ServantRetentionPolicyValue"/>
+<fullyQualifiedTypeName name="GUIe.GlowneOkno"/>
 </qualifiedTypeNameHistroy>
