@@ -87,7 +87,15 @@ public class SprzedazDetalicznaOkno extends JDialog {
 				
 				FormularzDetal tempformularz = (FormularzDetal)tableformularz.getValueAt(row, ModelTablicyFormularzyDetal.OBJECT_COL);
 				
-				//tutaj musi wyskoczyæ jakieœ okienko do wypisania szczegó³ów formularzu
+				WyswietlanieFormularzyOkno okno;
+				try {
+					okno = new WyswietlanieFormularzyOkno(tempformularz);
+					okno.setVisible(true);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
 			}
 		});
 		btnWywietlFormularz.setBounds(33, 21, 147, 23);
