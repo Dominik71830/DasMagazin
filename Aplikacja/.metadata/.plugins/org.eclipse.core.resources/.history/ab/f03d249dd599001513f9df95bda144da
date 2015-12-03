@@ -6,8 +6,6 @@ import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTable;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class SprzedazMagazynowaOkno extends JDialog {
 	private JTable tableProdukty;
@@ -44,12 +42,6 @@ public class SprzedazMagazynowaOkno extends JDialog {
 		scrollPaneProdukty.setViewportView(tableProdukty);
 		
 		JButton btnPowrt = new JButton("Powr\u00F3t");
-		btnPowrt.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
-				dispose();
-			}
-		});
 		btnPowrt.setBounds(465, 287, 89, 23);
 		getContentPane().add(btnPowrt);
 		
