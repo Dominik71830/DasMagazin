@@ -69,12 +69,17 @@ public class UsunZKoszykaOkienko extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				
 				Double suma = Double.parseDouble(_textFieldSuma.getText());
-
-
 				String nazwa = _tempProdukt.getNazwa();
 				int ilosc = Integer.parseInt(textField.getText());
 				Double cena = _tempProdukt.getCena();
 				Double cena_jednostkowa = _tempProdukt.getCena()/_tempProdukt.getIlosc();
+				
+				if ((_tempProdukt.getIlosc()<ilosc))
+				{
+					JOptionPane.showMessageDialog(null, "Podana wartoœæ jest wiêksza ni¿"
+							+ " iloœæ tego produktu w koszyku!");
+					return;
+				}
 				
 				Produkt usuniety = new Produkt(nazwa,ilosc,cena);
 				//JOptionPane.showMessageDialog(null, cena_jednostkowa);
@@ -88,7 +93,7 @@ public class UsunZKoszykaOkienko extends JDialog {
 				
 
 				//JOptionPane.showMessageDialog(null, usuniety.getIlosc());
-				if((_tempProdukt.getIlosc()==ilosc) || (_tempProdukt.getIlosc()<ilosc)){
+				if(_tempProdukt.getIlosc()==ilosc){
 					_kupione.remove(row);
 					suma = suma-usuniety.getCena();
 					_textFieldSuma.setText(Double.toString(suma));
