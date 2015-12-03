@@ -450,6 +450,28 @@ public void odejmijIlosc(Produkt _tempProdukt, int roznica) throws SQLException 
 	
 }
 
+public void zwrocIloscDoBazy(Produkt _tempProdukt, int _roznica) throws SQLException {
+	String _nazwa = _tempProdukt.getNazwa();
+	PreparedStatement myStmt = null;
+
+	try{
+		
+		myStmt = myConn.prepareStatement("update produkty"
+				+ " set ilosc=ilosc+?"
+				+ " where nazwa=?");
+		
+		myStmt.setInt(1,_roznica);
+		myStmt.setString(2,_nazwa);;
+		
+		myStmt.executeUpdate();
+	}
+	finally{
+		close(myStmt);
+	}
+	
+}
+
+
 public String wypiszListe(List<Produkt> kupione) {
 	String napis= new String();
 	
