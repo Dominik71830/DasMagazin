@@ -6,6 +6,9 @@ drop table if exists produkty;
 drop table if exists formularzedetal;
 drop table if exists auta;
 drop table if exists logi;
+drop table if exists formularzewysylkowe;
+drop table if exists samochod;
+drop table if exists miejsce_docelowe;
 
 create table produkty
 (
@@ -37,7 +40,7 @@ insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (1
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (15, 'Półka na ściane Sonoma', 35,0.23, 69.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (16, 'Stół Granas', 15,0.23, 349.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (17, 'Łóżko Select hilding', 5,0.23, 959.99, 'meble',0.0);
-insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (18, 'Kanapa Madryt', 6,0.23, 1199.99, 'meble',0.0);
+insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (18, 'Kanapa Madryt3', 6,0.23, 1199.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (19, 'Szuflada Gotland', 40,0.23, 29.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (20, 'Lustro Venge', 25,0.23, 239.99, 'meble',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (21, 'Proszek do prania Ajax', 150,0.23, 49.99, 'przemysłowe',0.0);
@@ -74,10 +77,6 @@ primary key (id)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (1, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
-insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (2, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
-insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (3, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
-
-select * from formularzedetal;
 
 create table logi
 (
@@ -89,13 +88,41 @@ primary key (id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-/*create table auta
+create table formularzewysylkowe 
 (
-id int NOT NULL AUTO_INCREMENT,
-Marka Varchar(15) NOT NULL,
-Model Varchar(15) NOT NULL,
-Nr_rejestracyjny Varchar(9) NOT NULL,
-Czy_jest_na_stanie boolean
+id int not NULL AUTO_INCREMENT,
+miejsce_docelowe varchar(50) NOT NULL,
+produkty varchar(500) NOT NULL,
+samochody varchar(20) NOT NULL,
+cena float NOT NULL,
+data_dodania timestamp,
+primary key(id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
-"/
+
+insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochody, cena, data_dodania) values (1, 'TESCO Wyszyńskiego 15', 'pole - produkty', 'pole - samochod', 234.32 , '2011-06-30 23:43:07');
+
+
+create table samochod
+(
+id int NOT NULL AUTO_INCREMENT,
+Model Varchar(40) NOT NULL,
+Nr_rejestracyjny Varchar(9) NOT NULL,
+ladownosc float NOT NULL,
+Czy_jest_na_stanie boolean,
+primary key(id)
+)
+ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+insert into samochod (id, Model, Nr_rejestracyjny, ladownosc, Czy_jest_na_stanie) values (1, 'Ford Tranzit', 'EZG234D3', 1477, 1);
+
+create table miejsce_docelowe
+(
+id int NOT NULL AUTO_INCREMENT,
+adres varchar(100) NOT NULL,
+odleglosc int NOT NULL,
+primary key(id)
+)
+ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
+insert into miejsce_docelowe (id, adres, odleglosc) values (1, 'Tesco Wyszyńskiego 15', 45);
