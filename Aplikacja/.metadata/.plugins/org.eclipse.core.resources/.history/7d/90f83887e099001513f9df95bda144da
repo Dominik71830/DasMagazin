@@ -504,8 +504,8 @@ private FormularzWysylka convertRowToFormularzWysylkowy(ResultSet myRs) throws S
 	Double cena = myRs.getDouble("cena");
 	Date data_dodania = myRs.getDate("data_dodania");
 	
-	FormularzWysylka temp = new FormularzWysylka(id, miejsce_docelowe, produkty, samochod, cena, data_dodania);
-	//JOptionPane.showMessageDialog(null, temp.toString());
+	FormularzWysylka temp = new FormularzWysylka(id, miejsce_docelowe, samochod, produkty, cena, data_dodania);
+	JOptionPane.showMessageDialog(null, temp.toString());
 	return temp;
 }
 

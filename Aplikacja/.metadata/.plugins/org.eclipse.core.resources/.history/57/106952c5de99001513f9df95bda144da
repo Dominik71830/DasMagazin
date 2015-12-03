@@ -14,7 +14,6 @@ import pakiet.ModelTablicyFormularzyDetal;
 import pakiet.ModelTablicyFormularzyWysylkowych;
 
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
@@ -41,9 +40,8 @@ public class SprzedazMagazynowaOkno extends JDialog {
 
 	/**
 	 * Create the dialog.
-	 * @throws Exception 
 	 */
-	public SprzedazMagazynowaOkno() throws Exception {
+	public SprzedazMagazynowaOkno() {
 		funkcje = new Funkcje();
 		setBounds(100, 100, 580, 362);
 		getContentPane().setLayout(null);
