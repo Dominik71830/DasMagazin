@@ -93,14 +93,14 @@ create table formularzewysylkowe
 id int not NULL AUTO_INCREMENT,
 miejsce_docelowe varchar(50) NOT NULL,
 produkty varchar(500) NOT NULL,
-samochody varchar(20) NOT NULL,
+samochod varchar(20) NOT NULL,
 cena float NOT NULL,
 data_dodania timestamp,
 primary key(id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochody, cena, data_dodania) values (1, 'TESCO Wyszyńskiego 15', 'pole - produkty', 'pole - samochod', 234.32 , '2011-06-30 23:43:07');
+insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (1, 'TESCO Wyszyńskiego 15', 'pole - produkty', 'pole - samochod', 234.32 , '2011-06-30 23:43:07');
 
 
 create table samochod
