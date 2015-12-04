@@ -6,21 +6,11 @@ import javax.swing.JDialog;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTable;
-
-import pakiet.FormularzDetal;
-import pakiet.FormularzWysylka;
-import pakiet.Funkcje;
-import pakiet.ModelTablicyFormularzyDetal;
-import pakiet.ModelTablicyFormularzyWysylkowych;
-
 import java.awt.event.ActionListener;
-import java.sql.SQLException;
-import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class SprzedazMagazynowaOkno extends JDialog {
-	Funkcje funkcje;
-	private JTable table;
+	private JTable tableProdukty;
 
 	/**
 	 * Launch the application.
@@ -41,19 +31,17 @@ public class SprzedazMagazynowaOkno extends JDialog {
 
 	/**
 	 * Create the dialog.
-	 * @throws Exception 
 	 */
-	public SprzedazMagazynowaOkno() throws Exception {
-		funkcje = new Funkcje();
+	public SprzedazMagazynowaOkno() {
 		setBounds(100, 100, 580, 362);
 		getContentPane().setLayout(null);
 		
-		JScrollPane scrollPaneFormularze = new JScrollPane();
-		scrollPaneFormularze.setBounds(93, 21, 373, 251);
-		getContentPane().add(scrollPaneFormularze);
+		JScrollPane scrollPaneProdukty = new JScrollPane();
+		scrollPaneProdukty.setBounds(93, 21, 373, 251);
+		getContentPane().add(scrollPaneProdukty);
 		
-		table = new JTable();
-		scrollPaneFormularze.setViewportView(table);
+		tableProdukty = new JTable();
+		scrollPaneProdukty.setViewportView(tableProdukty);
 		
 		JButton btnPowrt = new JButton("Powr\u00F3t");
 		btnPowrt.addActionListener(new ActionListener() {
@@ -76,14 +64,6 @@ public class SprzedazMagazynowaOkno extends JDialog {
 		JButton btnUsuFormularz = new JButton("Usu\u0144 formularz");
 		btnUsuFormularz.setBounds(292, 287, 130, 23);
 		getContentPane().add(btnUsuFormularz);
-		
-		List<FormularzWysylka> formularze = null;
-		
-		formularze = funkcje.getAllFormularzeWysylkowe();
-		
-		
-		ModelTablicyFormularzyWysylkowych model = new ModelTablicyFormularzyWysylkowych(formularze);
-		
-		table.setModel(model);
+
 	}
 }

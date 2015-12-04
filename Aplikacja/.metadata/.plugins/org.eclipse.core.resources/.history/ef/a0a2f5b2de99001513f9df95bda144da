@@ -450,28 +450,6 @@ public void odejmijIlosc(Produkt _tempProdukt, int roznica) throws SQLException 
 	
 }
 
-public void zwrocIloscDoBazy(Produkt _tempProdukt, int _roznica) throws SQLException {
-	String _nazwa = _tempProdukt.getNazwa();
-	PreparedStatement myStmt = null;
-
-	try{
-		
-		myStmt = myConn.prepareStatement("update produkty"
-				+ " set ilosc=ilosc+?"
-				+ " where nazwa=?");
-		
-		myStmt.setInt(1,_roznica);
-		myStmt.setString(2,_nazwa);;
-		
-		myStmt.executeUpdate();
-	}
-	finally{
-		close(myStmt);
-	}
-	
-}
-
-
 public String wypiszListe(List<Produkt> kupione) {
 	String napis= new String();
 	
@@ -495,40 +473,6 @@ public void wypelnijComboboxaProduktami(JComboBox<Produkt> _comboBox) throws SQL
 	for(Produkt p : lista){
 		_comboBox.addItem(p);
 	}	
-}
-
-public List<FormularzWysylka> getAllFormularzeWysylkowe() throws SQLException {
-	List<FormularzWysylka> lista = new ArrayList<FormularzWysylka>();
-	
-	Statement myStmt = null;
-	ResultSet myRs = null;
-	
-	try{
-		myStmt = myConn.createStatement();
-		myRs = myStmt.executeQuery("select * from formularzewysylkowe");
-		
-		while(myRs.next()){
-			FormularzWysylka temp = convertRowToFormularzWysylkowy(myRs);
-			lista.add(temp);
-		}
-	return lista;
-	}
-	finally{
-		close(myStmt);
-	}
-}
-
-private FormularzWysylka convertRowToFormularzWysylkowy(ResultSet myRs) throws SQLException {
-	int id = myRs.getInt("id");
-	String miejsce_docelowe = myRs.getString("miejsce_docelowe");
-	String samochod = myRs.getString("samochod");
-	String produkty = myRs.getString("produkty");
-	Double cena = myRs.getDouble("cena");
-	Date data_dodania = myRs.getDate("data_dodania");
-	
-	FormularzWysylka temp = new FormularzWysylka(id, miejsce_docelowe, produkty, samochod, cena, data_dodania);
-	//JOptionPane.showMessageDialog(null, temp.toString());
-	return temp;
 }
 
 }

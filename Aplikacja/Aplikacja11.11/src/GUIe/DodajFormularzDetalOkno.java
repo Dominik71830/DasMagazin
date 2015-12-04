@@ -125,6 +125,36 @@ public class DodajFormularzDetalOkno extends JDialog {
 		btnDodaj.setBounds(428, 329, 117, 23);
 		getContentPane().add(btnDodaj);
 		
+		JButton btnUsun = new JButton("Usu\u0144 produkt");
+		btnUsun.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			
+				suma = 0.0;
+				int row = tableDodane.getSelectedRow();
+				
+				if (row < 0) {
+					JOptionPane.showMessageDialog(null,"Wybierz produkt który chcesz usun¹æ z koszyka");				
+					return;
+				}
+				//JOptionPane.showMessageDialog(null, tempProdukt.getId());
+				Produkt tempProdukt = (Produkt)tableDodane.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
+				
+				UsunZKoszykaOkienko okno = null;
+				try {
+					okno = new UsunZKoszykaOkienko(row, tempProdukt,kupione,tableDodane,textFieldSuma,tableProdukty);
+				} catch (Exception exc) {
+					JOptionPane.showMessageDialog(null,"B³¹d przy usuwaniu produktu z koszyka" + exc);
+				}
+				
+				
+				okno.setVisible(true);
+				
+			}
+		});	
+		
+		btnUsun.setBounds(191, 329, 117, 23);
+		getContentPane().add(btnUsun);
+		
 		JButton btnZrobione = new JButton("Zrobione");
 		btnZrobione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
