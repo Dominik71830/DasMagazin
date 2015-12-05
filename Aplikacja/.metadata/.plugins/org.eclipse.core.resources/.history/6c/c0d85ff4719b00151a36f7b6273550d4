@@ -59,7 +59,7 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 		getContentPane().add(btnNewPowrt);
 		
 		textArea.setText(
-				"\t\t\tFormularz"+
+				"\t\t\t\t\t\t\tFormularz"+
 				'\n'+
 				"Imiê: "+
 				tempformularz.getImie()+

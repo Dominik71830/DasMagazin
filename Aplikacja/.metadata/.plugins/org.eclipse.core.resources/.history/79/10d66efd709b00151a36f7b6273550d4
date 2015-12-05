@@ -483,7 +483,7 @@ public String wypiszListe(List<Produkt> kupione) {
 		ilosc = Integer.toString(p.getIlosc());
 		cena = Double.toString(p.getCena());
 		
-		napis += nazwa +", Sztuk: "+ ilosc +", Cena: "+ cena + '\n';
+		napis += nazwa +", Sztuk: "+ ilosc +", Cena: "+ cena;
 	}
 	
 	return napis;

@@ -45,7 +45,6 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 		getContentPane().add(scrollPaneFormularzy);
 		
 		JTextArea textArea = new JTextArea();
-		textArea.setEditable(false);
 		scrollPaneFormularzy.setViewportView(textArea);
 		
 		JButton btnNewPowrt = new JButton("Powr\u00F3t");
@@ -59,8 +58,6 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 		getContentPane().add(btnNewPowrt);
 		
 		textArea.setText(
-				"\t\t\tFormularz"+
-				'\n'+
 				"Imiê: "+
 				tempformularz.getImie()+
 				'\n'+
