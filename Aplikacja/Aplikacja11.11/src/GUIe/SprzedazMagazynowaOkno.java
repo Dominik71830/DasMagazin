@@ -12,15 +12,18 @@ import pakiet.FormularzWysylka;
 import pakiet.Funkcje;
 import pakiet.ModelTablicyFormularzyDetal;
 import pakiet.ModelTablicyFormularzyWysylkowych;
+import pakiet.Produkt;
 
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
 public class SprzedazMagazynowaOkno extends JDialog {
 	Funkcje funkcje;
 	private JTable table;
+	List<Produkt> listaProduktow;
 
 	/**
 	 * Launch the application.
@@ -44,6 +47,7 @@ public class SprzedazMagazynowaOkno extends JDialog {
 	 * @throws Exception 
 	 */
 	public SprzedazMagazynowaOkno() throws Exception {
+		listaProduktow = new ArrayList<Produkt>();
 		funkcje = new Funkcje();
 		setBounds(100, 100, 580, 362);
 		getContentPane().setLayout(null);
@@ -74,7 +78,7 @@ public class SprzedazMagazynowaOkno extends JDialog {
 			public void actionPerformed(ActionEvent arg0) {
 				DodajFormularzMagazynOkno okno;
 				try {
-					okno = new DodajFormularzMagazynOkno();
+					okno = new DodajFormularzMagazynOkno(listaProduktow,table);
 					okno.setVisible(true);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

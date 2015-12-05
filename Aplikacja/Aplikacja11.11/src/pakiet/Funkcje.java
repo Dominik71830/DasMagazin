@@ -612,4 +612,68 @@ private Samochod convertRowToSamochod(ResultSet myRs) throws SQLException {
 	return temp;
 }
 
+public void odswiezComboBoxProdukty(JComboBox comboBoxProdukty) {
+	
+	
+}
+
+public void addFormularzWysylka(FormularzWysylka _formularz) {
+	PreparedStatement myStmt = null;
+	
+	try{
+	myStmt = myConn.prepareStatement("insert into formularzewysylkowe "
+			+ " (miejsce_docelowe,produkty,samochod,cena,data_dodania)"
+			+ " values (?, ?, ?, ?, ?)");
+	
+	myStmt.setString(1, _formularz.getMiejsce_docelowe());
+	myStmt.setString(2, _formularz.getProdukty());
+	myStmt.setString(3, _formularz.getSamochod());
+	myStmt.setDouble(4, _formularz.getCena());
+	myStmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+	
+	myStmt.executeUpdate();
+	
+	/*ResultSet kluczeId = myStmt.getGeneratedKeys();
+	if (kluczeId.next()) {
+		_produkt.setId(kluczeId.getInt(1));
+	} else {
+		throw new SQLException("B³¹d przy generowaniu klucza Id dla produktu");
+	}
+	
+	// LOGI
+	
+			myStmt = myConn.prepareStatement("insert into logi"
+					+ " (data_powstania,akcja,produkt_id)"
+					+ " values (?, ?,?)");
+			
+			
+			myStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
+			myStmt.setString(2, "Dodano produkt do bazy.");
+			myStmt.setInt(3, _produkt.getId());
+			
+			
+			myStmt.executeUpdate();
+		*/	
+	}
+	catch(SQLException exc)
+	{
+		JOptionPane.showMessageDialog(null,"B³¹d przy dodawaniu faktury wysy³kowej do bazy " + exc); 
+	}
+	
+	
+}
+
+public void odswiezFormularzewysylkowe(JTable _table) {
+	try{
+		List<FormularzWysylka> formularze = getAllFormularzeWysylkowe();
+		
+		ModelTablicyFormularzyWysylkowych model = new ModelTablicyFormularzyWysylkowych(formularze);
+		
+		_table.setModel(model);
+	}
+	catch(Exception exc){
+		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu formularzy wysylkowych " + exc);
+	}
+}
+
 }

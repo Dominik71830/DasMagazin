@@ -34,6 +34,14 @@ public class Produkt {
 		objetosc = _objetosc;
 	}
 
+	public Produkt(String _nazwa, int _ilosc,Double _cena, Double _objetosc) {
+		nazwa=_nazwa;
+		ilosc=_ilosc;
+		cena=_cena;
+		objetosc = _objetosc;
+	}
+
+
 	public Double getObjetosc() {
 		return objetosc;
 	}
@@ -94,7 +102,7 @@ public class Produkt {
 	public String toString() {
 		/*return "Produkt [id=" + id + ", nazwa=" + nazwa + ", cena=" + cena + ", ilosc=" + ilosc + ", kategoria="
 				+ kategoria + ", vat=" + vat + "]";*/
-		return nazwa; // to na potrzeby comboboxa
+		return nazwa + ' ' + ilosc + " sztuk"; // to na potrzeby comboboxa
 	}
 
 

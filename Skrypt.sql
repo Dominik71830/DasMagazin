@@ -7,8 +7,8 @@ drop table if exists formularzedetal;
 drop table if exists auta;
 drop table if exists logi;
 drop table if exists formularzewysylkowe;
-drop table if exists samochod;
-drop table if exists miejsce_docelowe;
+drop table if exists samochody;
+drop table if exists miejsca_docelowe;
 
 create table produkty
 (
@@ -55,7 +55,7 @@ insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (2
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (30, 'Szampon do włosów Schauma', 200,0.08, 12.99, 'przemysłowe',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (31, 'Świetlówka Led 5W/E14 kula', 150,0.23, 12.99, 'elektroniczne',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (32, 'Świetlówka, Led 5W/E27 kula', 150,0.23, 13.99, 'elektroniczne',0.0);
-insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (33, 'Bateria Vipow', 400,0.23, 1.85, 'elektroniczne',0.0);
+insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (33, 'Bateria Vipow', 400,0.23, 1.85, 'elektroniczne',0.3	);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (34, 'Bluetooth USB', 120,0.23, 6.99, 'elektroniczne',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (35, 'Złączka SVGA(D-Sub)', 200, 0.23,7.99, 'elektroniczne',0.0);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (36, 'Wentylator Revoltec', 50,0.23, 11.99, 'elektroniczne',0.0);
@@ -103,20 +103,20 @@ ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (1, 'TESCO Wyszyńskiego 15', 'pole - produkty', 'pole - samochod', 234.32 , '2011-06-30 23:43:07');
 
 
-create table samochod
+create table samochody
 (
 id int NOT NULL AUTO_INCREMENT,
-Model Varchar(40) NOT NULL,
-Nr_rejestracyjny Varchar(9) NOT NULL,
+model Varchar(40) NOT NULL,
+nr_rejestracyjny Varchar(9) NOT NULL,
 ladownosc float NOT NULL,
-Czy_jest_na_stanie boolean,
+czy_jest_na_stanie boolean,
 primary key(id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-insert into samochod (id, Model, Nr_rejestracyjny, ladownosc, Czy_jest_na_stanie) values (1, 'Ford Tranzit', 'EZG234D3', 1477, 1);
+insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie) values (1, 'Ford Tranzit', 'EZG234D3', 1477, 1);
 
-create table miejsce_docelowe
+create table miejsca_docelowe
 (
 id int NOT NULL AUTO_INCREMENT,
 adres varchar(100) NOT NULL,
@@ -125,4 +125,4 @@ primary key(id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-insert into miejsce_docelowe (id, adres, odleglosc) values (1, 'Tesco Wyszyńskiego 15', 45);
+insert into miejsca_docelowe (id, adres, odleglosc) values (1, 'Tesco, Wyszyńskiego 15', 45);

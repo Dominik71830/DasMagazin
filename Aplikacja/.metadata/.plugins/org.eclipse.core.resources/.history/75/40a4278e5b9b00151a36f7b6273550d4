@@ -1,0 +1,152 @@
+package GUIe;
+
+import java.awt.EventQueue;
+
+import javax.swing.JDialog;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+
+import pakiet.Funkcje;
+import pakiet.ModelTablicyProduktow;
+import pakiet.ModelTablicyProduktowDodanych;
+import pakiet.Produkt;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
+import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.awt.event.ActionEvent;
+
+public class DodajFormularzMagazynOkno extends JDialog {
+	private JTable tableProdukty;
+	private JTextField textFieldIle;
+	Funkcje funkcje;
+	Double masa;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					DodajFormularzMagazynOkno dialog = new DodajFormularzMagazynOkno();
+					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
+					dialog.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the dialog.
+	 * @throws Exception 
+	 */
+	public DodajFormularzMagazynOkno() throws Exception {
+		funkcje = new Funkcje();
+		
+		setBounds(100, 100, 750, 516);
+		getContentPane().setLayout(null);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 11, 463, 393);
+		getContentPane().add(scrollPane);
+		
+		tableProdukty = new JTable();
+		scrollPane.setViewportView(tableProdukty);
+		
+		JComboBox comboBoxProdukty = new JComboBox();
+		comboBoxProdukty.setBounds(484, 55, 169, 20);
+		getContentPane().add(comboBoxProdukty);
+		funkcje.wypelnijComboboxaProduktami(comboBoxProdukty);
+		
+		textFieldIle = new JTextField();
+		textFieldIle.setBounds(663, 55, 47, 20);
+		getContentPane().add(textFieldIle);
+		textFieldIle.setColumns(10);
+		
+		JComboBox comboBoxMiejsceDocelowe = new JComboBox();
+		comboBoxMiejsceDocelowe.setBounds(483, 153, 169, 20);
+		getContentPane().add(comboBoxMiejsceDocelowe);
+		funkcje.wypelnijComboboxaMiejscamiDocelowymi(comboBoxMiejsceDocelowe);
+		
+		JButton btnNewButton = new JButton("Wstaw");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				List<Produkt> kupione = new ArrayList<Produkt>();
+				masa = 0.0;
+				
+				Produkt tempProdukt = (Produkt) comboBoxProdukty.getSelectedItem();
+				
+				String nazwa = tempProdukt.getNazwa();
+				int ilosc = Integer.parseInt(textFieldIle.getText());
+				
+				Produkt kupiony = new Produkt(nazwa,ilosc);
+				
+				int roznica = tempProdukt.getIlosc()-ilosc;
+				try {
+					funkcje.odejmijIlosc(tempProdukt,roznica);
+				} catch (SQLException exc) {
+					JOptionPane.showMessageDialog(null, "B³¹d przy odejmowaniu iloœci produktu "+exc);
+				}
+				
+				masa += kupiony.getObjetosc();
+				//_textFieldMasa.setText(Double.toString(masa));
+	
+				kupione.add(kupiony);
+	
+				ModelTablicyProduktowDodanych model = new ModelTablicyProduktowDodanych(kupione);
+				tableProdukty.setModel(model);
+				/////////////////////
+				funkcje.odswiezProdukty(tableProdukty);
+				
+			}
+		});
+		btnNewButton.setBounds(637, 86, 73, 23);
+		getContentPane().add(btnNewButton);
+		
+		JLabel lblWstawProdukty = new JLabel("Wstaw produkty");
+		lblWstawProdukty.setBounds(483, 30, 89, 14);
+		getContentPane().add(lblWstawProdukty);
+		
+		JLabel lblWybierzMiejsce = new JLabel("Wybierz miejsce docelowe");
+		lblWybierzMiejsce.setBounds(483, 131, 147, 14);
+		getContentPane().add(lblWybierzMiejsce);
+		
+		JLabel lblWybierzSamochdDostawczy = new JLabel("Wybierz samoch\u00F3d dostawczy");
+		lblWybierzSamochdDostawczy.setBounds(483, 196, 170, 14);
+		getContentPane().add(lblWybierzSamochdDostawczy);
+		
+		JComboBox comboBoxAuta = new JComboBox();
+		comboBoxAuta.setBounds(483, 221, 170, 20);
+		getContentPane().add(comboBoxAuta);
+		funkcje.wypelnijComboboxaAutami(comboBoxAuta);
+		
+		JButton btnZrobione = new JButton("Zrobione");
+		btnZrobione.setBounds(444, 444, 89, 23);
+		getContentPane().add(btnZrobione);
+		
+		JButton btnPowrt = new JButton("Powr\u00F3t");
+		btnPowrt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				dispose();
+			}
+		});
+		btnPowrt.setBounds(637, 444, 89, 23);
+		getContentPane().add(btnPowrt);
+		
+		JButton btnUsu = new JButton("Usu\u0144");
+		btnUsu.setBounds(541, 444, 89, 23);
+		getContentPane().add(btnUsu);
+
+	}
+}
