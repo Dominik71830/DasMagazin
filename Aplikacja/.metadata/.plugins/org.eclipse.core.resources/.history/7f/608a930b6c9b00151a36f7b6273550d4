@@ -676,22 +676,4 @@ public void odswiezFormularzewysylkowe(JTable _table) {
 	}
 }
 
-public void deleteFormularzWysylka(FormularzWysylka _formularzWysylka) throws SQLException {
-	PreparedStatement myStmt = null;
-	int id = _formularzWysylka.getId();
-	
-	
-	try{
-		myStmt = myConn.prepareStatement("delete from formularzewysylkowe where id = ?");
-		
-		myStmt.setInt(1, id);
-		
-		myStmt.executeUpdate();
-	}
-	finally{
-		close(myStmt);
-	}
-	
-}
-
 }

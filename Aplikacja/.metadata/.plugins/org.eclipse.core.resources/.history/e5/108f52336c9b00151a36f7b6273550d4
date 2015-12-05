@@ -456,7 +456,7 @@ public class MagazynOkno extends JDialog {
 				
 				Produkt tempprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
-				ZatwierdzenieOUsuwaniuOkienko zat = new ZatwierdzenieOUsuwaniuOkienko(tempprodukt,null,null,table,1);
+				ZatwierdzenieOUsuwaniuOkienko zat = new ZatwierdzenieOUsuwaniuOkienko(tempprodukt,null,table,1);
 				zat.setVisible(true);
 			}
 		});

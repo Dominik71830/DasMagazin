@@ -3,7 +3,6 @@ package GUIe;
 import java.awt.EventQueue;
 
 import javax.swing.JDialog;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JButton;
 import javax.swing.JTable;
@@ -92,21 +91,6 @@ public class SprzedazMagazynowaOkno extends JDialog {
 		getContentPane().add(btnDodajFormularz);
 		
 		JButton btnUsuFormularz = new JButton("Usu\u0144 formularz");
-		btnUsuFormularz.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				int row = table.getSelectedRow();
-				
-				if (row < 0) {
-					JOptionPane.showMessageDialog(null,"Wybierz formularz");				
-					return;
-				}
-				
-				FormularzWysylka tempformularz = (FormularzWysylka)table.getValueAt(row, ModelTablicyFormularzyWysylkowych.OBJECT_COL);
-				
-				ZatwierdzenieOUsuwaniuOkienko zat = new ZatwierdzenieOUsuwaniuOkienko(null,null,tempformularz,table,3);
-				zat.setVisible(true);
-			}
-		});
 		btnUsuFormularz.setBounds(292, 287, 130, 23);
 		getContentPane().add(btnUsuFormularz);
 		

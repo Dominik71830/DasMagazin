@@ -126,7 +126,7 @@ public class SprzedazDetalicznaOkno extends JDialog {
 				
 				FormularzDetal tempformularz = (FormularzDetal)tableformularz.getValueAt(row, ModelTablicyFormularzyDetal.OBJECT_COL);
 				
-				ZatwierdzenieOUsuwaniuOkienko zat = new ZatwierdzenieOUsuwaniuOkienko(null,tempformularz,null,tableformularz,2);
+				ZatwierdzenieOUsuwaniuOkienko zat = new ZatwierdzenieOUsuwaniuOkienko(null,tempformularz,tableformularz,2);
 				zat.setVisible(true);
 			}
 		});

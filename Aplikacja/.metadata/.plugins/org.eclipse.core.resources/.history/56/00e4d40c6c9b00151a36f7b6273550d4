@@ -11,7 +11,6 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 
 import pakiet.FormularzDetal;
-import pakiet.FormularzWysylka;
 import pakiet.Funkcje;
 import pakiet.ModelTablicyProduktow;
 import pakiet.Produkt;
@@ -32,7 +31,7 @@ Funkcje funkcje;
 	 * @param tempprodukt 
 	 * @param table 
 	 */
-	public ZatwierdzenieOUsuwaniuOkienko(Produkt _produkt,FormularzDetal _formularzDetal,FormularzWysylka _formularzWysylka, JTable _table,int _i) {
+	public ZatwierdzenieOUsuwaniuOkienko(Produkt _produkt,FormularzDetal _formularzDetal, JTable _table,int _i) {
 		
 		try
 		{
@@ -64,7 +63,7 @@ Funkcje funkcje;
 					funkcje.odswiezProdukty(_table);
 
 				}
-				else if(_i==2){//tu usuwanie formularza detal
+				else if(_i==2){//tu usuwanie formularza
 					try {
 						
 						funkcje.deleteFormularzDetal(_formularzDetal);
@@ -72,15 +71,6 @@ Funkcje funkcje;
 						JOptionPane.showMessageDialog(null,"B³¹d przy usuwaniu formularza " + exc);
 					}
 					funkcje.odswiezFormularzeDetal(_table);
-				}
-				else if(_i==3){//tu usuwanie formularza wysylka
-					try {
-						
-						funkcje.deleteFormularzWysylka(_formularzWysylka);
-					} catch (SQLException exc) {
-						JOptionPane.showMessageDialog(null,"B³¹d przy usuwaniu formularza " + exc);
-					}
-					funkcje.odswiezFormularzewysylkowe(_table);
 				}
 				
 				
