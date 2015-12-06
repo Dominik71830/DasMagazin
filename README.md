@@ -1,6 +1,6 @@
 #Arbeit
 Do Krystiana: masz gotowe pole do manewru jesli chodzi o wyszukiwanie zaawansowane. Kombinuj<br>
-Do Tomka: Teraz może zrób wywietlanie formularza. Masz tam przycisk który pokazuje formularz. Wyswietla sie nowe okno z TextArea. I tam musisz odpowiednio używać lamania lini i innych pierdól żeby to wyswietlalo sie jak prawdziwy dokument. Najwazniejsza rzecz to pole 'produkty'. Jest to wypisanie toStringa dla obiektu klasy Formularz. W zależnosci od tej toStringa inaczej sie to wypisuje. Taka czysto wizualna robota.<br>
+Do Tomka: Skoro robiles usuwanie dla formularzy detalicznych to zrob teraz usuwanie dla formularzy wysylkowych.<br>
 #Lista rzeczy które trzeba jeszcze zrobić:
 Rzeczy zrobione beda wykomentowywane<br>
 1.Wyswietlanie formularzy detalicznych<br>
@@ -13,7 +13,7 @@ Rzeczy zrobione beda wykomentowywane<br>
 //8.Obsluga pominietych buttonow<br>
 9.Rozbudowanie bazy<br>
 //10.Format wypisywania ceny i masy<br>
-11.Ify zwiazane z przeciazeniem i niedociazeniem aut<br>
+//11.Ify zwiazane z przeciazeniem i niedociazeniem aut<br>
 12.Dokumentacja dla picu<br>
 13.Wyskalowanie okien<br>
 14.Grafiki na przyciski<br>
