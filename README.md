@@ -7,7 +7,7 @@ Rzeczy zrobione beda wykomentowywane<br>
 2.Wyswietlanie formularzy wysylkowych<br>
 3.Usuwanie produktow z formularza wysylkowego<br>
 4.Wyszukiwanie zaawansowane<br>
-5.Zakomentowanie mainów z podokien<br>
+5.Zakomentowanie mainów z podokien. To na koniec bo nie bedzie mozna uruchamiac okien pojedynczo.<br>
 6.Idiotoodpornosc<br>
 7.Nazwanie exceptionów<br>
 //8.Obsluga pominietych buttonow<br>
