@@ -3,8 +3,8 @@ Do Krystiana: masz gotowe pole do manewru jesli chodzi o wyszukiwanie zaawansowa
 Do Tomka: Skoro robiles usuwanie dla formularzy detalicznych to zrob teraz usuwanie dla formularzy wysylkowych.<br>
 #Lista rzeczy które trzeba jeszcze zrobić:
 Rzeczy zrobione beda wykomentowywane<br>
-//1.Wyswietlanie formularzy detalicznych<br> tu
-//2.Wyswietlanie formularzy wysylkowych<br> i tu trzeba jeszcze wrócić po zeskalowaniu
+//1.Wyswietlanie formularzy detalicznych. tu<br>
+//2.Wyswietlanie formularzy wysylkowych. i tu trzeba jeszcze wrócić po zeskalowaniu<br>
 3.Usuwanie produktow z formularza wysylkowego<br>
 4.Wyszukiwanie zaawansowane<br>
 5.Zakomentowanie mainów z podokien. To na koniec bo nie bedzie mozna uruchamiac okien pojedynczo.<br>
