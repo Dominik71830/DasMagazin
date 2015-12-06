@@ -11,6 +11,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.text.StyleContext.SmallAttributeSet;
 
 import org.omg.CORBA.DATA_CONVERSION;
 
@@ -699,6 +700,20 @@ public Double zaokraglij(Double suma) {
 	suma = (double) Math.round(suma);
 	suma  /= 100;
 	return suma;
+}
+
+public Double getNajwiekszaLadownosc() throws SQLException {
+	Double max=0.0;
+	
+	List<Samochod> lista = new ArrayList<Samochod>();
+	lista = getAllSamochody();
+	
+	for(Samochod s : lista){
+		if(s.getLadownosc() > max && s.isCzy_jest_na_stanie()){
+			max = s.getLadownosc();
+		}
+	}
+	return max;
 }
 
 }

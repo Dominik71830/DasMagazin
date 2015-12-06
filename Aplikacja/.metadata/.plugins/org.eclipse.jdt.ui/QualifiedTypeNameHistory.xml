@@ -29,10 +29,12 @@
 <fullyQualifiedTypeName name="javax.swing.JComboBox"/>
 <fullyQualifiedTypeName name="pakiet.MiejsceDocelowe"/>
 <fullyQualifiedTypeName name="pakiet.Samochod"/>
-<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 <fullyQualifiedTypeName name="java.lang.Double"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="pakiet.Produkt"/>
 <fullyQualifiedTypeName name="pakiet.ModelTablicyFormularzyWysylkowych"/>
 <fullyQualifiedTypeName name="pakiet.FormularzWysylka"/>
+<fullyQualifiedTypeName name="GUIe.SprzedazMagazynowaOkno"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
 </qualifiedTypeNameHistroy>

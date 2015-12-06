@@ -99,7 +99,7 @@ primary key(id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (1, 'TESCO Wyszyńskiego 15', 'pole - produkty', 'pole - samochod', 234.32 , '2011-06-30 23:43:07');
+insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (1, 'Tesco Wyszyńskiego 15', 'pole - produkty', 'pole - samochod', 234.32 , '2011-06-30 23:43:07');
 
 
 create table samochody

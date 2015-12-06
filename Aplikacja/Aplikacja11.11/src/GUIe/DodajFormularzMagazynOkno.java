@@ -1,5 +1,6 @@
 package GUIe;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JDialog;
@@ -35,6 +36,8 @@ public class DodajFormularzMagazynOkno extends JDialog {
 	Funkcje funkcje;
 	Double masa;
 	Double suma;
+	Double ladownosc_dopuszczalna;
+	Double ladownosc_najwiekszego_auta;
 	private JTextField textFieldMasa;
 	private JTextField textFieldCena;
 
@@ -65,6 +68,17 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		funkcje = new Funkcje();
 		masa = 0.0;
 		suma = 0.0;
+		
+		try {
+			ladownosc_najwiekszego_auta = funkcje.getNajwiekszaLadownosc();
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		JButton btnKolorki = new JButton("");
+		btnKolorki.setBounds(660, 222, 20, 20);
+		getContentPane().add(btnKolorki);
 		
 		textFieldMasa = new JTextField();
 		textFieldMasa.setBounds(201, 445, 86, 20);
@@ -103,47 +117,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		getContentPane().add(comboBoxMiejsceDocelowe);
 		funkcje.wypelnijComboboxaMiejscamiDocelowymi(comboBoxMiejsceDocelowe);
 		
-		JButton btnNewButton = new JButton("Wstaw");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				Produkt tempProdukt = (Produkt) comboBoxProdukty.getSelectedItem();
-				
-				String nazwa = tempProdukt.getNazwa();
-				int ilosc = Integer.parseInt(textFieldIle.getText());
-				textFieldIle.setText("");
-				Double cena = ilosc * tempProdukt.getCena();
-				Double objetosc = ilosc * tempProdukt.getObjetosc();
-				
-				Produkt kupiony = new Produkt(nazwa,ilosc,cena,objetosc);
-				
-				int roznica = tempProdukt.getIlosc()-ilosc;
-				try {
-					funkcje.odejmijIlosc(tempProdukt,roznica);
-				} catch (SQLException exc) {
-					JOptionPane.showMessageDialog(null, "B³¹d przy odejmowaniu iloœci produktu "+exc);
-				}
-				
-				masa += kupiony.getObjetosc();
-				masa = funkcje.zaokraglij(masa);
-				textFieldMasa.setText(Double.toString(masa));
-				
-				suma += kupiony.getCena();JOptionPane.showMessageDialog(null, suma);
-				suma = funkcje.zaokraglij(suma);
-				JOptionPane.showMessageDialog(null, suma);
-				textFieldCena.setText(Double.toString(suma));
-	
-				kupione.add(kupiony);
-	
-				ModelTablicyProduktowDodanych model = new ModelTablicyProduktowDodanych(kupione);
-				tableDodane.setModel(model);
-				
-				// tutaj trzeba odswiezyæ comboboxa z produktami
-				
-			}
-		});
-		btnNewButton.setBounds(637, 86, 73, 23);
-		getContentPane().add(btnNewButton);
+		
 		
 		JLabel lblWstawProdukty = new JLabel("Wstaw produkty");
 		lblWstawProdukty.setBounds(483, 30, 89, 14);
@@ -158,6 +132,16 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		getContentPane().add(lblWybierzSamochdDostawczy);
 		
 		JComboBox comboBoxAuta = new JComboBox();
+		comboBoxAuta.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Samochod samochod = (Samochod)comboBoxAuta.getSelectedItem();
+				if(samochod.isCzy_jest_na_stanie())
+					btnKolorki.setBackground(Color.GREEN);
+				else if(!samochod.isCzy_jest_na_stanie()){
+					btnKolorki.setBackground(Color.RED);
+				}
+			}
+		});
 		comboBoxAuta.setBounds(483, 221, 170, 20);
 		getContentPane().add(comboBoxAuta);
 		funkcje.wypelnijComboboxaAutami(comboBoxAuta);
@@ -165,7 +149,18 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		JButton btnZrobione = new JButton("Zrobione");
 		btnZrobione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				zapiszFormularzMagazyn();
+				//sprawdzanie ³adownoœci
+				Samochod samochod = (Samochod) comboBoxAuta.getSelectedItem();
+				ladownosc_dopuszczalna = samochod.getLadownosc();
+				
+				Double ladownosc_minimalna = 0.45 * ladownosc_dopuszczalna;
+				
+				if(masa >= ladownosc_minimalna){
+					zapiszFormularzMagazyn();
+				}
+				else{
+					JOptionPane.showMessageDialog(null,"Zbyt ma³o produktów. Proszê wybraæ auto o mniejszej ³adownoœci.");
+				}
 			}
 
 			private void zapiszFormularzMagazyn() {
@@ -176,7 +171,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				String produkty = funkcje.wypiszListe(kupione);
 				String modelsamochodu = samochod.getModel();
 				Double cena = Double.parseDouble(textFieldCena.getText());
-			//	Date data_dodania = new Timestamp(System.currentTimeMillis());
+			
 				
 				FormularzWysylka tempformularz = null;
 				
@@ -215,6 +210,54 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		JButton btnUsu = new JButton("Usu\u0144");
 		btnUsu.setBounds(541, 444, 89, 23);
 		getContentPane().add(btnUsu);
+		
+		JButton btnNewButton = new JButton("Wstaw");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				Produkt tempProdukt = (Produkt) comboBoxProdukty.getSelectedItem();
+				
+				String nazwa = tempProdukt.getNazwa();
+				int ilosc = Integer.parseInt(textFieldIle.getText());
+				textFieldIle.setText("");
+				Double cena = ilosc * tempProdukt.getCena();
+				Double objetosc = ilosc * tempProdukt.getObjetosc();
+				
+				Produkt kupiony = new Produkt(nazwa,ilosc,cena,objetosc);
+				
+				int roznica = tempProdukt.getIlosc()-ilosc;
+				try {
+					funkcje.odejmijIlosc(tempProdukt,roznica);
+				} catch (SQLException exc) {
+					JOptionPane.showMessageDialog(null, "B³¹d przy odejmowaniu iloœci produktu "+exc);
+				}
+				
+				masa += kupiony.getObjetosc();
+				masa = funkcje.zaokraglij(masa);
+				textFieldMasa.setText(Double.toString(masa));
+				
+				suma += kupiony.getCena();
+				suma = funkcje.zaokraglij(suma);
+				textFieldCena.setText(Double.toString(suma));
+	
+				kupione.add(kupiony);
+	
+				ModelTablicyProduktowDodanych model = new ModelTablicyProduktowDodanych(kupione);
+				tableDodane.setModel(model);
+				
+				if(ladownosc_najwiekszego_auta < masa){
+					JOptionPane.showMessageDialog(null, "Przekroczono maksymaln¹ dopuszczaln¹ ³adownoœæ dla jednego transportu. Proszê zmniejszyæ iloœæ produktów");	
+					btnZrobione.setEnabled(false);
+				}
+						
+				
+				// tutaj trzeba odswiezyæ comboboxa z produktami
+				
+			}
+		});
+		btnNewButton.setBounds(637, 86, 73, 23);
+		getContentPane().add(btnNewButton);
 		
 		
 
