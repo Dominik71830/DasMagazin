@@ -81,8 +81,10 @@ public class IloscOkienko extends JDialog {
 				}
 				
 				suma += kupiony.getCena();
+				suma = funkcje.zaokraglij(suma);
+				
 				_textFieldSuma.setText(Double.toString(suma));
-				//JOptionPane.showMessageDialog(null, kupiony.getCena());
+				
 				_kupione.add(kupiony);
 	
 				ModelTablicyProduktowDodanych model = new ModelTablicyProduktowDodanych(_kupione);

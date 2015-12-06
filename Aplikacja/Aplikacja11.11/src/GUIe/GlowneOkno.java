@@ -3,6 +3,7 @@ package GUIe;
 import java.awt.EventQueue;
 import java.awt.Image;
 import java.io.IOException;
+import java.util.Set;
 
 import javax.swing.JFrame;
 
@@ -74,13 +75,26 @@ public class GlowneOkno {
 		frmTytuwiczebny.getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_2 = new JButton("New button");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				SprzedazMagazynowaOkno okno;
+				try {
+					okno = new SprzedazMagazynowaOkno();
+					okno.setVisible(true);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+			}
+		});
 		btnNewButton_2.setBounds(894, 39, 291, 378);
 		frmTytuwiczebny.getContentPane().add(btnNewButton_2);
 		
 		JButton btnWyloguj = new JButton("wyloguj");
 		btnWyloguj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-		
+			      System.exit(0); 
 			}
 		});
 		btnWyloguj.setBounds(965, 447, 220, 91);

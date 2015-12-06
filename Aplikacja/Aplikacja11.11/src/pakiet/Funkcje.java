@@ -694,4 +694,11 @@ public void deleteFormularzWysylka(FormularzWysylka _formularzWysylka) throws SQ
 	
 }
 
+public Double zaokraglij(Double suma) {
+	suma  *= 100;
+	suma = (double) Math.round(suma);
+	suma  /= 100;
+	return suma;
+}
+
 }
