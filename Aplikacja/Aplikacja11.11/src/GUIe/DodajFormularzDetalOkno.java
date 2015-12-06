@@ -167,6 +167,8 @@ public class DodajFormularzDetalOkno extends JDialog {
 				String imie = textFieldImie.getText();
 				String nazwisko = textFieldNazwisko.getText();
 				Double cena = Double.parseDouble(textFieldSuma.getText());
+				cena = funkcje.zaokraglij(cena);
+				//JOptionPane.showMessageDialog(null, cena);
 				String produkty = funkcje.wypiszListe(kupione);
 				
 				FormularzDetal tempformularz = null;
@@ -187,6 +189,8 @@ public class DodajFormularzDetalOkno extends JDialog {
 				}
 				////////// odswiezanie tabeli formularzy
 				funkcje.odswiezFormularzeDetal(_tableformularz);
+				setVisible(false);
+				dispose();
 			}
 		});
 		btnZrobione.setBounds(52, 329, 89, 23);

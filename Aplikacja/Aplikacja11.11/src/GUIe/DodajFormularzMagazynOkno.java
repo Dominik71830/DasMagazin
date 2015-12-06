@@ -79,6 +79,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		JButton btnKolorki = new JButton("");
 		btnKolorki.setBounds(660, 222, 20, 20);
 		getContentPane().add(btnKolorki);
+		btnKolorki.setEnabled(false);
 		
 		textFieldMasa = new JTextField();
 		textFieldMasa.setBounds(201, 445, 86, 20);
@@ -155,12 +156,19 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				
 				Double ladownosc_minimalna = 0.45 * ladownosc_dopuszczalna;
 				
-				if(masa >= ladownosc_minimalna){
+				//if(masa >= ladownosc_minimalna){
+					if(samochod.isCzy_jest_na_stanie()){
 					zapiszFormularzMagazyn();
-				}
-				else{
-					JOptionPane.showMessageDialog(null,"Zbyt ma³o produktów. Proszê wybraæ auto o mniejszej ³adownoœci.");
-				}
+					setVisible(false);
+					dispose();
+					}
+					else{
+						JOptionPane.showMessageDialog(null,"Pojazd niedostêpny z przyczyn nieoczekiwanych.");
+					}
+			//	}
+				//else{
+				//	JOptionPane.showMessageDialog(null,"Zbyt ma³o produktów. Proszê wybraæ auto o mniejszej ³adownoœci.");
+				//}
 			}
 
 			private void zapiszFormularzMagazyn() {

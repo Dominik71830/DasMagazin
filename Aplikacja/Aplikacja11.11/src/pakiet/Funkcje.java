@@ -482,9 +482,14 @@ public String wypiszListe(List<Produkt> kupione) {
 	for(Produkt p : kupione){
 		nazwa = p.getNazwa();
 		ilosc = Integer.toString(p.getIlosc());
-		cena = Double.toString(p.getCena());
+		cena = Double.toString(zaokraglij(p.getCena()));
 		
-		napis += nazwa +", Sztuk: "+ ilosc +", Cena: "+ cena + '\n';
+		if(nazwa.length()>26)
+			napis += nazwa + "\t" +  ilosc + '\t' +  cena + '\n';
+		else if(nazwa.length()>13)
+			napis += nazwa + "\t\t" +  ilosc + '\t' +  cena + '\n';
+		else
+			napis += nazwa + "\t\t\t" +  ilosc + '\t' +  cena + '\n';
 	}
 	
 	return napis;

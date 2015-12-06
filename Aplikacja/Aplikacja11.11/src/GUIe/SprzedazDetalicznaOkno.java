@@ -89,7 +89,7 @@ public class SprzedazDetalicznaOkno extends JDialog {
 				
 				WyswietlanieFormularzyOkno okno;
 				try {
-					okno = new WyswietlanieFormularzyOkno(tempformularz);
+					okno = new WyswietlanieFormularzyOkno(tempformularz,null);
 					okno.setVisible(true);
 				} catch (Exception e) {
 					// TODO Auto-generated catch block

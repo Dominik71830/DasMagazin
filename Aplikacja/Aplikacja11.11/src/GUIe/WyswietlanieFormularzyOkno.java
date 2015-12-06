@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JTextArea;
 
 import pakiet.FormularzDetal;
+import pakiet.FormularzWysylka;
 import pakiet.Funkcje;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -19,7 +20,7 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					WyswietlanieFormularzyOkno dialog = new WyswietlanieFormularzyOkno(null);
+					WyswietlanieFormularzyOkno dialog = new WyswietlanieFormularzyOkno(null,null);
 					dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 					dialog.setVisible(true);
 				} catch (Exception e) {
@@ -32,9 +33,10 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 	/**
 	 * Create the dialog.
 	 * @param tempformularz 
+	 * @param object 
 	 * @throws Exception 
 	 */
-	public WyswietlanieFormularzyOkno(FormularzDetal tempformularz) throws Exception {
+	public WyswietlanieFormularzyOkno(FormularzDetal formularzdetal, FormularzWysylka formularzwysylka) throws Exception {
 		funkcje = new Funkcje();
 		setTitle("Formularze");
 		setBounds(100, 100, 552, 400);
@@ -58,24 +60,51 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 		btnNewPowrt.setBounds(437, 328, 89, 23);
 		getContentPane().add(btnNewPowrt);
 		
+		if(formularzwysylka==null){
 		textArea.setText(
-				"\t\t\tFormularz"+
+				"\t\tFormularz"+
+				"\n\n\n"+
+				"Imiê: \t\t"+
+				formularzdetal.getImie()+
 				'\n'+
-				"Imiê: "+
-				tempformularz.getImie()+
+				"Nazwisko: \t\t"+
+				formularzdetal.getNazwisko()+
+				"\n\n"+
+				"\t\t\tLista produktów: "+
 				'\n'+
-				"Nazwisko: "+
-				tempformularz.getNazwisko()+
+				"Nazwa\t\t\tIloœæ\tCena"+
 				'\n'+
-				"Lista produktów: "+
-				'\n'+
-				tempformularz.getProdukty()+
+				formularzdetal.getProdukty()+
 				'\n'+
 				"Cena: "+
-				tempformularz.getCena()+
+				formularzdetal.getCena()+
 				'\n'+
 				"Data: "+
-				tempformularz.getData_dodania()
-	);
+				formularzdetal.getData_dodania()
+				);
+		}
+		
+		if(formularzdetal==null){
+			textArea.setText(
+					"\t\tFormularz"+
+					"\n\n\n"+
+					"Miejsce docelowe: \t\t"+
+					formularzwysylka.getMiejsce_docelowe()+
+					"\n\n"+
+					"\t\t\tLista produktów: "+
+					'\n'+
+					"Nazwa\t\t\tIloœæ\tCena"+
+					'\n'+
+					formularzwysylka.getProdukty()+
+					'\n'+
+					"Samochód: "+
+					formularzwysylka.getSamochod()+
+					"Cena: "+
+					formularzwysylka.getCena()+
+					'\n'+
+					"Data: "+
+					formularzwysylka.getData_dodania()
+					);
+			}
 	}
 }
