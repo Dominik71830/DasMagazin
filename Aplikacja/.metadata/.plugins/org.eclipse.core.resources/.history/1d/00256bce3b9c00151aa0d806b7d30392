@@ -80,11 +80,12 @@ public class IloscOkienko extends JDialog {
 					JOptionPane.showMessageDialog(null, "B³¹d przy odejmowaniu iloœci produktu "+exc);
 				}
 				
-				suma += kupiony.getCena();
-				suma = funkcje.zaokraglij(suma);
-				
+				suma += kupiony.getCena();JOptionPane.showMessageDialog(null, suma);
+				suma  *= 100;
+				suma = (double) Math.round(suma);
+				suma  /= 100;JOptionPane.showMessageDialog(null, suma);
 				_textFieldSuma.setText(Double.toString(suma));
-				
+				//JOptionPane.showMessageDialog(null, kupiony.getCena());
 				_kupione.add(kupiony);
 	
 				ModelTablicyProduktowDodanych model = new ModelTablicyProduktowDodanych(_kupione);

@@ -94,7 +94,12 @@ public class GlowneOkno {
 		JButton btnWyloguj = new JButton("wyloguj");
 		btnWyloguj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			      System.exit(0); 
+				try {
+					this.finalize();
+				} catch (Throwable e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		btnWyloguj.setBounds(965, 447, 220, 91);

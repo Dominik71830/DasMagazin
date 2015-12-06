@@ -125,11 +125,8 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				}
 				
 				masa += kupiony.getObjetosc();
-				masa = funkcje.zaokraglij(masa);
 				textFieldMasa.setText(Double.toString(masa));
-				
-				suma += kupiony.getCena();JOptionPane.showMessageDialog(null, suma);
-				suma = funkcje.zaokraglij(suma);
+				suma += kupiony.getCena();
 				JOptionPane.showMessageDialog(null, suma);
 				textFieldCena.setText(Double.toString(suma));
 	
