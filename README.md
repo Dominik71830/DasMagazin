@@ -1,6 +1,6 @@
 #Arbeit
 Do Krystiana: masz gotowe pole do manewru jesli chodzi o wyszukiwanie zaawansowane. Kombinuj<br>
-Do Tomka: Skoro robiles usuwanie dla formularzy detalicznych to zrob teraz usuwanie dla formularzy wysylkowych.<br>
+Do Tomka: Spróbuj może wyszukiwanie zaawansowane. A jak nie to wybierz sobie cos z listy na dole.<br>
 #Lista rzeczy które trzeba jeszcze zrobić:
 Rzeczy zrobione beda wykomentowywane<br>
 //1.Wyswietlanie formularzy detalicznych. tu<br>
