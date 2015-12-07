@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
 
-public class UsunZKoszykaOkienko extends JDialog {
+public class UsunZKoszykaOkienko_Detal extends JDialog {
 	
 	static Funkcje funkcje;
 	private final JPanel contentPanel = new JPanel();
@@ -30,7 +30,7 @@ public class UsunZKoszykaOkienko extends JDialog {
 	public static void main(String[] args) {
 		try {
 			funkcje = new Funkcje();
-			UsunZKoszykaOkienko dialog = new UsunZKoszykaOkienko((Integer) null, null,null,null,null,null);
+			UsunZKoszykaOkienko_Detal dialog = new UsunZKoszykaOkienko_Detal((Integer) null, null,null,null,null,null);
 			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
 			dialog.setVisible(true);
 		} catch (Exception e) {
@@ -47,7 +47,7 @@ public class UsunZKoszykaOkienko extends JDialog {
 	 * @param suma 
 	 * @throws Exception 
 	 */
-	public UsunZKoszykaOkienko(int row, Produkt _tempProdukt, List<Produkt> _kupione, JTable _tableDodane, JTextField _textFieldSuma, JTable _tableProdukty) throws Exception {
+	public UsunZKoszykaOkienko_Detal(int row, Produkt _tempProdukt, List<Produkt> _kupione, JTable _tableDodane, JTextField _textFieldSuma, JTable _tableProdukty) throws Exception {
 		funkcje = new Funkcje();
 		setBounds(100, 100, 250, 145);
 		getContentPane().setLayout(new BorderLayout());

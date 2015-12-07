@@ -216,6 +216,30 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		getContentPane().add(btnPowrt);
 		
 		JButton btnUsu = new JButton("Usu\u0144");
+		btnUsu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				suma=0.0;
+				masa=0.0;
+				int row = tableDodane.getSelectedRow();
+				
+				if (row < 0) {
+					JOptionPane.showMessageDialog(null,"Wybierz produkt który chcesz usun¹æ z listy");							
+					return;
+				}
+				
+				Produkt tempProdukt = (Produkt)tableDodane.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
+				
+				UsunZKoszykaOkienko_Wysylka okno = null;
+				try {
+					okno = new UsunZKoszykaOkienko_Wysylka(row, tempProdukt,kupione,tableDodane,textFieldCena, textFieldMasa);
+				} catch (Exception exc) {
+					JOptionPane.showMessageDialog(null,"B³¹d przy usuwaniu produktu z koszyka" + exc);
+				}
+				
+				
+				okno.setVisible(true);
+			}
+		});
 		btnUsu.setBounds(541, 444, 89, 23);
 		getContentPane().add(btnUsu);
 		

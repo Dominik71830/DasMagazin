@@ -139,9 +139,9 @@ public class DodajFormularzDetalOkno extends JDialog {
 				//JOptionPane.showMessageDialog(null, tempProdukt.getId());
 				Produkt tempProdukt = (Produkt)tableDodane.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
-				UsunZKoszykaOkienko okno = null;
+				UsunZKoszykaOkienko_Detal okno = null;
 				try {
-					okno = new UsunZKoszykaOkienko(row, tempProdukt,kupione,tableDodane,textFieldSuma,tableProdukty);
+					okno = new UsunZKoszykaOkienko_Detal(row, tempProdukt,kupione,tableDodane,textFieldSuma,tableProdukty);
 				} catch (Exception exc) {
 					JOptionPane.showMessageDialog(null,"B³¹d przy usuwaniu produktu z koszyka" + exc);
 				}
