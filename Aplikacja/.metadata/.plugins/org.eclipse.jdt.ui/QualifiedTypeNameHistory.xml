@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="GUIe.MagazynOkno"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javax.swing.AbstractAction"/>
+<fullyQualifiedTypeName name="javax.swing.table.AbstractTableModel"/>
+<fullyQualifiedTypeName name="pakiet.Formularz"/>
+<fullyQualifiedTypeName name="GUIe.ZatwierdzenieOUsuwaniuOkienko"/>
+<fullyQualifiedTypeName name="GUIe.OpcjeZaawOkno"/>
+<fullyQualifiedTypeName name="GUIe.IloscOkienko"/>
+<fullyQualifiedTypeName name="pakiet.ModelTablicyProduktow"/>
+<fullyQualifiedTypeName name="javax.swing.JList"/>
+<fullyQualifiedTypeName name="pakiet.ModelTablicyProduktowDodanych"/>
+<fullyQualifiedTypeName name="javax.swing.JTable"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="GUIe.DodajFormularzDetalOkno"/>
+<fullyQualifiedTypeName name="GUIe.SprzedazDetalicznaOkno"/>
+<fullyQualifiedTypeName name="org.omg.PortableServer.ServantRetentionPolicyValue"/>
+<fullyQualifiedTypeName name="GUIe.GlowneOkno"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="GUIe.WyswietlanieFormularzyOkno"/>
+<fullyQualifiedTypeName name="pakiet.FormularzDetal"/>
+<fullyQualifiedTypeName name="pakiet.ModelTablicyFormularzyDetal"/>
+<fullyQualifiedTypeName name="GUIe.DodajFormularzMagazynOkno"/>
+<fullyQualifiedTypeName name="pakiet.Funkcje"/>
+<fullyQualifiedTypeName name="java.lang.Integer"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="javax.swing.JComboBox"/>
+<fullyQualifiedTypeName name="pakiet.MiejsceDocelowe"/>
+<fullyQualifiedTypeName name="pakiet.Samochod"/>
+<fullyQualifiedTypeName name="java.lang.Double"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="pakiet.Produkt"/>
+<fullyQualifiedTypeName name="pakiet.ModelTablicyFormularzyWysylkowych"/>
+<fullyQualifiedTypeName name="pakiet.FormularzWysylka"/>
+<fullyQualifiedTypeName name="GUIe.SprzedazMagazynowaOkno"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+</qualifiedTypeNameHistroy>
