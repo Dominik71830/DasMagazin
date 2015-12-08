@@ -16,12 +16,15 @@ Rzeczy zrobione beda wykomentowywane<br>
 //11.Ify zwiazane z przeciazeniem i niedociazeniem aut<br>
 12.Dokumentacja dla picu<br>
 13.Wyskalowanie okien<br>
-14.Grafiki na przyciski<br>
+14.Grafiki na przyciski<br> KRYSTIAN
 15.Zmiana ilosci produktów w comboboxach w sprzedaży wysylkowej<br>
+
+Pozwolilem zapisac sie do rzeczy - Krystian<br>
+
 #Importante<br>
 Zaliczenie u Seby bedzie na zasadzie projektu ktory powinno sie oddac do 11 stycznia. Ma to byc jakas wymyslona aplikacja bazodanowa w Javie. Jedyne wymogi jakie Seba powiedzial to:<br>
 1. Minimum 3 tabele po 3 kolumny.<br>
 2. Tabele maja być polaczone kluczami obcymi.<br>
 Reszte mozna sobie samemu wymyslic<br>
 
-Pozwolilem zapisac sie do rzeczy - Krystian
+
