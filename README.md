@@ -6,9 +6,9 @@ Rzeczy zrobione beda wykomentowywane<br>
 //1.Wyswietlanie formularzy detalicznych. tu<br>
 //2.Wyswietlanie formularzy wysylkowych. i tu trzeba jeszcze wrócić po zeskalowaniu<br>
 3.Usuwanie produktow z formularza wysylkowego<br>
-4.Wyszukiwanie zaawansowane<br>
+4.Wyszukiwanie zaawansowane<br> KRYSTIAN
 5.Zakomentowanie mainów z podokien. To na koniec bo nie bedzie mozna uruchamiac okien pojedynczo.<br>
-6.Idiotoodpornosc<br>
+6.Idiotoodpornosc<br> KRYSTIAN
 7.Nazwanie exceptionów<br>
 //8.Obsluga pominietych buttonow<br>
 9.Rozbudowanie bazy<br>
@@ -23,3 +23,5 @@ Zaliczenie u Seby bedzie na zasadzie projektu ktory powinno sie oddac do 11 styc
 1. Minimum 3 tabele po 3 kolumny.<br>
 2. Tabele maja być polaczone kluczami obcymi.<br>
 Reszte mozna sobie samemu wymyslic<br>
+
+Pozwolilem zapisac sie do rzeczy - Krystian
