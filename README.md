@@ -6,9 +6,9 @@ Rzeczy zrobione beda wykomentowywane<br>
 //1.Wyswietlanie formularzy detalicznych. tu<br>
 //2.Wyswietlanie formularzy wysylkowych. i tu trzeba jeszcze wrócić po zeskalowaniu<br>
 3.Usuwanie produktow z formularza wysylkowego<br>
-KRYSTIAN4.Wyszukiwanie zaawansowane<br> 
+KRYSTIAN 4.Wyszukiwanie zaawansowane<br> 
 5.Zakomentowanie mainów z podokien. To na koniec bo nie bedzie mozna uruchamiac okien pojedynczo.<br>
-KRYSTIAN6.Idiotoodpornosc<br> 
+KRYSTIAN 6.Idiotoodpornosc<br> 
 7.Nazwanie exceptionów<br>
 //8.Obsluga pominietych buttonow<br>
 9.Rozbudowanie bazy<br>
@@ -16,7 +16,7 @@ KRYSTIAN6.Idiotoodpornosc<br>
 //11.Ify zwiazane z przeciazeniem i niedociazeniem aut<br>
 12.Dokumentacja dla picu<br>
 13.Wyskalowanie okien<br>
-KRYSTIAN14.Grafiki na przyciski<br>
+KRYSTIAN 14.Grafiki na przyciski<br>
 15.Zmiana ilosci produktów w comboboxach w sprzedaży wysylkowej<br>
 
 Pozwolilem zapisac sie do rzeczy - Krystian<br>
