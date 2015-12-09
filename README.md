@@ -17,7 +17,7 @@ KRYSTIAN 6.Idiotoodpornosc<br>
 12.Dokumentacja dla picu<br>
 13.Wyskalowanie okien<br>
 KRYSTIAN 14.Grafiki na przyciski<br>
-15.Zmiana ilosci produktów w comboboxach w sprzedaży wysylkowej<br>
+//15.Zmiana ilosci produktów w comboboxach w sprzedaży wysylkowej.- Tego nie trzeba robić tylko trzeba o tym pamietac robiac punkt 6.<br>
 
 Pozwolilem zapisac sie do rzeczy - Krystian<br>
 
