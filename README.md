@@ -5,7 +5,7 @@ Do Tomka: Spróbuj może wyszukiwanie zaawansowane. A jak nie to wybierz sobie c
 Rzeczy zrobione beda wykomentowywane<br>
 //1.Wyswietlanie formularzy detalicznych. tu<br>
 //2.Wyswietlanie formularzy wysylkowych. i tu trzeba jeszcze wrócić po zeskalowaniu<br>
-3.Usuwanie produktow z formularza wysylkowego<br>
+//3.Usuwanie produktow z formularza wysylkowego<br>
 KRYSTIAN 4.Wyszukiwanie zaawansowane<br> 
 5.Zakomentowanie mainów z podokien. To na koniec bo nie bedzie mozna uruchamiac okien pojedynczo.<br>
 KRYSTIAN 6.Idiotoodpornosc<br> 
