@@ -15,9 +15,10 @@ KRYSTIAN 6.Idiotoodpornosc<br>
 //10.Format wypisywania ceny i masy<br>
 //11.Ify zwiazane z przeciazeniem i niedociazeniem aut<br>
 12.Dokumentacja dla picu<br>
-13.Wyskalowanie okien<br>
+//13.Wyskalowanie okien<br>
 KRYSTIAN 14.Grafiki na przyciski<br>
 //15.Zmiana ilosci produktów w comboboxach w sprzedaży wysylkowej.- Tego nie trzeba robić tylko trzeba o tym pamietac robiac punkt 6.<br>
+16.Nadanie tytulu dla kazdego okna.<br>
 
 Pozwolilem zapisac sie do rzeczy - Krystian<br>
 
