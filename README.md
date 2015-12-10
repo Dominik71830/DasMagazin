@@ -9,7 +9,7 @@ Rzeczy zrobione beda wykomentowywane<br>
 KRYSTIAN 4.Wyszukiwanie zaawansowane<br> 
 5.Zakomentowanie mainów z podokien. To na koniec bo nie bedzie mozna uruchamiac okien pojedynczo.<br>
 KRYSTIAN 6.Idiotoodpornosc<br> 
-7.Nazwanie exceptionów<br>
+//7.Nazwanie exceptionów<br>
 //8.Obsluga pominietych buttonow<br>
 9.Rozbudowanie bazy<br>
 //10.Format wypisywania ceny i masy<br>
