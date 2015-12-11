@@ -22,7 +22,7 @@ PRIMARY KEY (id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (1,'Czekolada Milka',10,0.08, 2.99, 'spożywcze',0.08);
+insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (1,'Czekolada Milka',100,0.08, 2.99, 'spożywcze',0.08);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (2,'Baton Twix',30,0.23,1.49, 'spożywcze',0.05);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (3,'Chleb Baltanowski', 20,0.05, 1.39, 'spożywcze',0.7);
 insert into produkty (id, nazwa, ilosc, vat, cena, kategoria,objetosc) values (4, 'Woda niegazowana Cisowianka', 18,0.05, 0.99, 'spożywcze',1.5);
@@ -77,6 +77,7 @@ ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (1, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
 
+
 create table logi
 (
 id int NOT NULL AUTO_INCREMENT,
@@ -100,6 +101,8 @@ primary key(id)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (1, 'Tesco Wyszyńskiego 15', 'pole - produkty', 'pole - samochod', 234.32 , '2011-06-30 23:43:07');
+insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (2, 'Biedronka Południowa 10','Czekolada Milka100299.00', 'Ford Tranzit', 299.00,'2015-12-11 15:12:45'); 
+
 
 
 create table samochody
@@ -118,6 +121,11 @@ insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stani
 insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie) values (3, 'Citroën Jumper', 'EZG23454', 2000, 0);
 insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie) values (4, 'FSC Żuk' , 'EPA63472', 800, 1);
 insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie) values (5, 'MAN F2000', 'EPD94562', 15700, 0);
+insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie) values (6, 'Scania serii 4', 'EL45623',20000,1);
+insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie) values (7, 'Daf XF','EZG76456',21000,0);
+insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie) values (8, 'Ford Tranzit', 'EPA29548', 1477,0);
+insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie) values (9, 'Citroën Jumper','EL76592', 2000, 1);
+insert into samochody (id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie) values (10, 'Fiat Ducato', 'EZG20473', 1800, 0);
 
 create table miejsca_docelowe
 (
@@ -129,3 +137,12 @@ primary key(id)
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
 insert into miejsca_docelowe (id, adres, odleglosc) values (1, 'Tesco, Wyszyńskiego 15', 45);
+insert into miejsca_docelowe (id, adres, odleglosc) values (2, 'Biedronka, Południowa 10', 30);
+insert into miejsca_docelowe (id, adres, odleglosc) values (3, 'InterMarche, Lotnicza 45', 120);
+insert into miejsca_docelowe (id, adres, odleglosc) values (4, 'Lidl, Łódzka 30', 46);
+insert into miejsca_docelowe (id, adres, odleglosc) values (5, 'Tesco, Zgierska 89', 70);
+insert into miejsca_docelowe (id, adres, odleglosc) values (6, 'Polo Market, Piłsudskiego 65', 95);
+insert into miejsca_docelowe (id, adres, odleglosc) values (7, 'Tesco, Woronicza 17', 34);
+insert into miejsca_docelowe (id, adres, odleglosc) values (8, 'Kurczaczek, Lumumby 3', 10);
+insert into miejsca_docelowe (id, adres, odleglosc) values (9, 'Biedronka, Tamka 9', 67);
+insert into miejsca_docelowe (id, adres, odleglosc) values (10, 'Kaufland, Żeromskiego 47', 87);
