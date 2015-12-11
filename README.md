@@ -11,7 +11,7 @@ KRYSTIAN 4.Wyszukiwanie zaawansowane<br>
 KRYSTIAN 6.Idiotoodpornosc<br> 
 //7.Nazwanie exceptionów<br>
 //8.Obsluga pominietych buttonow<br>
-9.Rozbudowanie bazy<br>
+9.Rozbudowanie bazy o formularze<br>
 //10.Format wypisywania ceny i masy<br>
 //11.Ify zwiazane z przeciazeniem i niedociazeniem aut<br>
 12.Dokumentacja dla picu<br>
@@ -21,6 +21,7 @@ KRYSTIAN 14.Grafiki na przyciski<br>
 16.Nadanie tytulu dla kazdego okna.<br>
 
 Pozwolilem zapisac sie do rzeczy - Krystian<br>
+Trzeba wymyslec nowy sposob wpisywania formularzy do bazy
 
 #Importante<br>
 Zaliczenie u Seby bedzie na zasadzie projektu ktory powinno sie oddac do 11 stycznia. Ma to byc jakas wymyslona aplikacja bazodanowa w Javie. Jedyne wymogi jakie Seba powiedzial to:<br>
