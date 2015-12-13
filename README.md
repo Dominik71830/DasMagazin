@@ -1,4 +1,4 @@
-#Arbeit
+﻿#Arbeit
 Do Krystiana: masz gotowe pole do manewru jesli chodzi o wyszukiwanie zaawansowane. Kombinuj<br>
 Do Tomka: Spróbuj może wyszukiwanie zaawansowane. A jak nie to wybierz sobie cos z listy na dole.<br>
 #Lista rzeczy które trzeba jeszcze zrobić:
@@ -16,7 +16,7 @@ KRYSTIAN 6.Idiotoodpornosc<br>
 //11.Ify zwiazane z przeciazeniem i niedociazeniem aut<br>
 12.Dokumentacja dla picu<br>
 //13.Wyskalowanie okien<br>
-KRYSTIAN 14.Grafiki na przyciski<br>
+//14.Grafiki na przyciski<br>
 //15.Zmiana ilosci produktów w comboboxach w sprzedaży wysylkowej.- Tego nie trzeba robić tylko trzeba o tym pamietac robiac punkt 6.<br>
 16.Nadanie tytulu dla kazdego okna.<br>
 17. Trzeba chyba wymyslic nowy sposob na zapisywanie do bazy listy produktow w formularzach i nowy sposob na wypisywanie tych formularzy<br>
