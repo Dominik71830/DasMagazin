@@ -48,6 +48,7 @@ public class SprzedazMagazynowaOkno extends JDialog {
 	 * @throws Exception 
 	 */
 	public SprzedazMagazynowaOkno() throws Exception {
+		setTitle("Dystrybucja");
 		listaProduktow = new ArrayList<Produkt>();
 		funkcje = new Funkcje();
 		setBounds(100, 100, 580, 362);

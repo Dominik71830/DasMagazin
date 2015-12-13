@@ -57,6 +57,7 @@ public class MagazynOkno extends JDialog {
 	 * Create the dialog.
 	 */
 	public MagazynOkno() {
+		setTitle("Magazyn");
 		
 		try
 		{
