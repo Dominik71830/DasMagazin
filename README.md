@@ -19,6 +19,7 @@ KRYSTIAN 6.Idiotoodpornosc<br>
 KRYSTIAN 14.Grafiki na przyciski<br>
 //15.Zmiana ilosci produktów w comboboxach w sprzedaży wysylkowej.- Tego nie trzeba robić tylko trzeba o tym pamietac robiac punkt 6.<br>
 16.Nadanie tytulu dla kazdego okna.<br>
+17. Trzeba chyba wymyslic nowy sposob na zapisywanie do bazy listy produktow w formularzach i nowy sposob na wypisywanie tych formularzy<br>
 
 Pozwolilem zapisac sie do rzeczy - Krystian<br>
 Trzeba wymyslec nowy sposob wpisywania formularzy do bazy
