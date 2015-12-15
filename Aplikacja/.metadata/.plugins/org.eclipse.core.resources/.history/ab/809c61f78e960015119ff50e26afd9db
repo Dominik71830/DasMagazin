@@ -1,8 +1,0 @@
-package pakiet;
-
-public class Log {
-	private int id;
-	private String data_powstania;
-	
-
-}
