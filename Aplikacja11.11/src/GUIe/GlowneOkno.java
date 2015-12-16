@@ -56,7 +56,8 @@ public class GlowneOkno {
 		frmTytuwiczebny.setBackground(new Color(102, 0, 102));
 		frmTytuwiczebny.setTitle("Hurtownia");
 		frmTytuwiczebny.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-		frmTytuwiczebny.setBounds(0, 0, 1366, 768);
+		frmTytuwiczebny.setBounds(0, 0, 1065, 600);
+		frmTytuwiczebny.setLocationRelativeTo(null);
 		frmTytuwiczebny.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		JButton Przycisk1 = new JButton("Dzia\u0142 magazynowy");

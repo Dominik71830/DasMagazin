@@ -51,11 +51,12 @@ public class SprzedazMagazynowaOkno extends JDialog {
 		setTitle("Dystrybucja");
 		listaProduktow = new ArrayList<Produkt>();
 		funkcje = new Funkcje();
-		setBounds(100, 100, 580, 362);
+		setBounds(100, 100, 780, 520);
+		  setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPaneFormularze = new JScrollPane();
-		scrollPaneFormularze.setBounds(93, 21, 373, 251);
+		scrollPaneFormularze.setBounds(47, 21, 618, 400);
 		getContentPane().add(scrollPaneFormularze);
 		
 		table = new JTable();
@@ -68,7 +69,7 @@ public class SprzedazMagazynowaOkno extends JDialog {
 				dispose();
 			}
 		});
-		btnPowrt.setBounds(465, 287, 89, 23);
+		btnPowrt.setBounds(665, 448, 89, 23);
 		getContentPane().add(btnPowrt);
 		
 		JButton btnWywietlFormularz = new JButton("Wy\u015Bwietl formularz");
@@ -94,7 +95,7 @@ public class SprzedazMagazynowaOkno extends JDialog {
 				}
 			}
 		});
-		btnWywietlFormularz.setBounds(10, 287, 130, 23);
+		btnWywietlFormularz.setBounds(10, 448, 130, 23);
 		getContentPane().add(btnWywietlFormularz);
 		
 		JButton btnDodajFormularz = new JButton("Dodaj formularz");
@@ -111,7 +112,7 @@ public class SprzedazMagazynowaOkno extends JDialog {
 				
 			}
 		});
-		btnDodajFormularz.setBounds(152, 287, 130, 23);
+		btnDodajFormularz.setBounds(150, 448, 130, 23);
 		getContentPane().add(btnDodajFormularz);
 		
 		JButton btnUsuFormularz = new JButton("Usu\u0144 formularz");
@@ -130,7 +131,7 @@ public class SprzedazMagazynowaOkno extends JDialog {
 				zat.setVisible(true);
 			}
 		});
-		btnUsuFormularz.setBounds(292, 287, 130, 23);
+		btnUsuFormularz.setBounds(290, 448, 130, 23);
 		getContentPane().add(btnUsuFormularz);
 		
 		List<FormularzWysylka> formularze = null;

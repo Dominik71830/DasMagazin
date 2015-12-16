@@ -49,25 +49,26 @@ public class DodajFormularzDetalOkno extends JDialog {
 	
 	public DodajFormularzDetalOkno(JTable _tableformularz) {
 		setTitle("Dodaj formularz");
-		setBounds(100, 100, 840, 420);
+		setBounds(100, 100, 1100, 560);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		textFieldSuma = new JTextField();
 		textFieldSuma.setEditable(false);
-		textFieldSuma.setBounds(415, 298, 59, 20);
+		textFieldSuma.setBounds(557, 457, 35, 20);
 		getContentPane().add(textFieldSuma);
 		textFieldSuma.setColumns(10);
 		textFieldSuma.setText("0.0");
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(506, 26, 283, 292);
+		scrollPane.setBounds(652, 26, 422, 420);
 		getContentPane().add(scrollPane);
 		
 		tableProdukty = new JTable();
 		scrollPane.setViewportView(tableProdukty);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
-		scrollPane_1.setBounds(191, 26, 283, 267);
+		scrollPane_1.setBounds(220, 26, 422, 420);
 		getContentPane().add(scrollPane_1);
 		
 		tableDodane = new JTable();
@@ -94,7 +95,7 @@ public class DodajFormularzDetalOkno extends JDialog {
 				dispose();
 			}
 		});
-		btnPowrt.setBounds(700, 329, 89, 23);
+		btnPowrt.setBounds(950, 488, 124, 23);
 		getContentPane().add(btnPowrt);
 		
 		JButton btnDodaj = new JButton("Dodaj produkt");
@@ -122,7 +123,7 @@ public class DodajFormularzDetalOkno extends JDialog {
 				
 			}
 		});
-		btnDodaj.setBounds(428, 329, 117, 23);
+		btnDodaj.setBounds(567, 488, 136, 23);
 		getContentPane().add(btnDodaj);
 		
 		JButton btnUsun = new JButton("Usu\u0144 produkt");
@@ -152,7 +153,7 @@ public class DodajFormularzDetalOkno extends JDialog {
 			}
 		});	
 		
-		btnUsun.setBounds(191, 329, 117, 23);
+		btnUsun.setBounds(150, 488, 136, 23);
 		getContentPane().add(btnUsun);
 		
 		JButton btnZrobione = new JButton("Zrobione");
@@ -193,35 +194,39 @@ public class DodajFormularzDetalOkno extends JDialog {
 				dispose();
 			}
 		});
-		btnZrobione.setBounds(52, 329, 89, 23);
+		btnZrobione.setBounds(10, 488, 131, 23);
 		getContentPane().add(btnZrobione);
 		
 		JLabel lblImieKlienta = new JLabel("Imie");
-		lblImieKlienta.setBounds(10, 69, 50, 14);
+		lblImieKlienta.setBounds(10, 69, 73, 14);
 		getContentPane().add(lblImieKlienta);
 		
 		textFieldImie = new JTextField();
-		textFieldImie.setBounds(64, 66, 117, 20);
+		textFieldImie.setBounds(93, 66, 117, 20);
 		getContentPane().add(textFieldImie);
 		textFieldImie.setColumns(10);
 		
 		JLabel lblNazwiskoKlienta = new JLabel("Nazwisko");
-		lblNazwiskoKlienta.setBounds(10, 94, 50, 14);
+		lblNazwiskoKlienta.setBounds(10, 94, 73, 14);
 		getContentPane().add(lblNazwiskoKlienta);
 		
 		textFieldNazwisko = new JTextField();
-		textFieldNazwisko.setBounds(64, 91, 117, 20);
+		textFieldNazwisko.setBounds(93, 91, 117, 20);
 		getContentPane().add(textFieldNazwisko);
 		textFieldNazwisko.setColumns(10);
 		
 		
 		
 		JLabel lblSuma = new JLabel("Suma");
-		lblSuma.setBounds(370, 304, 35, 14);
+		lblSuma.setBounds(512, 463, 35, 14);
 		getContentPane().add(lblSuma);
 		
 		JLabel lblDaneKlienta = new JLabel("Dane Klienta");
-		lblDaneKlienta.setBounds(10, 41, 79, 14);
+		lblDaneKlienta.setBounds(10, 41, 124, 14);
 		getContentPane().add(lblDaneKlienta);
+		
+		JLabel lblPln = new JLabel("PLN");
+		lblPln.setBounds(602, 460, 46, 14);
+		getContentPane().add(lblPln);
 	}
 }

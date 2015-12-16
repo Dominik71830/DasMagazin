@@ -48,8 +48,10 @@ public class UsunZKoszykaOkienko_Wysylka extends JDialog {
 	 * @throws Exception 
 	 */
 	public UsunZKoszykaOkienko_Wysylka(int row, Produkt _tempProdukt, List<Produkt> _kupione, JTable _tableDodane, JTextField _textFieldSuma, JTextField _textFieldMasa) throws Exception {
+		setTitle("Ile usun\u0105\u0107");
 		funkcje = new Funkcje();
 		setBounds(100, 100, 250, 145);
+		setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -128,7 +130,7 @@ public class UsunZKoszykaOkienko_Wysylka extends JDialog {
 
 			}
 		});
-		btnOk.setBounds(62, 62, 89, 23);
+		btnOk.setBounds(75, 57, 89, 23);
 		contentPanel.add(btnOk);
 		{
 			JPanel buttonPane = new JPanel();

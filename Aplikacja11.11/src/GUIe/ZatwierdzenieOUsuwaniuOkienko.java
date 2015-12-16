@@ -33,6 +33,7 @@ Funkcje funkcje;
 	 * @param table 
 	 */
 	public ZatwierdzenieOUsuwaniuOkienko(Produkt _produkt,FormularzDetal _formularzDetal,FormularzWysylka _formularzWysylka, JTable _table,int _i) {
+		setTitle("Potwierdzenie");
 		
 		try
 		{
@@ -43,7 +44,8 @@ Funkcje funkcje;
 			JOptionPane.showMessageDialog(null,"B³¹d przy inicjalizacji okna " + exc);
 		}
 		
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 280);
+		  setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		JLabel JLabeltekst = new JLabel("Czy aby napewno chcesz usun\u0105\u0107 ten obiekt?");

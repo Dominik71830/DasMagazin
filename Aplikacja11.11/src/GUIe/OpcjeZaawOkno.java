@@ -32,7 +32,8 @@ public class OpcjeZaawOkno extends JDialog {
 		
 		Funkcje funkcje = new Funkcje();
 		setTitle("Opcje Zaawansowane");
-		setBounds(100, 100, 394, 328);
+		setBounds(0, 0, 375, 335);
+		  setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		JLabel lblNazwa = new JLabel("Nazwa");
@@ -110,11 +111,11 @@ public class OpcjeZaawOkno extends JDialog {
 		textFieldObjetosc_Od.setColumns(10);
 		
 		JLabel lblDo_2 = new JLabel("do");
-		lblDo_2.setBounds(147, 222, 17, 14);
+		lblDo_2.setBounds(147, 220, 17, 14);
 		getContentPane().add(lblDo_2);
 		
 		textFieldObjetosc_Do = new JTextField();
-		textFieldObjetosc_Do.setBounds(168, 219, 34, 20);
+		textFieldObjetosc_Do.setBounds(168, 220, 34, 20);
 		getContentPane().add(textFieldObjetosc_Do);
 		textFieldObjetosc_Do.setColumns(10);
 		
@@ -125,13 +126,22 @@ public class OpcjeZaawOkno extends JDialog {
 				dispose();
 			}
 		});
-		btnAnuluj.setBounds(261, 256, 89, 23);
+		btnAnuluj.setBounds(260, 263, 89, 23);
 		getContentPane().add(btnAnuluj);
 		
 		JButton btnSzukaj = new JButton("Szukaj");
 		btnSzukaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				if(		chckbxElektroniczne.isSelected()
+						||
+						chckbxmeble.isSelected()
+						||
+						chckbxPrzemyslowe.isSelected()
+						||
+						chckbxSpozywcze.isSelected()
+					)	
+				{
 				/////////////////////////////////////////////////////////Pozbieranie danych
 				String nazwa =  textFieldNazwaZaaw.getText();
 				
@@ -365,10 +375,16 @@ public class OpcjeZaawOkno extends JDialog {
 				setVisible(false);
 				dispose();
 				
+				}//tu sie koñczy if z czterema chkbxoami
+				
+				else
+				{
+					JOptionPane.showMessageDialog(null, "Proszê zaznaczyæ przynajmniej jedn¹ kategoriê");
+				}
 				
 			}
 		});
-		btnSzukaj.setBounds(157, 256, 89, 23);
+		btnSzukaj.setBounds(161, 263, 89, 23);
 		getContentPane().add(btnSzukaj);
 
 	}

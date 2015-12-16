@@ -47,7 +47,7 @@ public class SprzedazDetalicznaOkno extends JDialog {
 	public SprzedazDetalicznaOkno() {
 		
 		JScrollPane scrollPaneFormularz = new JScrollPane();
-		scrollPaneFormularz.setBounds(201, 21, 376, 301);
+		scrollPaneFormularz.setBounds(201, 21, 523, 336);
 		getContentPane().add(scrollPaneFormularz);
 		
 		tableformularz = new JTable();
@@ -70,7 +70,8 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		}
 		
 		setTitle("Sprzeda\u017C detaliczna");
-		setBounds(100, 100, 603, 411);
+		setBounds(100, 100, 750, 440);
+		  setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		
@@ -140,7 +141,7 @@ public class SprzedazDetalicznaOkno extends JDialog {
 				dispose();
 			}
 		});
-		btnPowrt.setBounds(488, 339, 89, 23);
+		btnPowrt.setBounds(586, 368, 138, 23);
 		getContentPane().add(btnPowrt);
 
 	}

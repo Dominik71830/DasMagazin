@@ -45,8 +45,10 @@ public class IloscOkienko extends JDialog {
 	 * @throws Exception 
 	 */
 	public IloscOkienko(Produkt _tempProdukt, List<Produkt> _kupione, JTable _tableDodane, JTextField _textFieldSuma, JTable _tableProdukty) throws Exception {
+		setTitle("Podaj ilo\u015B\u0107");
 		funkcje = new Funkcje();
-		setBounds(100, 100, 250, 145);
+		setBounds(100, 100, 255, 155);
+		  setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
@@ -95,7 +97,7 @@ public class IloscOkienko extends JDialog {
 				dispose();
 			}
 		});
-		btnOk.setBounds(62, 62, 89, 23);
+		btnOk.setBounds(74, 61, 89, 23);
 		contentPanel.add(btnOk);
 		{
 			JPanel buttonPane = new JPanel();

@@ -70,29 +70,30 @@ public class MagazynOkno extends JDialog {
 		
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(291, 62, 358, 267);
+		scrollPane.setBounds(291, 62, 483, 375);
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
 		scrollPane.setViewportView(table);
 		
-		setBounds(100, 100, 684, 417);
+		setBounds(0, 0, 800, 520);
+		  setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		Double[] VatStrings = {0.05,0.08,0.23};
 		JComboBox comboBoxVat = new JComboBox(VatStrings);
 		comboBoxVat.setEnabled(false);
-		comboBoxVat.setBounds(78, 136, 72, 20);
+		comboBoxVat.setBounds(107, 136, 116, 20);
 		getContentPane().add(comboBoxVat);
 		
 		JLabel JLabelKategoria = new JLabel("Kategoria:");
-		JLabelKategoria.setBounds(10, 164, 58, 14);
+		JLabelKategoria.setBounds(10, 164, 72, 14);
 		getContentPane().add(JLabelKategoria);
 		
 		String[] KategorieStrings = {"spo¿ywcze","meble","przemys³owe","elektroniczne"};
 		JComboBox comboBoxKategoria = new JComboBox(KategorieStrings);
 		comboBoxKategoria.setEnabled(false);
-		comboBoxKategoria.setBounds(78, 161, 72, 20);
+		comboBoxKategoria.setBounds(107, 161, 116, 20);
 		getContentPane().add(comboBoxKategoria);
 		
 		JLabel JLabelNazwa = new JLabel("Nazwa:");
@@ -100,7 +101,7 @@ public class MagazynOkno extends JDialog {
 		getContentPane().add(JLabelNazwa);
 		
 		textFieldWyszukiwarka = new JTextField();
-		textFieldWyszukiwarka.setBounds(78, 11, 336, 25);
+		textFieldWyszukiwarka.setBounds(78, 11, 396, 25);
 		getContentPane().add(textFieldWyszukiwarka);
 		textFieldWyszukiwarka.setColumns(10);
 		
@@ -117,7 +118,7 @@ public class MagazynOkno extends JDialog {
 				
 			}
 		});
-		ButtonOpcjeZaaw.setBounds(550, 11, 101, 25);
+		ButtonOpcjeZaaw.setBounds(634, 11, 140, 25);
 		getContentPane().add(ButtonOpcjeZaaw);
 		
 		JButton btnOk = new JButton("OK");
@@ -229,7 +230,7 @@ public class MagazynOkno extends JDialog {
 		});
 		btnOk.setEnabled(false);
 		btnOk.setBackground(Color.RED);
-		btnOk.setBounds(31, 223, 91, 23);
+		btnOk.setBounds(92, 229, 91, 23);
 		getContentPane().add(btnOk);
 		
 		JButton ButtonSzukaj = new JButton("Szukaj");
@@ -257,7 +258,7 @@ public class MagazynOkno extends JDialog {
 				}
 			}
 		});
-		ButtonSzukaj.setBounds(424, 11, 116, 25);
+		ButtonSzukaj.setBounds(484, 11, 140, 25);
 		getContentPane().add(ButtonSzukaj);
 		
 		
@@ -268,52 +269,52 @@ public class MagazynOkno extends JDialog {
 				setVisible(false);
 			}
 		});
-		ButtonPowrot.setBounds(544, 342, 107, 23);
+		ButtonPowrot.setBounds(667, 448, 107, 23);
 		getContentPane().add(ButtonPowrot);
 		
 		JLabel JLabelNazwaDodaj = new JLabel("Nazwa:");
-		JLabelNazwaDodaj.setBounds(10, 62, 46, 17);
+		JLabelNazwaDodaj.setBounds(10, 62, 72, 17);
 		getContentPane().add(JLabelNazwaDodaj);
 		
 		textFieldNazwa = new JTextField();
 		textFieldNazwa.setEditable(false);
-		textFieldNazwa.setBounds(78, 60, 174, 20);
+		textFieldNazwa.setBounds(107, 60, 174, 20);
 		getContentPane().add(textFieldNazwa);
 		textFieldNazwa.setColumns(10);
 		
 		JLabel JLabelIlosc = new JLabel("Ilo\u015B\u0107: ");
-		JLabelIlosc.setBounds(10, 90, 46, 14);
+		JLabelIlosc.setBounds(10, 90, 72, 14);
 		getContentPane().add(JLabelIlosc);
 		
 		textFieldIlosc = new JTextField();
 		textFieldIlosc.setEditable(false);
-		textFieldIlosc.setBounds(78, 87, 174, 20);
+		textFieldIlosc.setBounds(107, 87, 174, 20);
 		getContentPane().add(textFieldIlosc);
 		textFieldIlosc.setColumns(10);
 		
 		JLabel JLabelCena = new JLabel("Cena:");
-		JLabelCena.setBounds(10, 115, 46, 14);
+		JLabelCena.setBounds(10, 115, 72, 14);
 		getContentPane().add(JLabelCena);
 		
 		textFieldCena = new JTextField();
 		textFieldCena.setEditable(false);
-		textFieldCena.setBounds(78, 112, 174, 20);
+		textFieldCena.setBounds(107, 112, 174, 20);
 		getContentPane().add(textFieldCena);
 		textFieldCena.setColumns(10);
 		
 		JLabel JLabelVat = new JLabel("Vat:");
-		JLabelVat.setBounds(10, 139, 46, 14);
+		JLabelVat.setBounds(10, 139, 72, 14);
 		getContentPane().add(JLabelVat);
 		
 		
 		
 		JLabel JLabelObjetosc = new JLabel("Obj\u0119to\u015B\u0107:");
-		JLabelObjetosc.setBounds(10, 189, 52, 17);
+		JLabelObjetosc.setBounds(10, 189, 72, 17);
 		getContentPane().add(JLabelObjetosc);
 		
 		textFieldObjetosc = new JTextField();
 		textFieldObjetosc.setEditable(false);
-		textFieldObjetosc.setBounds(78, 186, 174, 20);
+		textFieldObjetosc.setBounds(107, 187, 174, 20);
 		getContentPane().add(textFieldObjetosc);
 		textFieldObjetosc.setColumns(10);
 		
@@ -341,7 +342,7 @@ public class MagazynOkno extends JDialog {
 			
 			
 		});
-		ButtonDodajProdukt.setBounds(10, 342, 107, 23);
+		ButtonDodajProdukt.setBounds(10, 448, 140, 23);
 		getContentPane().add(ButtonDodajProdukt);
 		
 		JButton ButtonZmien = new JButton("Zmie\u0144");
@@ -416,7 +417,7 @@ public class MagazynOkno extends JDialog {
 			}
 			
 		});
-		ButtonZmien.setBounds(127, 342, 107, 23);
+		ButtonZmien.setBounds(160, 448, 140, 23);
 		getContentPane().add(ButtonZmien);
 		
 		JButton ButtonHistoriaZmian = new JButton("Historia zmian");
@@ -454,7 +455,7 @@ public class MagazynOkno extends JDialog {
 			
 		});
 		
-		ButtonHistoriaZmian.setBounds(244, 342, 107, 23);
+		ButtonHistoriaZmian.setBounds(310, 448, 140, 23);
 		getContentPane().add(ButtonHistoriaZmian);
 	
 		
@@ -475,7 +476,7 @@ public class MagazynOkno extends JDialog {
 				zat.setVisible(true);
 			}
 		});
-		buttonUsun.setBounds(361, 342, 107, 23);
+		buttonUsun.setBounds(460, 448, 140, 23);
 		getContentPane().add(buttonUsun);
 		
 		

@@ -22,7 +22,9 @@ public class LogiOkienko extends JDialog {
 
 	
 	public LogiOkienko() {
-		setBounds(100, 100, 450, 300);
+		setTitle("Ostatnie zmiany");
+		setBounds(100, 100, 500, 340);
+		  setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		JLabel lblOstatnieZmiany = new JLabel("Ostatnie zmiany");

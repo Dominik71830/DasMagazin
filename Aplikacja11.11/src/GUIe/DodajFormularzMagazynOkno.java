@@ -38,8 +38,8 @@ public class DodajFormularzMagazynOkno extends JDialog {
 	Double suma;
 	Double ladownosc_dopuszczalna;
 	Double ladownosc_najwiekszego_auta;
-	private JTextField textFieldMasa;
 	private JTextField textFieldCena;
+	private JTextField textFieldMasa;
 
 	/**
 	 * Launch the application.
@@ -65,6 +65,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 	 * @throws Exception 
 	 */
 	public DodajFormularzMagazynOkno(List<Produkt> kupione, JTable table) throws Exception {
+		setTitle("Dodaj formularz");
 		funkcje = new Funkcje();
 		masa = 0.0;
 		suma = 0.0;
@@ -77,59 +78,54 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		}
 		
 		JButton btnKolorki = new JButton("");
-		btnKolorki.setBounds(660, 222, 20, 20);
+		btnKolorki.setBounds(1039, 222, 20, 20);
 		getContentPane().add(btnKolorki);
 		btnKolorki.setEnabled(false);
 		
-		textFieldMasa = new JTextField();
-		textFieldMasa.setBounds(201, 445, 86, 20);
-		getContentPane().add(textFieldMasa);
-		textFieldMasa.setColumns(10);
-		textFieldMasa.setEditable(false);
-		
 		textFieldCena = new JTextField();
-		textFieldCena.setBounds(40, 445, 86, 20);
+		textFieldCena.setBounds(608, 415, 47, 20);
 		getContentPane().add(textFieldCena);
 		textFieldCena.setColumns(10);
 		textFieldCena.setEditable(false);
 		
-		setBounds(100, 100, 750, 516);
+		setBounds(100, 100, 1100, 560);
+		  setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 463, 393);
+		scrollPane.setBounds(10, 11, 795, 393);
 		getContentPane().add(scrollPane);
 		
 		tableDodane = new JTable();
 		scrollPane.setViewportView(tableDodane);
 		
 		JComboBox comboBoxProdukty = new JComboBox();
-		comboBoxProdukty.setBounds(484, 55, 169, 20);
+		comboBoxProdukty.setBounds(848, 55, 169, 20);
 		getContentPane().add(comboBoxProdukty);
 		funkcje.wypelnijComboboxaProduktami(comboBoxProdukty);
 		
 		textFieldIle = new JTextField();
-		textFieldIle.setBounds(663, 55, 47, 20);
+		textFieldIle.setBounds(1027, 55, 47, 20);
 		getContentPane().add(textFieldIle);
 		textFieldIle.setColumns(10);
 		
 		JComboBox comboBoxMiejsceDocelowe = new JComboBox();
-		comboBoxMiejsceDocelowe.setBounds(483, 153, 169, 20);
+		comboBoxMiejsceDocelowe.setBounds(848, 150, 169, 20);
 		getContentPane().add(comboBoxMiejsceDocelowe);
 		funkcje.wypelnijComboboxaMiejscamiDocelowymi(comboBoxMiejsceDocelowe);
 		
 		
 		
 		JLabel lblWstawProdukty = new JLabel("Wstaw produkty");
-		lblWstawProdukty.setBounds(483, 30, 89, 14);
+		lblWstawProdukty.setBounds(847, 30, 89, 14);
 		getContentPane().add(lblWstawProdukty);
 		
 		JLabel lblWybierzMiejsce = new JLabel("Wybierz miejsce docelowe");
-		lblWybierzMiejsce.setBounds(483, 131, 147, 14);
+		lblWybierzMiejsce.setBounds(848, 125, 147, 14);
 		getContentPane().add(lblWybierzMiejsce);
 		
 		JLabel lblWybierzSamochdDostawczy = new JLabel("Wybierz samoch\u00F3d dostawczy");
-		lblWybierzSamochdDostawczy.setBounds(483, 196, 170, 14);
+		lblWybierzSamochdDostawczy.setBounds(847, 200, 170, 14);
 		getContentPane().add(lblWybierzSamochdDostawczy);
 		
 		JComboBox comboBoxAuta = new JComboBox();
@@ -143,7 +139,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				}
 			}
 		});
-		comboBoxAuta.setBounds(483, 221, 170, 20);
+		comboBoxAuta.setBounds(848, 222, 170, 20);
 		getContentPane().add(comboBoxAuta);
 		funkcje.wypelnijComboboxaAutami(comboBoxAuta);
 		
@@ -202,7 +198,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				
 			}
 		});
-		btnZrobione.setBounds(444, 444, 89, 23);
+		btnZrobione.setBounds(685, 460, 120, 23);
 		getContentPane().add(btnZrobione);
 		
 		JButton btnPowrt = new JButton("Powr\u00F3t");
@@ -212,7 +208,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				dispose();
 			}
 		});
-		btnPowrt.setBounds(637, 444, 89, 23);
+		btnPowrt.setBounds(954, 460, 120, 23);
 		getContentPane().add(btnPowrt);
 		
 		JButton btnUsu = new JButton("Usu\u0144");
@@ -240,7 +236,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				okno.setVisible(true);
 			}
 		});
-		btnUsu.setBounds(541, 444, 89, 23);
+		btnUsu.setBounds(816, 460, 120, 23);
 		getContentPane().add(btnUsu);
 		
 		JButton btnNewButton = new JButton("Wstaw");
@@ -288,8 +284,21 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				
 			}
 		});
-		btnNewButton.setBounds(637, 86, 73, 23);
+		btnNewButton.setBounds(1001, 86, 73, 23);
 		getContentPane().add(btnNewButton);
+		
+		JLabel lblSuma = new JLabel("Suma");
+		lblSuma.setBounds(567, 418, 46, 14);
+		getContentPane().add(lblSuma);
+		
+		textFieldMasa = new JTextField();
+		textFieldMasa.setBounds(758, 415, 47, 20);
+		getContentPane().add(textFieldMasa);
+		textFieldMasa.setColumns(10);
+		
+		JLabel lblMasa = new JLabel("Masa");
+		lblMasa.setBounds(715, 418, 33, 14);
+		getContentPane().add(lblMasa);
 		
 		
 

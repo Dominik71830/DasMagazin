@@ -39,11 +39,12 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 	public WyswietlanieFormularzyOkno(FormularzDetal formularzdetal, FormularzWysylka formularzwysylka) throws Exception {
 		funkcje = new Funkcje();
 		setTitle("Formularze");
-		setBounds(100, 100, 552, 400);
+		setBounds(100, 100, 710, 480);
+		  setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPaneFormularzy = new JScrollPane();
-		scrollPaneFormularzy.setBounds(10, 11, 516, 298);
+		scrollPaneFormularzy.setBounds(10, 11, 636, 386);
 		getContentPane().add(scrollPaneFormularzy);
 		
 		JTextArea textArea = new JTextArea();
@@ -57,7 +58,7 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 			dispose();
 			}
 		});
-		btnNewPowrt.setBounds(437, 328, 89, 23);
+		btnNewPowrt.setBounds(556, 408, 128, 23);
 		getContentPane().add(btnNewPowrt);
 		
 		if(formularzwysylka==null){
