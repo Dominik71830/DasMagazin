@@ -75,8 +75,28 @@ primary key (id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (1, 'Łukasz', 'Cieślak', '',3.50, '2011-06-30 23:43:07');
-
+insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (1, 'Łukasz', 'Cieślak', 
+'Bateria Vipow			1	1.85
+Baton Twix			2	2.98
+ ' ,3.50, '2011-06-30 23:43:07');
+insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (2, 'Jan', 'Kowalski', 
+'Woda niegazowana Cisowianka	2	1.98
+Szampon do włosów Schauma		1	12.99
+Mysz optyczna Simple		3	32.97
+ ' ,47.94, '2015-03-14 23:43:07');
+insert into formularzedetal (id, imie, nazwisko, produkty, cena, data_dodania) values (3, 'Andrzej', 'Nowak', 
+'Bułki			2	0.78
+Margaryna Kasia		3	7.47
+Maslo Smakowita		1	3.49
+Szampon do włosów Schauma		4	51.96
+Woda gazowana Cisowianka		1	1.39
+Świetlówka Led 5W/E14 kula		4	51.96
+Stół Granas			3	1049.97
+Łóżko Select hilding		1	959.99
+Czekolada Milka		4	11.96
+Krzesło Verossi			2	299.98
+Gąbka			1	0.99
+ ' ,1379.97, '2014-01-05 05:43:07');
 
 create table logi
 (
@@ -100,8 +120,16 @@ primary key(id)
 )
 ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
 
-insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (1, 'Tesco Wyszyńskiego 15', 'pole - produkty', 'pole - samochod', 234.32 , '2011-06-30 23:43:07');
-insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (2, 'Biedronka Południowa 10','Czekolada Milka100299.00', 'Ford Tranzit', 299.00,'2015-12-11 15:12:45'); 
+insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (1, 'Kaufland, Żeromskiego 47', 'Bluetooth USB			100	699.0
+Czekolada Milka		20	59.8
+Mydło Biały Jeleń		111	287.49
+Stołek Marius			3	119.97
+Złączka SVGA(D-Sub)		100	799.0
+Łóżko Select hilding		2	1919.98
+ ', 'Fiat Ducato', 3885.24 , '2015-12-16 14:53:51');
+insert into formularzewysylkowe (id, miejsce_docelowe, produkty, samochod, cena, data_dodania) values (2, 'InterMarche, Lotnicza 45','Bateria Vipow			20	37.0
+Biurko Sonoma			1	359.99
+ ', 'FSC Żuk', 396.99,'2015-12-16 14:48:31'); 
 
 
 
