@@ -64,10 +64,10 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 		textArea.setText(
 				"\t\tFormularz"+
 				"\n\n\n"+
-				"Imiê: \t\t"+
+				"Imiê: "+
 				formularzdetal.getImie()+
 				'\n'+
-				"Nazwisko: \t\t"+
+				"Nazwisko: "+
 				formularzdetal.getNazwisko()+
 				"\n\n"+
 				"\t\t\tLista produktów: "+
@@ -88,7 +88,7 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 			textArea.setText(
 					"\t\tFormularz"+
 					"\n\n\n"+
-					"Miejsce docelowe: \t\t"+
+					"Miejsce docelowe: "+
 					formularzwysylka.getMiejsce_docelowe()+
 					"\n\n"+
 					"\t\t\tLista produktów: "+
@@ -99,6 +99,7 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 					'\n'+
 					"Samochód: "+
 					formularzwysylka.getSamochod()+
+					'\n'+
 					"Cena: "+
 					formularzwysylka.getCena()+
 					'\n'+
