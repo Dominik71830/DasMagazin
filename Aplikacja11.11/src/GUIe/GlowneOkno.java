@@ -51,12 +51,12 @@ public class GlowneOkno {
 	 */
 	private void initialize() {
 		frmTytuwiczebny = new JFrame();
+		frmTytuwiczebny.setResizable(false);
 		frmTytuwiczebny.getContentPane().setBackground(new Color(102, 0, 102));
 		frmTytuwiczebny.setForeground(new Color(102, 0, 102));
 		frmTytuwiczebny.setBackground(new Color(102, 0, 102));
 		frmTytuwiczebny.setTitle("Hurtownia");
-		frmTytuwiczebny.setExtendedState(java.awt.Frame.MAXIMIZED_BOTH);
-		frmTytuwiczebny.setBounds(0, 0, 1065, 600);
+		frmTytuwiczebny.setBounds(0, 0, 1366, 565);
 		frmTytuwiczebny.setLocationRelativeTo(null);
 		frmTytuwiczebny.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
