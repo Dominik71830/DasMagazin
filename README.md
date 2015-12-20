@@ -6,6 +6,16 @@ Rzeczy zrobione beda wykomentowywane<br>
 //4.Wyszukiwanie zaawansowane<br> 
 #5.Zakomentowanie mainów z podokien. To na koniec bo nie bedzie mozna uruchamiac okien pojedynczo.<br>
 #KRYSTIAN 6.Idiotoodpornosc<br> 
+
+#Lista rzeczy do zrobienia w idiotoodpornosci<br>
+- błąd w magazynie przy wstawianiu objętości i ceny z przecinkiem zamiast kropki.<br>
+- błąd przy wpisywaniu floatowej "ilości" towaru<br>
+- Powinien wyskakiwać komunikat o sprawdzeniu danych<br>
+- błąd przy wprowadzaniu ilości, można wprowadzić ujemną ilość <br>
+- przy zmianie produktu także można zmienić na ujemną ilość towaru<br>
+- nie sprawdza czy jest towar czy nie i można wprowadzić nieskończenie wiele przedmiotów<br>
+- w polach gdzie potrzeba stringów można wpisywać cyfry<br>
+
 //7.Nazwanie exceptionów<br>
 //8.Obsluga pominietych buttonow<br>
 //9.Rozbudowanie bazy o formularze<br>
