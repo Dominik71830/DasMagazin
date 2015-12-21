@@ -243,14 +243,11 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				try{
+				
 				Produkt tempProdukt = (Produkt) comboBoxProdukty.getSelectedItem();
 				
 				String nazwa = tempProdukt.getNazwa();
 				int ilosc = Integer.parseInt(textFieldIle.getText());
-				
-				if(ilosc >0 && ilosc <= funkcje.ileJestNaMagazynie(tempProdukt))
-				{
 				textFieldIle.setText("");
 				Double cena = ilosc * tempProdukt.getCena();
 				Double objetosc = ilosc * tempProdukt.getObjetosc();
@@ -281,19 +278,8 @@ public class DodajFormularzMagazynOkno extends JDialog {
 					JOptionPane.showMessageDialog(null, "Przekroczono maksymaln¹ dopuszczaln¹ ³adownoœæ dla jednego transportu. Proszê zmniejszyæ iloœæ produktów");	
 					btnZrobione.setEnabled(false);
 				}
-					
-				}
+						
 				
-				else
-				{
-					JOptionPane.showMessageDialog(null, "Proszê podaæ poprawn¹ iloœæ");
-				}
-				
-				}
-				catch(Exception exc)
-				{
-					JOptionPane.showMessageDialog(null, "Proszê podaæ poprawn¹ iloœæ");
-				}
 				// tutaj trzeba odswiezyæ comboboxa z produktami
 				
 			}

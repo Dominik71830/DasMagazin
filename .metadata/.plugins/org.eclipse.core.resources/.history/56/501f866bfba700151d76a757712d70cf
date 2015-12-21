@@ -74,9 +74,7 @@ public class IloscOkienko extends JDialog {
 				String nazwa = _tempProdukt.getNazwa();
 				int ilosc = Integer.parseInt(textField.getText());
 				
-				if(		ilosc>0 
-						&&
-						ilosc <= funkcje.ileJestNaMagazynie(_tempProdukt))
+				if(ilosc>0)
 				{
 				Double cena = ilosc * _tempProdukt.getCena();
 				

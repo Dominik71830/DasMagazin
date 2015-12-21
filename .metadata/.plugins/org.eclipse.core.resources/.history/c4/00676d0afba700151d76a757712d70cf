@@ -735,33 +735,7 @@ public boolean czyzawieraCyfre(String napis){
 
 
 
-public int ileJestNaMagazynie(Produkt p) throws SQLException
-{
-	int ile=0;
-	
-	PreparedStatement myStmt = null;
-	ResultSet myRs = null;
-	String _nazwa = p.getNazwa();
-
-	try {
-		_nazwa = '%' + _nazwa + '%';
-		myStmt = myConn.prepareStatement("select ilosc from produkty where nazwa like ?");
-		
-		myStmt.setString(1, _nazwa);
-		
-		myRs = myStmt.executeQuery();
-		
-		while (myRs.next()) {
-			ile = myRs.getInt("ilosc");
-		}
-		
-	}
-	finally {
-		close(myStmt, myRs);
-	}
-	
-	return ile;
-}
+//public int 
 
 
 }

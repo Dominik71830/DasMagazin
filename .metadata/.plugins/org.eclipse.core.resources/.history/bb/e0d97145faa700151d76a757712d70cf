@@ -164,9 +164,9 @@ public class DodajFormularzDetalOkno extends JDialog {
 					&&
 					textFieldNazwisko.getText() != null && textFieldNazwisko.getText().trim().length() > 0
 					&&
-					!funkcje.czyzawieraCyfre(textFieldImie.getText())
+					!funkcje.CzyzawieraCyfre(textFieldImie.getText())
 					&&
-					!funkcje.czyzawieraCyfre(textFieldNazwisko.getText()))	
+					!funkcje.CzyzawieraCyfre(textFieldNazwisko.getText()))	
 			{
 				zapiszFormularzDetal();
 			}
