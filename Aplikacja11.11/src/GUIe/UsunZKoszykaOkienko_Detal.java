@@ -70,13 +70,17 @@ public class UsunZKoszykaOkienko_Detal extends JDialog {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				
+				try{
+					
+					
 				Double suma = Double.parseDouble(_textFieldSuma.getText());
 				String nazwa = _tempProdukt.getNazwa();
 				int ilosc = Integer.parseInt(textField.getText());
 				Double cena = _tempProdukt.getCena();
 				Double cena_jednostkowa = _tempProdukt.getCena()/_tempProdukt.getIlosc();
 				
-				if ((_tempProdukt.getIlosc()<ilosc))
+				if ((_tempProdukt.getIlosc()<ilosc) ||  ilosc<=0)
 				{
 					JOptionPane.showMessageDialog(null, "Podana wartoœæ jest wiêksza ni¿"
 							+ " iloœæ tego produktu w koszyku!");
@@ -114,6 +118,12 @@ public class UsunZKoszykaOkienko_Detal extends JDialog {
 				funkcje.odswiezProdukty(_tableProdukty);
 				setVisible(false);
 				dispose();
+				
+				}
+				catch(Exception exc)
+				{
+					JOptionPane.showMessageDialog(null, "Proszê podaæ poprawn¹ iloœæ");
+				}
 			}
 		});
 		btnOk.setBounds(73, 57, 89, 23);

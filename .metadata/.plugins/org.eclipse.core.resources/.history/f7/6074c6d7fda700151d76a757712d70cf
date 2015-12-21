@@ -80,7 +80,7 @@ public class UsunZKoszykaOkienko_Wysylka extends JDialog {
 				Double cena_jednostkowa = _tempProdukt.getCena()/_tempProdukt.getIlosc();
 				Double objetosc_jednostkowa = _tempProdukt.getObjetosc()/_tempProdukt.getIlosc();
 				
-				if ((_tempProdukt.getIlosc()<ilosc) || ilosc<=0)
+				if ((_tempProdukt.getIlosc()<ilosc))
 				{
 					JOptionPane.showMessageDialog(null, "Podana wartoœæ jest wiêksza ni¿"
 							+ " iloœæ tego produktu w koszyku!");

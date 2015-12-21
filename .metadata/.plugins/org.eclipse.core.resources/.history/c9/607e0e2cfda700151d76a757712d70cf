@@ -70,8 +70,6 @@ public class UsunZKoszykaOkienko_Wysylka extends JDialog {
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				try{
-				
 				Double suma = Double.parseDouble(_textFieldSuma.getText());
 				Double masa = Double.parseDouble(_textFieldMasa.getText());
 				String nazwa = _tempProdukt.getNazwa();
@@ -80,7 +78,7 @@ public class UsunZKoszykaOkienko_Wysylka extends JDialog {
 				Double cena_jednostkowa = _tempProdukt.getCena()/_tempProdukt.getIlosc();
 				Double objetosc_jednostkowa = _tempProdukt.getObjetosc()/_tempProdukt.getIlosc();
 				
-				if ((_tempProdukt.getIlosc()<ilosc) || ilosc<=0)
+				if ((_tempProdukt.getIlosc()<ilosc))
 				{
 					JOptionPane.showMessageDialog(null, "Podana wartoœæ jest wiêksza ni¿"
 							+ " iloœæ tego produktu w koszyku!");
@@ -130,12 +128,6 @@ public class UsunZKoszykaOkienko_Wysylka extends JDialog {
 				
 				// tutaj trzeba odswiezyæ comboboxa z produktami
 
-				
-				}
-				catch(Exception exc)
-				{
-					JOptionPane.showMessageDialog(null, "Proszê podaæ poprawn¹ iloœæ");
-				}
 			}
 		});
 		btnOk.setBounds(75, 57, 89, 23);

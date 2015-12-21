@@ -1,3 +1,2 @@
 INDEX VERSION 1.127+C:\Users\Dominik\DasMagazin\.metadata\.plugins\org.eclipse.jdt.core
 2921969308.index
-3719286266.index
