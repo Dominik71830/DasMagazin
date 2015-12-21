@@ -69,6 +69,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		funkcje = new Funkcje();
 		masa = 0.0;
 		suma = 0.0;
+		kupione.removeAll(kupione);
 		
 		try {
 			ladownosc_najwiekszego_auta = funkcje.getNajwiekszaLadownosc();
@@ -152,7 +153,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				
 				Double ladownosc_minimalna = 0.45 * ladownosc_dopuszczalna;
 				
-				//if(masa >= ladownosc_minimalna){
+				if(masa >= ladownosc_minimalna && masa<=ladownosc_dopuszczalna){
 					if(samochod.isCzy_jest_na_stanie()){
 					zapiszFormularzMagazyn();
 					setVisible(false);
@@ -161,10 +162,10 @@ public class DodajFormularzMagazynOkno extends JDialog {
 					else{
 						JOptionPane.showMessageDialog(null,"Pojazd niedostêpny z przyczyn nieoczekiwanych.");
 					}
-			//	}
-				//else{
-				//	JOptionPane.showMessageDialog(null,"Zbyt ma³o produktów. Proszê wybraæ auto o mniejszej ³adownoœci.");
-				//}
+				}
+				else{
+					JOptionPane.showMessageDialog(null,"Zbyt ma³o produktów lub przekroczona waga towarów");
+				}
 			}
 
 			private void zapiszFormularzMagazyn() {
@@ -278,6 +279,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				tableDodane.setModel(model);
 				
 				if(ladownosc_najwiekszego_auta < masa){
+					//JOptionPane.showMessageDialog(null, ladownosc_najwiekszego_auta);
 					JOptionPane.showMessageDialog(null, "Przekroczono maksymaln¹ dopuszczaln¹ ³adownoœæ dla jednego transportu. Proszê zmniejszyæ iloœæ produktów");	
 					btnZrobione.setEnabled(false);
 				}

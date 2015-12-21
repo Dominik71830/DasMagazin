@@ -185,3 +185,24 @@ user global configuration and to define the default location to store repositori
 not correct please set the HOME environment variable and restart Eclipse. Otherwise Git for Windows and
 EGit might behave differently since they see different configuration options.
 This warning can be switched off on the Team > Git > Confirmations and Warnings preference page.
+
+!ENTRY org.eclipse.equinox.p2.discovery.compatibility 2 0 2015-12-21 17:45:51.034
+!MESSAGE Server returned lastModified <= 0 for http://eclipse.org/downloads/download.php?r=1&file=/recommenders/discovery/2.0/completion/catalog.zip
+
+!ENTRY org.eclipse.equinox.p2.discovery 4 0 2015-12-21 17:45:53.798
+!MESSAGE Cannot load bundle catalog.zip_7294998712561097597.jar from url http://eclipse.org/downloads/download.php?r=1&file=/recommenders/discovery/2.0/completion/catalog.zip: error in opening zip file
+!STACK 0
+java.util.zip.ZipException: error in opening zip file
+	at java.util.zip.ZipFile.open(Native Method)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.zip.ZipFile.<init>(Unknown Source)
+	at java.util.jar.JarFile.<init>(Unknown Source)
+	at java.util.jar.JarFile.<init>(Unknown Source)
+	at org.eclipse.equinox.internal.p2.discovery.compatibility.DiscoveryRegistryStrategy.processBundle(DiscoveryRegistryStrategy.java:86)
+	at org.eclipse.equinox.internal.p2.discovery.compatibility.DiscoveryRegistryStrategy.processBundles(DiscoveryRegistryStrategy.java:78)
+	at org.eclipse.equinox.internal.p2.discovery.compatibility.DiscoveryRegistryStrategy.onStart(DiscoveryRegistryStrategy.java:50)
+	at org.eclipse.core.internal.registry.ExtensionRegistry.<init>(ExtensionRegistry.java:725)
+	at org.eclipse.equinox.internal.p2.discovery.compatibility.RemoteBundleDiscoveryStrategy.performDiscovery(RemoteBundleDiscoveryStrategy.java:159)
+	at org.eclipse.equinox.internal.p2.discovery.Catalog.performDiscovery(Catalog.java:85)
+	at org.eclipse.equinox.internal.p2.ui.discovery.wizards.CatalogViewer$6.run(CatalogViewer.java:569)
+	at org.eclipse.jface.operation.ModalContext$ModalContextThread.run(ModalContext.java:119)

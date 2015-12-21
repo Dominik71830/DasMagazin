@@ -48,6 +48,8 @@ public class DodajFormularzDetalOkno extends JDialog {
 
 	
 	public DodajFormularzDetalOkno(JTable _tableformularz) {
+		
+		kupione.removeAll(kupione);
 		setTitle("Dodaj formularz");
 		setBounds(100, 100, 1100, 560);
 		setLocationRelativeTo(null);
@@ -169,6 +171,7 @@ public class DodajFormularzDetalOkno extends JDialog {
 					!funkcje.czyzawieraCyfre(textFieldNazwisko.getText()))	
 			{
 				zapiszFormularzDetal();
+	
 			}
 			else
 			{
