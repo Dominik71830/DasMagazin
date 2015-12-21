@@ -160,8 +160,21 @@ public class DodajFormularzDetalOkno extends JDialog {
 		btnZrobione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// zapisywanie formularzu
-				
-			zapiszFormularzDetal();
+			if(		textFieldImie.getText() != null && textFieldImie.getText().trim().length() > 0
+					&&
+					textFieldNazwisko.getText() != null && textFieldNazwisko.getText().trim().length() > 0
+					&&
+					!funkcje.CzyzawieraCyfre(textFieldImie.getText())
+					&&
+					!funkcje.CzyzawieraCyfre(textFieldNazwisko.getText()))	
+			{
+				zapiszFormularzDetal();
+			}
+			else
+			{
+				JOptionPane.showMessageDialog(null, "Proszê wpisaæ poprawne imiê i nazwisko");
+	
+			}
 			}
 
 			private void zapiszFormularzDetal() {

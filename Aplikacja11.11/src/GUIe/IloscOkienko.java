@@ -14,6 +14,7 @@ import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.io.EOFException;
 import java.sql.SQLException;
 import java.util.List;
 import java.awt.event.ActionEvent;
@@ -66,11 +67,15 @@ public class IloscOkienko extends JDialog {
 		JButton btnOk = new JButton("Ok");
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try{
 				int roznica;
 				Double suma = Double.parseDouble(_textFieldSuma.getText());
 				
 				String nazwa = _tempProdukt.getNazwa();
 				int ilosc = Integer.parseInt(textField.getText());
+				
+				if(ilosc>0)
+				{
 				Double cena = ilosc * _tempProdukt.getCena();
 				
 				Produkt kupiony = new Produkt(nazwa,ilosc,cena);
@@ -95,6 +100,17 @@ public class IloscOkienko extends JDialog {
 				funkcje.odswiezProdukty(_tableProdukty);
 				setVisible(false);
 				dispose();
+				}
+				else{
+					JOptionPane.showMessageDialog(null, "Proszê podaæ poprawn¹ wartoœæ");
+				}
+				}
+				
+				
+				catch(Exception exc)
+				{
+					JOptionPane.showMessageDialog(null, "Proszê podaæ poprawn¹ wartoœæ");
+				}
 			}
 		});
 		btnOk.setBounds(74, 61, 89, 23);

@@ -721,4 +721,19 @@ public Double getNajwiekszaLadownosc() throws SQLException {
 	return max;
 }
 
+
+
+public boolean CzyzawieraCyfre(String napis){
+	boolean czy = false;
+	for(int i = 0;i<napis.length();i++)
+	{
+	if(Character.isDigit(napis.charAt(i))){	czy=true;		}
+	}
+	
+	return czy;
+}
+
+
+
+
 }

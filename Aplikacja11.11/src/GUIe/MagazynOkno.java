@@ -20,6 +20,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JScrollBar;
 import javax.swing.JTable;
 import java.awt.Color;
+import java.awt.SystemColor;
 
 public class MagazynOkno extends JDialog {
 	private JTextField textFieldWyszukiwarka;
@@ -122,20 +123,61 @@ public class MagazynOkno extends JDialog {
 		getContentPane().add(ButtonOpcjeZaaw);
 		
 		JButton btnOk = new JButton("OK");
+		btnOk.setForeground(Color.BLACK);
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				if(!updatemode){
-				zapiszProdukt();
+				Double vat = null;
+				Double cena = null;
+				Double objetosc = null;
+				int ilosc =0;
+				
+				
+				try{
+					//String nazwa = textFieldNazwa.getText();
+					cena = Double.parseDouble(textFieldCena.getText());
+					ilosc = Integer.parseInt(textFieldIlosc.getText());
+					//String kategoria = comboBoxKategoria.getSelectedItem().toString();
+					vat = Double.parseDouble(comboBoxVat.getSelectedItem().toString());
+					objetosc = Double.parseDouble(textFieldObjetosc.getText());
+					
+					
+					
+					if(		textFieldNazwa.getText() != null && textFieldNazwa.getText().trim().length() > 0
+							&&
+							cena >=0
+							&&
+							ilosc >=0
+							&&
+							objetosc >=0
+							)
+					{
+					if(!updatemode){
+						zapiszProdukt();
+						}
+						else if(updatemode){
+							try {
+								edytujProdukt();
+							} catch (SQLException exc) {
+								JOptionPane.showMessageDialog(null,"Blad przy edytowaniu " + exc);
+							} 
+						}
+						//JOptionPane.showMessageDialog(null, "A teraz je wy³¹cze");
+						dezaktywujPola();
+						
+					}
+					else{
+						JOptionPane.showMessageDialog(null, "Proszê uzupe³niæ wszystkie pola i wpisaæ poprawne dane");
+					}
+						
+					
+					
 				}
-				else if(updatemode){
-					try {
-						edytujProdukt();
-					} catch (SQLException exc) {
-						JOptionPane.showMessageDialog(null,"Blad przy edytowaniu " + exc);
-					} 
+				catch(Exception e)
+				{
+					JOptionPane.showMessageDialog(null, "Proszê uzupe³niæ wszystkie pola i wpisaæ poprawne dane");
 				}
-				//JOptionPane.showMessageDialog(null, "A teraz je wy³¹cze");
-				dezaktywujPola();
+				
+				
 			}
 
 			private void edytujProdukt() throws SQLException {
@@ -229,7 +271,7 @@ public class MagazynOkno extends JDialog {
 			
 		});
 		btnOk.setEnabled(false);
-		btnOk.setBackground(Color.RED);
+		btnOk.setBackground(SystemColor.activeCaptionBorder);
 		btnOk.setBounds(92, 229, 91, 23);
 		getContentPane().add(btnOk);
 		
