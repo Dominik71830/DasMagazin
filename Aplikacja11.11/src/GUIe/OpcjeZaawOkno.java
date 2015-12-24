@@ -18,6 +18,7 @@ import java.util.Collections;
 import java.util.List;
 import java.awt.event.ActionEvent;
 import pakiet.*;
+import java.awt.Color;
 
 public class OpcjeZaawOkno extends JDialog {
 	private JTextField textFieldNazwaZaaw;
@@ -29,6 +30,7 @@ public class OpcjeZaawOkno extends JDialog {
 	private JTextField textFieldObjetosc_Do;
 
 	public OpcjeZaawOkno(JTable table) throws Exception {
+		getContentPane().setBackground(new Color(102, 0, 102));
 		
 		Funkcje funkcje = new Funkcje();
 		setTitle("Opcje Zaawansowane");
@@ -37,89 +39,121 @@ public class OpcjeZaawOkno extends JDialog {
 		getContentPane().setLayout(null);
 		
 		JLabel lblNazwa = new JLabel("Nazwa");
-		lblNazwa.setBounds(28, 25, 58, 25);
+		lblNazwa.setForeground(Color.BLACK);
+		lblNazwa.setBounds(10, 25, 58, 25);
 		getContentPane().add(lblNazwa);
 		
 		textFieldNazwaZaaw = new JTextField();
+		textFieldNazwaZaaw.setForeground(Color.BLACK);
+		textFieldNazwaZaaw.setBackground(new Color(204, 153, 255));
 		textFieldNazwaZaaw.setBounds(82, 27, 183, 20);
 		getContentPane().add(textFieldNazwaZaaw);
 		textFieldNazwaZaaw.setColumns(10);
 		
-		JLabel lblCenaOd = new JLabel("Cena          od");
-		lblCenaOd.setBounds(28, 61, 77, 14);
+		JLabel lblCenaOd = new JLabel("Cena              od");
+		lblCenaOd.setForeground(Color.BLACK);
+		lblCenaOd.setBounds(10, 61, 88, 14);
 		getContentPane().add(lblCenaOd);
 		
 		textFieldCena_Od = new JTextField();
-		textFieldCena_Od.setBounds(103, 58, 34, 20);
+		textFieldCena_Od.setForeground(Color.BLACK);
+		textFieldCena_Od.setBackground(new Color(204, 153, 255));
+		textFieldCena_Od.setBounds(108, 58, 34, 20);
 		getContentPane().add(textFieldCena_Od);
 		textFieldCena_Od.setColumns(10);
 		
 		JLabel lblDo = new JLabel("do");
-		lblDo.setBounds(147, 61, 17, 14);
+		lblDo.setForeground(Color.BLACK);
+		lblDo.setBounds(152, 61, 17, 14);
 		getContentPane().add(lblDo);
 		
 		textFieldCena_Do = new JTextField();
-		textFieldCena_Do.setBounds(168, 58, 34, 20);
+		textFieldCena_Do.setForeground(Color.BLACK);
+		textFieldCena_Do.setBackground(new Color(204, 153, 255));
+		textFieldCena_Do.setBounds(179, 58, 34, 20);
 		getContentPane().add(textFieldCena_Do);
 		textFieldCena_Do.setColumns(10);
 		
-		JLabel lblIloOd = new JLabel("Ilo\u015B\u0107           od");
-		lblIloOd.setBounds(28, 92, 77, 14);
+		JLabel lblIloOd = new JLabel("Ilo\u015B\u0107               od");
+		lblIloOd.setForeground(Color.BLACK);
+		lblIloOd.setBounds(10, 92, 88, 14);
 		getContentPane().add(lblIloOd);
 		
 		textFieldIlosc_Od = new JTextField();
-		textFieldIlosc_Od.setBounds(103, 89, 34, 20);
+		textFieldIlosc_Od.setForeground(Color.BLACK);
+		textFieldIlosc_Od.setBackground(new Color(204, 153, 255));
+		textFieldIlosc_Od.setBounds(108, 89, 34, 20);
 		getContentPane().add(textFieldIlosc_Od);
 		textFieldIlosc_Od.setColumns(10);
 		
 		textField_Do = new JTextField();
-		textField_Do.setBounds(168, 89, 34, 20);
+		textField_Do.setForeground(Color.BLACK);
+		textField_Do.setBackground(new Color(204, 153, 255));
+		textField_Do.setBounds(179, 89, 34, 20);
 		getContentPane().add(textField_Do);
 		textField_Do.setColumns(10);
 		
 		JLabel lblDo_1 = new JLabel("do");
-		lblDo_1.setBounds(147, 92, 17, 14);
+		lblDo_1.setForeground(Color.BLACK);
+		lblDo_1.setBounds(152, 92, 17, 14);
 		getContentPane().add(lblDo_1);
 		
 		JLabel lblKategoria = new JLabel("Kategoria");
-		lblKategoria.setBounds(28, 117, 58, 14);
+		lblKategoria.setForeground(Color.BLACK);
+		lblKategoria.setBounds(10, 117, 58, 14);
 		getContentPane().add(lblKategoria);
 		
 		JCheckBox chckbxSpozywcze = new JCheckBox("spo\u017Cywcze");
+		chckbxSpozywcze.setForeground(Color.BLACK);
+		chckbxSpozywcze.setBackground(new Color(102, 0, 102));
 		chckbxSpozywcze.setBounds(82, 113, 97, 23);
 		getContentPane().add(chckbxSpozywcze);
 		
 		JCheckBox chckbxmeble = new JCheckBox("meble");
+		chckbxmeble.setForeground(Color.BLACK);
+		chckbxmeble.setBackground(new Color(102, 0, 102));
 		chckbxmeble.setBounds(82, 138, 97, 23);
 		getContentPane().add(chckbxmeble);
 		
 		JCheckBox chckbxPrzemyslowe = new JCheckBox("przemys\u0142owe");
-		chckbxPrzemyslowe.setBounds(82, 164, 97, 23);
+		chckbxPrzemyslowe.setForeground(Color.BLACK);
+		chckbxPrzemyslowe.setBackground(new Color(102, 0, 102));
+		chckbxPrzemyslowe.setBounds(82, 164, 147, 23);
 		getContentPane().add(chckbxPrzemyslowe);
 		
 		JCheckBox chckbxElektroniczne = new JCheckBox("elektroniczne");
-		chckbxElektroniczne.setBounds(82, 190, 97, 23);
+		chckbxElektroniczne.setForeground(Color.BLACK);
+		chckbxElektroniczne.setBackground(new Color(102, 0, 102));
+		chckbxElektroniczne.setBounds(82, 190, 155, 23);
 		getContentPane().add(chckbxElektroniczne);
 		
-		JLabel lblObjto = new JLabel("Obj\u0119to\u015B\u0107     od");
-		lblObjto.setBounds(28, 219, 77, 20);
+		JLabel lblObjto = new JLabel("Obj\u0119to\u015B\u0107        od");
+		lblObjto.setForeground(Color.BLACK);
+		lblObjto.setBounds(10, 220, 97, 20);
 		getContentPane().add(lblObjto);
 		
 		textFieldObjetosc_Od = new JTextField();
+		textFieldObjetosc_Od.setForeground(Color.BLACK);
+		textFieldObjetosc_Od.setBackground(new Color(204, 153, 255));
 		textFieldObjetosc_Od.setBounds(103, 219, 34, 20);
 		getContentPane().add(textFieldObjetosc_Od);
 		textFieldObjetosc_Od.setColumns(10);
 		
 		JLabel lblDo_2 = new JLabel("do");
-		lblDo_2.setBounds(147, 220, 17, 14);
+		lblDo_2.setForeground(Color.BLACK);
+		lblDo_2.setBounds(147, 223, 17, 14);
 		getContentPane().add(lblDo_2);
 		
 		textFieldObjetosc_Do = new JTextField();
+		textFieldObjetosc_Do.setForeground(Color.BLACK);
+		textFieldObjetosc_Do.setBackground(new Color(204, 153, 255));
 		textFieldObjetosc_Do.setBounds(168, 220, 34, 20);
 		getContentPane().add(textFieldObjetosc_Do);
 		textFieldObjetosc_Do.setColumns(10);
 		
 		JButton btnAnuluj = new JButton("Anuluj");
+		btnAnuluj.setForeground(Color.BLACK);
+		btnAnuluj.setBackground(new Color(153, 102, 204));
 		btnAnuluj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
@@ -130,6 +164,8 @@ public class OpcjeZaawOkno extends JDialog {
 		getContentPane().add(btnAnuluj);
 		
 		JButton btnSzukaj = new JButton("Szukaj");
+		btnSzukaj.setForeground(Color.BLACK);
+		btnSzukaj.setBackground(new Color(153, 102, 204));
 		btnSzukaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

@@ -21,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class ZatwierdzenieOUsuwaniuOkienko extends JDialog {
 
@@ -33,6 +34,7 @@ Funkcje funkcje;
 	 * @param table 
 	 */
 	public ZatwierdzenieOUsuwaniuOkienko(Produkt _produkt,FormularzDetal _formularzDetal,FormularzWysylka _formularzWysylka, JTable _table,int _i) {
+		getContentPane().setBackground(new Color(102, 0, 102));
 		setTitle("Potwierdzenie");
 		
 		try
@@ -49,12 +51,15 @@ Funkcje funkcje;
 		getContentPane().setLayout(null);
 		
 		JLabel JLabeltekst = new JLabel("Czy aby napewno chcesz usun\u0105\u0107 ten obiekt?");
+		JLabeltekst.setForeground(Color.BLACK);
 		JLabeltekst.setHorizontalAlignment(SwingConstants.CENTER);
 		JLabeltekst.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		JLabeltekst.setBounds(21, 30, 384, 75);
 		getContentPane().add(JLabeltekst);
 		
 		JButton btnTak = new JButton("Tak");
+		btnTak.setBackground(new Color(153, 102, 204));
+		btnTak.setForeground(Color.BLACK);
 		btnTak.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(_i==1){//usuwanie produktu
@@ -96,6 +101,8 @@ Funkcje funkcje;
 		getContentPane().add(btnTak);
 		
 		JButton btnNie = new JButton("Nie");
+		btnNie.setBackground(new Color(153, 102, 204));
+		btnNie.setForeground(Color.BLACK);
 		btnNie.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

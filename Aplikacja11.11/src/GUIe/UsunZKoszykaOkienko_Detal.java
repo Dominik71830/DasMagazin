@@ -18,6 +18,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class UsunZKoszykaOkienko_Detal extends JDialog {
 	
@@ -53,20 +54,26 @@ public class UsunZKoszykaOkienko_Detal extends JDialog {
 		setBounds(100, 100, 255, 155);
 		  setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(102, 0, 102));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		JLabel lblIleUsunProduktw = new JLabel("Ile usun¹æ produkt\u00F3w");
+		lblIleUsunProduktw.setForeground(Color.BLACK);
 		lblIleUsunProduktw.setBounds(27, 24, 124, 22);
 		contentPanel.add(lblIleUsunProduktw);
 		
 		textField = new JTextField();
+		textField.setBackground(new Color(204, 153, 255));
+		textField.setForeground(Color.BLACK);
 		textField.setBounds(156, 25, 42, 20);
 		contentPanel.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnOk = new JButton("Ok");
+		btnOk.setForeground(Color.BLACK);
+		btnOk.setBackground(new Color(153, 102, 204));
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -128,10 +135,5 @@ public class UsunZKoszykaOkienko_Detal extends JDialog {
 		});
 		btnOk.setBounds(73, 57, 89, 23);
 		contentPanel.add(btnOk);
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-		}
 	}
 }

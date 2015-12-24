@@ -65,12 +65,15 @@ public class DodajFormularzMagazynOkno extends JDialog {
 	 * @throws Exception 
 	 */
 	public DodajFormularzMagazynOkno(List<Produkt> kupione, JTable table) throws Exception {
+		getContentPane().setBackground(new Color(102, 0, 102));
 		setTitle("Dodaj formularz");
 		funkcje = new Funkcje();
 		masa = 0.0;
 		suma = 0.0;
-		kupione.removeAll(kupione);
+		kupione.removeAll(kupione); //wyczyszczenie listy z poprzedniego formularza
 		
+		
+		//pobranie ladownosci dla najbardziej pojemnego auta w bazie
 		try {
 			ladownosc_najwiekszego_auta = funkcje.getNajwiekszaLadownosc();
 		} catch (SQLException e1) {
@@ -84,7 +87,9 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		btnKolorki.setEnabled(false);
 		
 		textFieldCena = new JTextField();
-		textFieldCena.setBounds(608, 415, 47, 20);
+		textFieldCena.setForeground(Color.BLACK);
+		textFieldCena.setBackground(new Color(204, 153, 255));
+		textFieldCena.setBounds(564, 415, 60, 20);
 		getContentPane().add(textFieldCena);
 		textFieldCena.setColumns(10);
 		textFieldCena.setEditable(false);
@@ -94,44 +99,59 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		getContentPane().setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 11, 795, 393);
+		scrollPane.setBounds(10, 11, 742, 393);
 		getContentPane().add(scrollPane);
 		
 		tableDodane = new JTable();
+		tableDodane.setForeground(Color.BLACK);
+		tableDodane.setBackground(new Color(204, 153, 255));
 		scrollPane.setViewportView(tableDodane);
 		
 		JComboBox comboBoxProdukty = new JComboBox();
-		comboBoxProdukty.setBounds(848, 55, 169, 20);
+		comboBoxProdukty.setForeground(Color.BLACK);
+		comboBoxProdukty.setBackground(new Color(153, 102, 204));
+		comboBoxProdukty.setBounds(773, 55, 244, 20);
 		getContentPane().add(comboBoxProdukty);
 		funkcje.wypelnijComboboxaProduktami(comboBoxProdukty);
 		
 		textFieldIle = new JTextField();
+		textFieldIle.setForeground(Color.BLACK);
+		textFieldIle.setBackground(new Color(204, 153, 255));
 		textFieldIle.setBounds(1027, 55, 47, 20);
 		getContentPane().add(textFieldIle);
 		textFieldIle.setColumns(10);
 		
 		JComboBox comboBoxMiejsceDocelowe = new JComboBox();
-		comboBoxMiejsceDocelowe.setBounds(848, 150, 169, 20);
+		comboBoxMiejsceDocelowe.setForeground(Color.BLACK);
+		comboBoxMiejsceDocelowe.setBackground(new Color(153, 102, 204));
+		comboBoxMiejsceDocelowe.setBounds(773, 150, 244, 20);
 		getContentPane().add(comboBoxMiejsceDocelowe);
 		funkcje.wypelnijComboboxaMiejscamiDocelowymi(comboBoxMiejsceDocelowe);
 		
 		
 		
 		JLabel lblWstawProdukty = new JLabel("Wstaw produkty");
-		lblWstawProdukty.setBounds(847, 30, 89, 14);
+		lblWstawProdukty.setForeground(Color.BLACK);
+		lblWstawProdukty.setBounds(773, 30, 89, 14);
 		getContentPane().add(lblWstawProdukty);
 		
 		JLabel lblWybierzMiejsce = new JLabel("Wybierz miejsce docelowe");
-		lblWybierzMiejsce.setBounds(848, 125, 147, 14);
+		lblWybierzMiejsce.setForeground(Color.BLACK);
+		lblWybierzMiejsce.setBounds(773, 125, 147, 14);
 		getContentPane().add(lblWybierzMiejsce);
 		
 		JLabel lblWybierzSamochdDostawczy = new JLabel("Wybierz samoch\u00F3d dostawczy");
-		lblWybierzSamochdDostawczy.setBounds(847, 200, 170, 14);
+		lblWybierzSamochdDostawczy.setForeground(Color.BLACK);
+		lblWybierzSamochdDostawczy.setBounds(773, 197, 170, 14);
 		getContentPane().add(lblWybierzSamochdDostawczy);
 		
 		JComboBox comboBoxAuta = new JComboBox();
+		comboBoxAuta.setForeground(Color.BLACK);
+		comboBoxAuta.setBackground(new Color(153, 102, 204));
 		comboBoxAuta.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				//ustawianie koloru znacznika dostepnosci auta
 				Samochod samochod = (Samochod)comboBoxAuta.getSelectedItem();
 				if(samochod.isCzy_jest_na_stanie())
 					btnKolorki.setBackground(Color.GREEN);
@@ -140,11 +160,13 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				}
 			}
 		});
-		comboBoxAuta.setBounds(848, 222, 170, 20);
+		comboBoxAuta.setBounds(773, 222, 244, 20);
 		getContentPane().add(comboBoxAuta);
 		funkcje.wypelnijComboboxaAutami(comboBoxAuta);
 		
 		JButton btnZrobione = new JButton("Zrobione");
+		btnZrobione.setForeground(Color.BLACK);
+		btnZrobione.setBackground(new Color(153, 102, 204));
 		btnZrobione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				//sprawdzanie ³adownoœci
@@ -203,6 +225,8 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		getContentPane().add(btnZrobione);
 		
 		JButton btnPowrt = new JButton("Powr\u00F3t");
+		btnPowrt.setForeground(Color.BLACK);
+		btnPowrt.setBackground(new Color(153, 102, 204));
 		btnPowrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -213,10 +237,14 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		getContentPane().add(btnPowrt);
 		
 		JButton btnUsu = new JButton("Usu\u0144");
+		btnUsu.setForeground(Color.BLACK);
+		btnUsu.setBackground(new Color(153, 102, 204));
 		btnUsu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				suma=0.0;
 				masa=0.0;
+				
+				//wybranie produktu do usuniciea
 				int row = tableDodane.getSelectedRow();
 				
 				if (row < 0) {
@@ -226,6 +254,8 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				
 				Produkt tempProdukt = (Produkt)tableDodane.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
+				
+				//wywolanie okna z iloscia do usuniecia
 				UsunZKoszykaOkienko_Wysylka okno = null;
 				try {
 					okno = new UsunZKoszykaOkienko_Wysylka(row, tempProdukt,kupione,tableDodane,textFieldCena, textFieldMasa);
@@ -241,6 +271,8 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		getContentPane().add(btnUsu);
 		
 		JButton btnNewButton = new JButton("Wstaw");
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.setBackground(new Color(153, 102, 204));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -250,6 +282,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				String nazwa = tempProdukt.getNazwa();
 				int ilosc = Integer.parseInt(textFieldIle.getText());
 				
+				//czy ilosc jest sensowna
 				if(ilosc >0 && ilosc <= funkcje.ileJestNaMagazynie(tempProdukt))
 				{
 				textFieldIle.setText("");
@@ -258,6 +291,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				
 				Produkt kupiony = new Produkt(nazwa,ilosc,cena,objetosc);
 				
+				//odjecie roznicy w ilosci
 				int roznica = tempProdukt.getIlosc()-ilosc;
 				try {
 					funkcje.odejmijIlosc(tempProdukt,roznica);
@@ -265,10 +299,12 @@ public class DodajFormularzMagazynOkno extends JDialog {
 					JOptionPane.showMessageDialog(null, "B³¹d przy odejmowaniu iloœci produktu "+exc);
 				}
 				
+				//zlicznie masy
 				masa += kupiony.getObjetosc();
 				masa = funkcje.zaokraglij(masa);
 				textFieldMasa.setText(Double.toString(masa));
 				
+				//zliczenie sumy
 				suma += kupiony.getCena();
 				suma = funkcje.zaokraglij(suma);
 				textFieldCena.setText(Double.toString(suma));
@@ -278,6 +314,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				ModelTablicyProduktowDodanych model = new ModelTablicyProduktowDodanych(kupione);
 				tableDodane.setModel(model);
 				
+				//sprawdzanie czy nie przekroczono max ladownosci najwiekszego auta
 				if(ladownosc_najwiekszego_auta < masa){
 					//JOptionPane.showMessageDialog(null, ladownosc_najwiekszego_auta);
 					JOptionPane.showMessageDialog(null, "Przekroczono maksymaln¹ dopuszczaln¹ ³adownoœæ dla jednego transportu. Proszê zmniejszyæ iloœæ produktów");	
@@ -296,7 +333,7 @@ public class DodajFormularzMagazynOkno extends JDialog {
 				{
 					JOptionPane.showMessageDialog(null, "Proszê podaæ poprawn¹ iloœæ");
 				}
-				// tutaj trzeba odswiezyæ comboboxa z produktami
+				
 				
 			}
 		});
@@ -304,16 +341,20 @@ public class DodajFormularzMagazynOkno extends JDialog {
 		getContentPane().add(btnNewButton);
 		
 		JLabel lblSuma = new JLabel("Suma");
-		lblSuma.setBounds(567, 418, 46, 14);
+		lblSuma.setForeground(Color.BLACK);
+		lblSuma.setBounds(529, 418, 46, 14);
 		getContentPane().add(lblSuma);
 		
 		textFieldMasa = new JTextField();
-		textFieldMasa.setBounds(758, 415, 47, 20);
+		textFieldMasa.setForeground(Color.BLACK);
+		textFieldMasa.setBackground(new Color(204, 153, 255));
+		textFieldMasa.setBounds(689, 415, 63, 20);
 		getContentPane().add(textFieldMasa);
 		textFieldMasa.setColumns(10);
 		
 		JLabel lblMasa = new JLabel("Masa");
-		lblMasa.setBounds(715, 418, 33, 14);
+		lblMasa.setForeground(Color.BLACK);
+		lblMasa.setBounds(653, 418, 33, 14);
 		getContentPane().add(lblMasa);
 		
 		

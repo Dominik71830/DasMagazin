@@ -17,6 +17,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class SprzedazDetalicznaOkno extends JDialog {
 	private static JTable tableformularz;
@@ -45,14 +46,18 @@ public class SprzedazDetalicznaOkno extends JDialog {
 	 * Create the dialog.
 	 */
 	public SprzedazDetalicznaOkno() {
+		getContentPane().setBackground(new Color(102, 0, 102));
 		
 		JScrollPane scrollPaneFormularz = new JScrollPane();
 		scrollPaneFormularz.setBounds(201, 21, 523, 336);
 		getContentPane().add(scrollPaneFormularz);
 		
 		tableformularz = new JTable();
+		tableformularz.setBackground(new Color(204, 153, 255));
+		tableformularz.setForeground(Color.BLACK);
 		scrollPaneFormularz.setViewportView(tableformularz);
 		
+		//wypelnianie tablicy formularzami
 		try {
 			funkcje = new Funkcje();
 			
@@ -77,8 +82,12 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		
 		
 		JButton btnWywietlFormularz = new JButton("Wy\u015Bwietl formularz");
+		btnWywietlFormularz.setForeground(Color.BLACK);
+		btnWywietlFormularz.setBackground(new Color(153, 102, 204));
 		btnWywietlFormularz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				//wybranei formularza z tabeli
 				int row = tableformularz.getSelectedRow();
 				
 				if (row < 0) {
@@ -88,6 +97,7 @@ public class SprzedazDetalicznaOkno extends JDialog {
 				
 				FormularzDetal tempformularz = (FormularzDetal)tableformularz.getValueAt(row, ModelTablicyFormularzyDetal.OBJECT_COL);
 				
+				//wywolanie okna do wypisania formularza
 				WyswietlanieFormularzyOkno okno;
 				try {
 					okno = new WyswietlanieFormularzyOkno(tempformularz,null);
@@ -103,6 +113,8 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		getContentPane().add(btnWywietlFormularz);
 		
 		JButton btnDodajFormularz = new JButton("Dodaj formularz");
+		btnDodajFormularz.setBackground(new Color(153, 102, 204));
+		btnDodajFormularz.setForeground(Color.BLACK);
 		btnDodajFormularz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -115,9 +127,12 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		getContentPane().add(btnDodajFormularz);
 		
 		JButton btnUsunFormularz = new JButton("Usu\u0144 formularz");
+		btnUsunFormularz.setBackground(new Color(153, 102, 204));
+		btnUsunFormularz.setForeground(Color.BLACK);
 		btnUsunFormularz.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				//wybranie formularza z tabeli
 				int row = tableformularz.getSelectedRow();
 				
 				if (row < 0) {
@@ -127,6 +142,7 @@ public class SprzedazDetalicznaOkno extends JDialog {
 				
 				FormularzDetal tempformularz = (FormularzDetal)tableformularz.getValueAt(row, ModelTablicyFormularzyDetal.OBJECT_COL);
 				
+				//wywolanie okna z usuwaniem formularza
 				ZatwierdzenieOUsuwaniuOkienko zat = new ZatwierdzenieOUsuwaniuOkienko(null,tempformularz,null,tableformularz,2);
 				zat.setVisible(true);
 			}
@@ -135,6 +151,8 @@ public class SprzedazDetalicznaOkno extends JDialog {
 		getContentPane().add(btnUsunFormularz);
 		
 		JButton btnPowrt = new JButton("Powr\u00F3t");
+		btnPowrt.setBackground(new Color(153, 102, 204));
+		btnPowrt.setForeground(Color.BLACK);
 		btnPowrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

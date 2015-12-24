@@ -18,6 +18,7 @@ import java.io.EOFException;
 import java.sql.SQLException;
 import java.util.List;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class IloscOkienko extends JDialog {
 	
@@ -51,20 +52,26 @@ public class IloscOkienko extends JDialog {
 		setBounds(100, 100, 255, 155);
 		  setLocationRelativeTo(null);
 		getContentPane().setLayout(new BorderLayout());
+		contentPanel.setBackground(new Color(102, 0, 102));
 		contentPanel.setBorder(new EmptyBorder(5, 5, 5, 5));
 		getContentPane().add(contentPanel, BorderLayout.CENTER);
 		contentPanel.setLayout(null);
 		
 		JLabel lblIleDodaProduktw = new JLabel("Ile doda\u0107 produkt\u00F3w");
+		lblIleDodaProduktw.setForeground(Color.BLACK);
 		lblIleDodaProduktw.setBounds(27, 24, 124, 22);
 		contentPanel.add(lblIleDodaProduktw);
 		
 		textField = new JTextField();
+		textField.setForeground(Color.BLACK);
+		textField.setBackground(new Color(204, 153, 255));
 		textField.setBounds(156, 25, 42, 20);
 		contentPanel.add(textField);
 		textField.setColumns(10);
 		
 		JButton btnOk = new JButton("Ok");
+		btnOk.setForeground(Color.BLACK);
+		btnOk.setBackground(new Color(153, 102, 204));
 		btnOk.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				try{
@@ -74,6 +81,7 @@ public class IloscOkienko extends JDialog {
 				String nazwa = _tempProdukt.getNazwa();
 				int ilosc = Integer.parseInt(textField.getText());
 				
+				//sprawdzanie sensownosci ilosci
 				if(		ilosc>0 
 						&&
 						ilosc <= funkcje.ileJestNaMagazynie(_tempProdukt))
@@ -82,6 +90,7 @@ public class IloscOkienko extends JDialog {
 				
 				Produkt kupiony = new Produkt(nazwa,ilosc,cena);
 				
+				//odjecie roznicy z magazynu
 				roznica = _tempProdukt.getIlosc()-ilosc;
 				try {
 					funkcje.odejmijIlosc(_tempProdukt,roznica);
@@ -89,6 +98,7 @@ public class IloscOkienko extends JDialog {
 					JOptionPane.showMessageDialog(null, "B³¹d przy odejmowaniu iloœci produktu "+exc);
 				}
 				
+				//zliczenie i zaokraglenie sumy
 				suma += kupiony.getCena();
 				suma = funkcje.zaokraglij(suma);
 				
@@ -98,7 +108,7 @@ public class IloscOkienko extends JDialog {
 	
 				ModelTablicyProduktowDodanych model = new ModelTablicyProduktowDodanych(_kupione);
 				_tableDodane.setModel(model);
-				/////////////////////
+				/////////////////////odswiedzenie tebeli z produkktami
 				funkcje.odswiezProdukty(_tableProdukty);
 				setVisible(false);
 				dispose();
@@ -117,10 +127,5 @@ public class IloscOkienko extends JDialog {
 		});
 		btnOk.setBounds(74, 61, 89, 23);
 		contentPanel.add(btnOk);
-		{
-			JPanel buttonPane = new JPanel();
-			buttonPane.setLayout(new FlowLayout(FlowLayout.RIGHT));
-			getContentPane().add(buttonPane, BorderLayout.SOUTH);
-		}
 	}
 }

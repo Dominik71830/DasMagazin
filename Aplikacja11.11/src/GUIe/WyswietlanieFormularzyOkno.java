@@ -12,6 +12,7 @@ import pakiet.FormularzWysylka;
 import pakiet.Funkcje;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Color;
 
 public class WyswietlanieFormularzyOkno extends JDialog {
 
@@ -37,6 +38,7 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 	 * @throws Exception 
 	 */
 	public WyswietlanieFormularzyOkno(FormularzDetal formularzdetal, FormularzWysylka formularzwysylka) throws Exception {
+		getContentPane().setBackground(new Color(102, 0, 102));
 		funkcje = new Funkcje();
 		setTitle("Formularze");
 		setBounds(100, 100, 710, 480);
@@ -48,10 +50,14 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 		getContentPane().add(scrollPaneFormularzy);
 		
 		JTextArea textArea = new JTextArea();
+		textArea.setForeground(Color.BLACK);
+		textArea.setBackground(new Color(255, 255, 255));
 		textArea.setEditable(false);
 		scrollPaneFormularzy.setViewportView(textArea);
 		
 		JButton btnNewPowrt = new JButton("Powr\u00F3t");
+		btnNewPowrt.setForeground(Color.BLACK);
+		btnNewPowrt.setBackground(new Color(153, 102, 153));
 		btnNewPowrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			setVisible(false);
@@ -61,7 +67,7 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 		btnNewPowrt.setBounds(556, 408, 128, 23);
 		getContentPane().add(btnNewPowrt);
 		
-		if(formularzwysylka==null){
+		if(formularzwysylka==null){//sposob wyswietlania formularza wysylkowego
 		textArea.setText(
 				"\t\tFormularz"+
 				"\n\n\n"+
@@ -85,7 +91,7 @@ public class WyswietlanieFormularzyOkno extends JDialog {
 				);
 		}
 		
-		if(formularzdetal==null){
+		if(formularzdetal==null){//sposob wyswietlania formularza detalicznego
 			textArea.setText(
 					"\t\tFormularz"+
 					"\n\n\n"+

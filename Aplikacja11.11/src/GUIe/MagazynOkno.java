@@ -58,6 +58,8 @@ public class MagazynOkno extends JDialog {
 	 * Create the dialog.
 	 */
 	public MagazynOkno() {
+		getContentPane().setForeground(Color.BLACK);
+		getContentPane().setBackground(new Color(102, 0, 102));
 		setTitle("Magazyn");
 		
 		try
@@ -75,6 +77,8 @@ public class MagazynOkno extends JDialog {
 		getContentPane().add(scrollPane);
 		
 		table = new JTable();
+		table.setForeground(Color.BLACK);
+		table.setBackground(new Color(204, 153, 255));
 		scrollPane.setViewportView(table);
 		
 		setBounds(0, 0, 800, 520);
@@ -83,30 +87,41 @@ public class MagazynOkno extends JDialog {
 		
 		Double[] VatStrings = {0.05,0.08,0.23};
 		JComboBox comboBoxVat = new JComboBox(VatStrings);
+		comboBoxVat.setBackground(new Color(204, 153, 255));
+		comboBoxVat.setForeground(Color.BLACK);
 		comboBoxVat.setEnabled(false);
 		comboBoxVat.setBounds(107, 136, 116, 20);
 		getContentPane().add(comboBoxVat);
 		
 		JLabel JLabelKategoria = new JLabel("Kategoria:");
+		JLabelKategoria.setForeground(Color.BLACK);
 		JLabelKategoria.setBounds(10, 164, 72, 14);
 		getContentPane().add(JLabelKategoria);
 		
+		//wartosci dla combobocxa
 		String[] KategorieStrings = {"spo¿ywcze","meble","przemys³owe","elektroniczne"};
 		JComboBox comboBoxKategoria = new JComboBox(KategorieStrings);
+		comboBoxKategoria.setBackground(new Color(204, 153, 255));
+		comboBoxKategoria.setForeground(Color.BLACK);
 		comboBoxKategoria.setEnabled(false);
 		comboBoxKategoria.setBounds(107, 161, 116, 20);
 		getContentPane().add(comboBoxKategoria);
 		
 		JLabel JLabelNazwa = new JLabel("Nazwa:");
+		JLabelNazwa.setForeground(Color.BLACK);
 		JLabelNazwa.setBounds(10, 11, 58, 25);
 		getContentPane().add(JLabelNazwa);
 		
 		textFieldWyszukiwarka = new JTextField();
+		textFieldWyszukiwarka.setBackground(new Color(204, 153, 255));
+		textFieldWyszukiwarka.setForeground(Color.BLACK);
 		textFieldWyszukiwarka.setBounds(78, 11, 396, 25);
 		getContentPane().add(textFieldWyszukiwarka);
 		textFieldWyszukiwarka.setColumns(10);
 		
 		JButton ButtonOpcjeZaaw = new JButton("Opcje zaaw.");
+		ButtonOpcjeZaaw.setForeground(Color.BLACK);
+		ButtonOpcjeZaaw.setBackground(new Color(153, 102, 204));
 		ButtonOpcjeZaaw.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				OpcjeZaawOkno okno;
@@ -125,7 +140,7 @@ public class MagazynOkno extends JDialog {
 		JButton btnOk = new JButton("OK");
 		btnOk.setForeground(Color.BLACK);
 		btnOk.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent arg0) { //dodawanie albo aktualizacja produktu
 				Double vat = null;
 				Double cena = null;
 				Double objetosc = null;
@@ -133,15 +148,15 @@ public class MagazynOkno extends JDialog {
 				
 				
 				try{
-					//String nazwa = textFieldNazwa.getText();
+					//zebranie danych
+					
 					cena = Double.parseDouble(textFieldCena.getText());
 					ilosc = Integer.parseInt(textFieldIlosc.getText());
-					//String kategoria = comboBoxKategoria.getSelectedItem().toString();
 					vat = Double.parseDouble(comboBoxVat.getSelectedItem().toString());
 					objetosc = Double.parseDouble(textFieldObjetosc.getText());
 					
 					
-					
+					//sensownosci danych liczbowych
 					if(		textFieldNazwa.getText() != null && textFieldNazwa.getText().trim().length() > 0
 							&&
 							cena >=0
@@ -151,17 +166,17 @@ public class MagazynOkno extends JDialog {
 							objetosc >=0
 							)
 					{
-					if(!updatemode){
+					if(!updatemode){ //jesli zapisuje
 						zapiszProdukt();
 						}
-						else if(updatemode){
+					else if(updatemode){//jesli edytuje
 							try {
 								edytujProdukt();
 							} catch (SQLException exc) {
 								JOptionPane.showMessageDialog(null,"Blad przy edytowaniu " + exc);
 							} 
-						}
-						//JOptionPane.showMessageDialog(null, "A teraz je wy³¹cze");
+					}
+						//wylacznie pól
 						dezaktywujPola();
 						
 					}
@@ -182,6 +197,7 @@ public class MagazynOkno extends JDialog {
 
 			private void edytujProdukt() throws SQLException {
 				
+				//pobranie produktu do pamiêci
 				int row = table.getSelectedRow();
 				
 				if (row < 0) {
@@ -191,7 +207,7 @@ public class MagazynOkno extends JDialog {
 				
 				poprzedniprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
-				
+				//zebranie nowych danych
 				String nazwa = textFieldNazwa.getText();
 				Double cena = Double.parseDouble(textFieldCena.getText());
 				int ilosc = Integer.parseInt(textFieldIlosc.getText());
@@ -199,6 +215,7 @@ public class MagazynOkno extends JDialog {
 				Double vat = Double.parseDouble(comboBoxVat.getSelectedItem().toString());
 				Double objetosc = Double.parseDouble(textFieldObjetosc.getText());
 				
+				//utworzenie nowego i nadanie mu nowych wartosci
 				Produkt tempprodukt = poprzedniprodukt;
 						
 				tempprodukt.setNazwa(nazwa);;
@@ -208,6 +225,7 @@ public class MagazynOkno extends JDialog {
 				tempprodukt.setVat(vat);
 				tempprodukt.setObjetosc(objetosc);
 				
+				//update i odswiezenie listy
 				try {
 					
 					funkcje.updateProdukt(tempprodukt);
@@ -221,7 +239,7 @@ public class MagazynOkno extends JDialog {
 				
 			}
 
-			private void dezaktywujPola() {
+			private void dezaktywujPola() {//wylacznenie wszystkich pol do edycji
 				textFieldNazwa.setText("");
 				textFieldIlosc.setText("");
 				textFieldCena.setText("");
@@ -240,6 +258,7 @@ public class MagazynOkno extends JDialog {
 			}
 
 			private void zapiszProdukt() {
+				//zebranie danych
 				String nazwa = textFieldNazwa.getText();
 				Double cena = Double.parseDouble(textFieldCena.getText());
 				int ilosc = Integer.parseInt(textFieldIlosc.getText());
@@ -252,7 +271,7 @@ public class MagazynOkno extends JDialog {
 				
 				tempprodukt = new Produkt(nazwa, ilosc, vat, cena, kategoria, objetosc);
 			
-				
+				//dodanie i odswiezenie listy
 				try {
 					
 					funkcje.addProdukt(tempprodukt);
@@ -271,23 +290,25 @@ public class MagazynOkno extends JDialog {
 			
 		});
 		btnOk.setEnabled(false);
-		btnOk.setBackground(SystemColor.activeCaptionBorder);
+		btnOk.setBackground(new Color(153, 102, 204));
 		btnOk.setBounds(92, 229, 91, 23);
 		getContentPane().add(btnOk);
 		
 		JButton ButtonSzukaj = new JButton("Szukaj");
+		ButtonSzukaj.setForeground(Color.BLACK);
+		ButtonSzukaj.setBackground(new Color(153, 102, 204));
 		ButtonSzukaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String nazwa = textFieldWyszukiwarka.getText();
+				String nazwa = textFieldWyszukiwarka.getText();//odczytanie ciagu znakow
 				
 				try{
 					List<Produkt> produkty = null;
 					
 					if (nazwa != null && nazwa.trim().length() > 0) { 
-						produkty = funkcje.searchProdukt(nazwa);
+						produkty = funkcje.searchProdukt(nazwa); //jesli podano nazwe to wyszukaj
 					} else {
-						produkty = funkcje.getAllProdukty();
+						produkty = funkcje.getAllProdukty(); //jesli nie podano to wypisz wszystkie
 					}
 					
 					ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
@@ -306,66 +327,84 @@ public class MagazynOkno extends JDialog {
 		
 		
 		JButton ButtonPowrot = new JButton("Powr\u00F3t");
+		ButtonPowrot.setForeground(Color.BLACK);
+		ButtonPowrot.setBackground(new Color(153, 102, 204));
 		ButtonPowrot.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
+				dispose();
 			}
 		});
 		ButtonPowrot.setBounds(667, 448, 107, 23);
 		getContentPane().add(ButtonPowrot);
 		
 		JLabel JLabelNazwaDodaj = new JLabel("Nazwa:");
+		JLabelNazwaDodaj.setForeground(Color.BLACK);
 		JLabelNazwaDodaj.setBounds(10, 62, 72, 17);
 		getContentPane().add(JLabelNazwaDodaj);
 		
 		textFieldNazwa = new JTextField();
+		textFieldNazwa.setBackground(new Color(204, 153, 255));
+		textFieldNazwa.setForeground(Color.BLACK);
 		textFieldNazwa.setEditable(false);
 		textFieldNazwa.setBounds(107, 60, 174, 20);
 		getContentPane().add(textFieldNazwa);
 		textFieldNazwa.setColumns(10);
 		
 		JLabel JLabelIlosc = new JLabel("Ilo\u015B\u0107: ");
+		JLabelIlosc.setForeground(Color.BLACK);
 		JLabelIlosc.setBounds(10, 90, 72, 14);
 		getContentPane().add(JLabelIlosc);
 		
 		textFieldIlosc = new JTextField();
+		textFieldIlosc.setBackground(new Color(204, 153, 255));
+		textFieldIlosc.setForeground(Color.BLACK);
 		textFieldIlosc.setEditable(false);
 		textFieldIlosc.setBounds(107, 87, 174, 20);
 		getContentPane().add(textFieldIlosc);
 		textFieldIlosc.setColumns(10);
 		
 		JLabel JLabelCena = new JLabel("Cena:");
+		JLabelCena.setForeground(Color.BLACK);
 		JLabelCena.setBounds(10, 115, 72, 14);
 		getContentPane().add(JLabelCena);
 		
 		textFieldCena = new JTextField();
+		textFieldCena.setBackground(new Color(204, 153, 255));
+		textFieldCena.setForeground(Color.BLACK);
 		textFieldCena.setEditable(false);
 		textFieldCena.setBounds(107, 112, 174, 20);
 		getContentPane().add(textFieldCena);
 		textFieldCena.setColumns(10);
 		
 		JLabel JLabelVat = new JLabel("Vat:");
+		JLabelVat.setForeground(Color.BLACK);
 		JLabelVat.setBounds(10, 139, 72, 14);
 		getContentPane().add(JLabelVat);
 		
 		
 		
 		JLabel JLabelObjetosc = new JLabel("Obj\u0119to\u015B\u0107:");
+		JLabelObjetosc.setForeground(Color.BLACK);
 		JLabelObjetosc.setBounds(10, 189, 72, 17);
 		getContentPane().add(JLabelObjetosc);
 		
 		textFieldObjetosc = new JTextField();
+		textFieldObjetosc.setBackground(new Color(204, 153, 255));
+		textFieldObjetosc.setForeground(Color.BLACK);
 		textFieldObjetosc.setEditable(false);
 		textFieldObjetosc.setBounds(107, 187, 174, 20);
 		getContentPane().add(textFieldObjetosc);
 		textFieldObjetosc.setColumns(10);
 		
 		JButton ButtonDodajProdukt = new JButton("Dodaj produkt");
+		ButtonDodajProdukt.setBackground(new Color(153, 102, 204));
+		ButtonDodajProdukt.setForeground(Color.BLACK);
 		ButtonDodajProdukt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//wlaczenie pol do wp\isywania
 				aktywujPola();
-				updatemode=false;
-				//JOptionPane.showMessageDialog(null, "W³¹czy³em okna");	
+				updatemode=false;	
 			}
 			
 			private void aktywujPola() {
@@ -388,9 +427,12 @@ public class MagazynOkno extends JDialog {
 		getContentPane().add(ButtonDodajProdukt);
 		
 		JButton ButtonZmien = new JButton("Zmie\u0144");
+		ButtonZmien.setForeground(Color.BLACK);
+		ButtonZmien.setBackground(new Color(153, 102, 204));
 		ButtonZmien.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
+				//odczytanie produktu z tabeli
 				int row = table.getSelectedRow();
 				
 				if (row < 0) {
@@ -400,7 +442,7 @@ public class MagazynOkno extends JDialog {
 				
 				Produkt tempprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
-				
+				//wlaczenie pol i wypelnienie ich danymi
 				aktywujPola();
 				updatemode=true;
 				wypelnijOkno(tempprodukt);
@@ -423,7 +465,7 @@ public class MagazynOkno extends JDialog {
 
 
 
-			private void wypelnijOkno(Produkt _tempprodukt) {
+			private void wypelnijOkno(Produkt _tempprodukt) { //wypelnianie okien do edytowania
 				textFieldNazwa.setText(_tempprodukt.getNazwa());
 				textFieldIlosc.setText(Integer.toString(_tempprodukt.getIlosc()));
 				textFieldCena.setText(Double.toString(_tempprodukt.getCena()));
@@ -463,10 +505,12 @@ public class MagazynOkno extends JDialog {
 		getContentPane().add(ButtonZmien);
 		
 		JButton ButtonHistoriaZmian = new JButton("Historia zmian");
+		ButtonHistoriaZmian.setForeground(Color.BLACK);
+		ButtonHistoriaZmian.setBackground(new Color(153, 102, 204));
 		ButtonHistoriaZmian.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				//wybieranie produktu z listy
 				int row = table.getSelectedRow();
 				
 				
@@ -478,6 +522,7 @@ public class MagazynOkno extends JDialog {
 				
 				Produkt tempprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 
+				//pobranie logow z bazy i wyswietlenie w nowym oknie
 				try {
 					
 					int produktId = tempprodukt.getId();
@@ -502,9 +547,12 @@ public class MagazynOkno extends JDialog {
 	
 		
 		JButton buttonUsun = new JButton("Usu\u0144 produkt");
+		buttonUsun.setForeground(Color.BLACK);
+		buttonUsun.setBackground(new Color(153, 102, 204));
 		buttonUsun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
+				//wybranie produktu z tabeli
 				int row = table.getSelectedRow();
 				
 				if (row < 0) {
@@ -514,6 +562,7 @@ public class MagazynOkno extends JDialog {
 				
 				Produkt tempprodukt = (Produkt) table.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
+				//wywolanie okna do usuwania
 				ZatwierdzenieOUsuwaniuOkienko zat = new ZatwierdzenieOUsuwaniuOkienko(tempprodukt,null,null,table,1);
 				zat.setVisible(true);
 			}

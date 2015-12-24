@@ -15,6 +15,7 @@ import java.util.List;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+import java.awt.Color;
 
 
 public class DodajFormularzDetalOkno extends JDialog {
@@ -48,14 +49,17 @@ public class DodajFormularzDetalOkno extends JDialog {
 
 	
 	public DodajFormularzDetalOkno(JTable _tableformularz) {
+		getContentPane().setBackground(new Color(102, 0, 102));
 		
-		kupione.removeAll(kupione);
+		kupione.removeAll(kupione);//Czyszczenie listy z poprzednich formularzy
 		setTitle("Dodaj formularz");
 		setBounds(100, 100, 1100, 560);
 		setLocationRelativeTo(null);
 		getContentPane().setLayout(null);
 		
 		textFieldSuma = new JTextField();
+		textFieldSuma.setForeground(Color.BLACK);
+		textFieldSuma.setBackground(new Color(204, 153, 255));
 		textFieldSuma.setEditable(false);
 		textFieldSuma.setBounds(557, 457, 35, 20);
 		getContentPane().add(textFieldSuma);
@@ -67,6 +71,8 @@ public class DodajFormularzDetalOkno extends JDialog {
 		getContentPane().add(scrollPane);
 		
 		tableProdukty = new JTable();
+		tableProdukty.setForeground(Color.BLACK);
+		tableProdukty.setBackground(new Color(204, 153, 255));
 		scrollPane.setViewportView(tableProdukty);
 		
 		JScrollPane scrollPane_1 = new JScrollPane();
@@ -74,12 +80,14 @@ public class DodajFormularzDetalOkno extends JDialog {
 		getContentPane().add(scrollPane_1);
 		
 		tableDodane = new JTable();
+		tableDodane.setForeground(Color.BLACK);
+		tableDodane.setBackground(new Color(204, 153, 255));
 		scrollPane_1.setViewportView(tableDodane);
 		
 		try {
 			funkcje = new Funkcje();
 			produkty = funkcje.getAllProdukty();
-			ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
+			ModelTablicyProduktow model = new ModelTablicyProduktow(produkty); //Wype³nianie tabeli produktami
 			tableProdukty.setModel(model);
 
 		} catch (Exception e1) {
@@ -91,6 +99,8 @@ public class DodajFormularzDetalOkno extends JDialog {
 		
 				
 		JButton btnPowrt = new JButton("Powr\u00F3t");
+		btnPowrt.setForeground(Color.BLACK);
+		btnPowrt.setBackground(new Color(153, 102, 204));
 		btnPowrt.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -101,10 +111,14 @@ public class DodajFormularzDetalOkno extends JDialog {
 		getContentPane().add(btnPowrt);
 		
 		JButton btnDodaj = new JButton("Dodaj produkt");
+		btnDodaj.setForeground(Color.BLACK);
+		btnDodaj.setBackground(new Color(153, 102, 204));
 		btnDodaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			
 				suma = 0.0;
+				
+				///pobranie produktu z tabeli
 				int row = tableProdukty.getSelectedRow();
 				
 				if (row < 0) {
@@ -114,6 +128,8 @@ public class DodajFormularzDetalOkno extends JDialog {
 				
 				Produkt tempProdukt = (Produkt)tableProdukty.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
+				
+				///wyswietlenie okna z iloscia do dodania
 				IloscOkienko okno = null;
 				try {
 					okno = new IloscOkienko(tempProdukt,kupione,tableDodane,textFieldSuma,tableProdukty);
@@ -129,10 +145,14 @@ public class DodajFormularzDetalOkno extends JDialog {
 		getContentPane().add(btnDodaj);
 		
 		JButton btnUsun = new JButton("Usu\u0144 produkt");
+		btnUsun.setForeground(Color.BLACK);
+		btnUsun.setBackground(new Color(153, 102, 204));
 		btnUsun.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			
 				suma = 0.0;
+				
+				///pobranie produktu z tabeliu
 				int row = tableDodane.getSelectedRow();
 				
 				if (row < 0) {
@@ -142,6 +162,8 @@ public class DodajFormularzDetalOkno extends JDialog {
 				//JOptionPane.showMessageDialog(null, tempProdukt.getId());
 				Produkt tempProdukt = (Produkt)tableDodane.getValueAt(row, ModelTablicyProduktow.OBJECT_COL);
 				
+				
+				///wyswietlenie okna z iloscia do usiniecia
 				UsunZKoszykaOkienko_Detal okno = null;
 				try {
 					okno = new UsunZKoszykaOkienko_Detal(row, tempProdukt,kupione,tableDodane,textFieldSuma,tableProdukty);
@@ -159,9 +181,11 @@ public class DodajFormularzDetalOkno extends JDialog {
 		getContentPane().add(btnUsun);
 		
 		JButton btnZrobione = new JButton("Zrobione");
+		btnZrobione.setForeground(Color.BLACK);
+		btnZrobione.setBackground(new Color(153, 102, 204));
 		btnZrobione.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// zapisywanie formularzu
+				// zapisywanie formularza
 			if(		textFieldImie.getText() != null && textFieldImie.getText().trim().length() > 0
 					&&
 					textFieldNazwisko.getText() != null && textFieldNazwisko.getText().trim().length() > 0
@@ -214,19 +238,25 @@ public class DodajFormularzDetalOkno extends JDialog {
 		getContentPane().add(btnZrobione);
 		
 		JLabel lblImieKlienta = new JLabel("Imie");
+		lblImieKlienta.setForeground(Color.BLACK);
 		lblImieKlienta.setBounds(10, 69, 73, 14);
 		getContentPane().add(lblImieKlienta);
 		
 		textFieldImie = new JTextField();
+		textFieldImie.setForeground(Color.BLACK);
+		textFieldImie.setBackground(new Color(204, 153, 255));
 		textFieldImie.setBounds(93, 66, 117, 20);
 		getContentPane().add(textFieldImie);
 		textFieldImie.setColumns(10);
 		
 		JLabel lblNazwiskoKlienta = new JLabel("Nazwisko");
+		lblNazwiskoKlienta.setForeground(Color.BLACK);
 		lblNazwiskoKlienta.setBounds(10, 94, 73, 14);
 		getContentPane().add(lblNazwiskoKlienta);
 		
 		textFieldNazwisko = new JTextField();
+		textFieldNazwisko.setForeground(Color.BLACK);
+		textFieldNazwisko.setBackground(new Color(204, 153, 255));
 		textFieldNazwisko.setBounds(93, 91, 117, 20);
 		getContentPane().add(textFieldNazwisko);
 		textFieldNazwisko.setColumns(10);
@@ -234,14 +264,17 @@ public class DodajFormularzDetalOkno extends JDialog {
 		
 		
 		JLabel lblSuma = new JLabel("Suma");
+		lblSuma.setForeground(Color.BLACK);
 		lblSuma.setBounds(512, 463, 35, 14);
 		getContentPane().add(lblSuma);
 		
 		JLabel lblDaneKlienta = new JLabel("Dane Klienta");
+		lblDaneKlienta.setForeground(Color.BLACK);
 		lblDaneKlienta.setBounds(10, 41, 124, 14);
 		getContentPane().add(lblDaneKlienta);
 		
 		JLabel lblPln = new JLabel("PLN");
+		lblPln.setForeground(Color.BLACK);
 		lblPln.setBounds(602, 460, 46, 14);
 		getContentPane().add(lblPln);
 	}
