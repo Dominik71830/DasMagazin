@@ -206,7 +206,6 @@ public class Funkcje {
 		ResultSet myRs = null;
 		
 		try{
-			//przygotowanie zapytania
 			myStmt = myConn.createStatement();
 			//wykonanie zapytania
 			myRs = myStmt.executeQuery("select * from produkty order by nazwa");
@@ -230,7 +229,6 @@ public class Funkcje {
 		ResultSet myRs = null;
 		
 		try{
-			//przygotowanie zapytania
 			myStmt = myConn.createStatement();
 			//wykonanie zapytania
 			myRs = myStmt.executeQuery("select * from formularzeDetal");
@@ -297,7 +295,6 @@ public class Funkcje {
 		ResultSet myRs = null;
 		
 		try {
-			//przygotowanie zapytania
 			myStmt = myConn.createStatement();
 			
 			String sql = "SELECT data_powstania,akcja "
@@ -426,11 +423,11 @@ public void wyzeruj(Produkt _produkt) throws SQLException {
 public void odswiezProdukty(JTable table) {
 	
 	try{
-		List<Produkt> produkty = getAllProdukty();//utworzenie listy z produktami
+		List<Produkt> produkty = getAllProdukty();//
 		
 		ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
 		
-		table.setModel(model);//ustawienie modelu
+		table.setModel(model);
 	}
 	catch(Exception exc){
 		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu " + exc);
@@ -460,11 +457,11 @@ public void deleteFormularzDetal(FormularzDetal _formularzDetal) throws SQLExcep
 
 public void odswiezFormularzeDetal(JTable _table) {
 	try{
-		List<FormularzDetal> formularzeDetal = getAllFormularzeDetal();//utworzenie listy z formularzami
+		List<FormularzDetal> formularzeDetal = getAllFormularzeDetal();
 		
 		ModelTablicyFormularzyDetal model = new ModelTablicyFormularzyDetal(formularzeDetal);
 		
-		_table.setModel(model);//ustawienie modelu
+		_table.setModel(model);
 	}
 	catch(Exception exc){
 		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu formularzy detalicznych " + exc);
@@ -526,13 +523,11 @@ public String wypiszListe(List<Produkt> kupione) {
 	String nazwa=null;
 	String ilosc=null;
 	String cena=null;
-	
 	for(Produkt p : kupione){
 		nazwa = p.getNazwa();
 		ilosc = Integer.toString(p.getIlosc());
 		cena = Double.toString(zaokraglij(p.getCena()));
 		
-		//w zaleznoœci od d³ugoœci stringa wypisuje z inn¹ iloœci¹ tabulatorów
 		if(nazwa.length()>26)
 			napis += nazwa + "\t" +  ilosc + '\t' +  cena + '\n';
 		else if(nazwa.length()>13)
@@ -546,8 +541,8 @@ public String wypiszListe(List<Produkt> kupione) {
 
 public void wypelnijComboboxaProduktami(JComboBox<Produkt> _comboBox) throws SQLException {
 	List<Produkt> lista = new ArrayList<Produkt>();
-	lista = getAllProdukty();//utworzenie listy
-	for(Produkt p : lista){//dodanie obiektów z listy do comboboxa
+	lista = getAllProdukty();
+	for(Produkt p : lista){
 		_comboBox.addItem(p);
 	}	
 }
@@ -559,7 +554,6 @@ public List<FormularzWysylka> getAllFormularzeWysylkowe() throws SQLException {
 	ResultSet myRs = null;
 	
 	try{
-		//przygotowanie zapytania
 		myStmt = myConn.createStatement();
 		//wykonanie zapytania
 		myRs = myStmt.executeQuery("select * from formularzewysylkowe");
@@ -584,15 +578,15 @@ private FormularzWysylka convertRowToFormularzWysylkowy(ResultSet myRs) throws S
 	Double cena = myRs.getDouble("cena");
 	Date data_dodania = myRs.getDate("data_dodania");
 	
-	FormularzWysylka temp = new FormularzWysylka(id, miejsce_docelowe, produkty, samochod, cena, data_dodania);//utworzenie obiektu
+	FormularzWysylka temp = new FormularzWysylka(id, miejsce_docelowe, produkty, samochod, cena, data_dodania);
 	//JOptionPane.showMessageDialog(null, temp.toString());
 	return temp;
 }
 
 public void wypelnijComboboxaMiejscamiDocelowymi(JComboBox _comboBox) throws SQLException {
 	List<MiejsceDocelowe> lista = new ArrayList<MiejsceDocelowe>();
-	lista = getAllMiejscaDocelowe();//utworzenie listy
-	for(MiejsceDocelowe m : lista){//dodanie obiektów z listy do comboboxa
+	lista = getAllMiejscaDocelowe();
+	for(MiejsceDocelowe m : lista){
 		_comboBox.addItem(m);
 	}	
 	
@@ -605,7 +599,6 @@ private List<MiejsceDocelowe> getAllMiejscaDocelowe() throws SQLException {
 	ResultSet myRs = null;
 	
 	try{
-		//przygotowanie zapytania
 		myStmt = myConn.createStatement();
 		//wykonanie zapytania
 		myRs = myStmt.executeQuery("select * from miejsca_docelowe order by adres");
@@ -627,15 +620,15 @@ private MiejsceDocelowe convertRowToMiejsceDocelowe(ResultSet myRs) throws SQLEx
 	String adres = myRs.getString("adres");
 	int odleglosc = myRs.getInt("odleglosc");
 	
-	MiejsceDocelowe temp = new MiejsceDocelowe(id, adres, odleglosc);//utworzenie obiektu
+	MiejsceDocelowe temp = new MiejsceDocelowe(id, adres, odleglosc);
 	
 	return temp;
 }
 
 public void wypelnijComboboxaAutami(JComboBox _comboBox) throws SQLException {
 	List<Samochod> lista = new ArrayList<Samochod>();
-	lista = getAllSamochody();//utworzenie listy
-	for(Samochod s : lista){//dodanie obiektów z listy do comboboxa
+	lista = getAllSamochody();
+	for(Samochod s : lista){
 		_comboBox.addItem(s);
 	}	
 }
@@ -647,7 +640,6 @@ List<Samochod> lista = new ArrayList<Samochod>();
 	ResultSet myRs = null;
 	
 	try{
-		//przygotowanie zapytania
 		myStmt = myConn.createStatement();
 		//wykonanie zapytania
 		myRs = myStmt.executeQuery("select * from samochody order by model");
@@ -671,11 +663,15 @@ private Samochod convertRowToSamochod(ResultSet myRs) throws SQLException {
 	Double ladownosc = myRs.getDouble("ladownosc");
 	boolean czy_jest_na_stanie = myRs.getBoolean("czy_jest_na_stanie");
 	
-	Samochod temp = new Samochod(id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie);//utworzenie obiektu
+	Samochod temp = new Samochod(id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie);
 	
 	return temp;
 }
 
+public void odswiezComboBoxProdukty(JComboBox comboBoxProdukty) {
+	
+	
+}
 
 public void addFormularzWysylka(FormularzWysylka _formularz) {
 	PreparedStatement myStmt = null;
@@ -729,11 +725,11 @@ public void addFormularzWysylka(FormularzWysylka _formularz) {
 
 public void odswiezFormularzewysylkowe(JTable _table) {
 	try{
-		List<FormularzWysylka> formularze = getAllFormularzeWysylkowe();//utworzenie listy
+		List<FormularzWysylka> formularze = getAllFormularzeWysylkowe();
 		
 		ModelTablicyFormularzyWysylkowych model = new ModelTablicyFormularzyWysylkowych(formularze);
 		
-		_table.setModel(model);//ustawienie modelu
+		_table.setModel(model);
 	}
 	catch(Exception exc){
 		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu formularzy wysylkowych " + exc);
@@ -761,7 +757,7 @@ public void deleteFormularzWysylka(FormularzWysylka _formularzWysylka) throws SQ
 	
 }
 
-public Double zaokraglij(Double suma) {//mno¿y x100, zaokr¹gla i dzieli \100 ¿eby nie gubiæ koñcówek
+public Double zaokraglij(Double suma) {
 	suma  *= 100;
 	suma = (double) Math.round(suma);
 	suma  /= 100;
@@ -772,9 +768,9 @@ public Double getNajwiekszaLadownosc() throws SQLException {
 	Double max=0.0;
 	
 	List<Samochod> lista = new ArrayList<Samochod>();
-	lista = getAllSamochody();//tworzenie listy aut
+	lista = getAllSamochody();
 	
-	for(Samochod s : lista){//wyznaczenie najwiêkszej ³adownoœci spoœród aut z listy
+	for(Samochod s : lista){
 		if(s.getLadownosc() > max && s.isCzy_jest_na_stanie()){
 			max = s.getLadownosc();
 		}

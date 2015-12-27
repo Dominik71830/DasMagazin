@@ -24,13 +24,13 @@ public class Funkcje {
 	
 	public Funkcje()throws Exception{
 		Properties props = new Properties();
-		props.load(new FileInputStream("dane.properties")); //Za³adowanie pliku zewnêtrzego
+		props.load(new FileInputStream("dane.properties"));
 		
 		String user = props.getProperty("user");
 		String password = props.getProperty("password");
 		String dburl = props.getProperty("dburl");
 		
-		myConn = DriverManager.getConnection(dburl, user, password); //Utworzenie po³¹czenia z baz¹
+		myConn = DriverManager.getConnection(dburl, user, password);
 		
 		System.out.println("Po³¹czono z " + dburl + "\n" + "U¿ytkownik: " + user);
 	}
@@ -39,13 +39,10 @@ public class Funkcje {
 		PreparedStatement myStmt = null;
 		
 		try{
-			//przygotowanie zapytania
 			myStmt = myConn.prepareStatement("update produkty"
 					+ " set nazwa=?, ilosc=?, vat=?, cena=?, kategoria=?, objetosc=?"
 					+ " where id=?");
 			
-			
-			//ustawianie parametrów
 			myStmt.setString(1, _produkt.getNazwa());
 			myStmt.setInt(2, _produkt.getIlosc());
 			myStmt.setDouble(3, _produkt.getVat());
@@ -54,23 +51,20 @@ public class Funkcje {
 			myStmt.setDouble(6, _produkt.getObjetosc());
 			myStmt.setInt(7, _produkt.getId());
 			
-			//wykonanie zapytania
 			myStmt.executeUpdate();
 			
 			// LOGI
 			
-			//przygotowanie zapytania
 			myStmt = myConn.prepareStatement("insert into logi"
 					+ " (data_powstania,akcja,produkt_id)"
 					+ " values (?, ?,?)");
 			
 			
-			//ustawianie parametrów
 			myStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
 			myStmt.setString(2, "Aktualizacja produktu.");
 			myStmt.setInt(3, _produkt.getId());
 			
-			//wykonanie zapytania
+			
 			myStmt.executeUpdate();
 			
 		}
@@ -84,12 +78,10 @@ public class Funkcje {
 		PreparedStatement myStmt = null;
 		
 		try{
-			//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("insert into produkty"
 				+ " (nazwa,ilosc,vat,cena,kategoria,objetosc)"
 				+ " values (?, ?, ?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);//, Statement.RETURN_GENERATED_KEYS);
 		
-		//ustawianie parametrów
 		myStmt.setString(1, _produkt.getNazwa());
 		myStmt.setInt(2, _produkt.getIlosc());
 		myStmt.setDouble(3, _produkt.getVat());
@@ -97,7 +89,6 @@ public class Funkcje {
 		myStmt.setString(5, _produkt.getKategoria());
 		myStmt.setDouble(6, _produkt.getObjetosc());
 		
-		//wykonanie zapytania
 		myStmt.executeUpdate();
 		
 		ResultSet kluczeId = myStmt.getGeneratedKeys();
@@ -109,19 +100,16 @@ public class Funkcje {
 		
 		// LOGI
 		
-		//przygotowanie zapytania
 				myStmt = myConn.prepareStatement("insert into logi"
 						+ " (data_powstania,akcja,produkt_id)"
 						+ " values (?, ?,?)");
 				
 				
-				//ustawianie parametrów
 				myStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
 				myStmt.setString(2, "Dodano produkt do bazy.");
 				myStmt.setInt(3, _produkt.getId());
 				
 				
-				//wykonanie zapytania
 				myStmt.executeUpdate();
 				
 		}
@@ -137,19 +125,16 @@ public class Funkcje {
 		PreparedStatement myStmt = null;
 		
 		try{
-			//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("insert into formularzedetal"
 				+ " (imie,nazwisko,produkty,cena,data_dodania)"
 				+ " values (?, ?, ?, ?, ?)");
 		
-		//ustawianie parametrów
 		myStmt.setString(1, _formularz.getImie());
 		myStmt.setString(2, _formularz.getNazwisko());
 		myStmt.setString(3, _formularz.getProdukty());
 		myStmt.setDouble(4, _formularz.getCena());
 		myStmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
 		
-		//wykonanie zapytania
 		myStmt.executeUpdate();
 		
 		/*ResultSet kluczeId = myStmt.getGeneratedKeys();
@@ -161,7 +146,6 @@ public class Funkcje {
 		
 		// LOGI
 		
-		//przygotowanie zapytania
 				myStmt = myConn.prepareStatement("insert into logi"
 						+ " (data_powstania,akcja,produkt_id)"
 						+ " values (?, ?,?)");
@@ -172,7 +156,6 @@ public class Funkcje {
 				myStmt.setInt(3, _produkt.getId());
 				
 				
-				//wykonanie zapytania
 				myStmt.executeUpdate();
 			*/	
 		}
@@ -194,7 +177,7 @@ public class Funkcje {
 		Double vat = myRs.getDouble("vat");
 		Double objetosc = myRs.getDouble("objetosc");
 		
-		Produkt tempProdukt = new Produkt(id, nazwa, ilosc,vat,cena,kategoria,objetosc);//utworzenie obiektu
+		Produkt tempProdukt = new Produkt(id, nazwa, ilosc,vat,cena,kategoria,objetosc);
 		
 		return tempProdukt;
 	}
@@ -206,12 +189,9 @@ public class Funkcje {
 		ResultSet myRs = null;
 		
 		try{
-			//przygotowanie zapytania
 			myStmt = myConn.createStatement();
-			//wykonanie zapytania
 			myRs = myStmt.executeQuery("select * from produkty order by nazwa");
 			
-			//utworzenie listy z obiektami z bazy
 			while(myRs.next()){
 				Produkt tempProdukt = convertRowToProdukt(myRs);
 				lista.add(tempProdukt);
@@ -230,12 +210,9 @@ public class Funkcje {
 		ResultSet myRs = null;
 		
 		try{
-			//przygotowanie zapytania
 			myStmt = myConn.createStatement();
-			//wykonanie zapytania
 			myRs = myStmt.executeQuery("select * from formularzeDetal");
 			
-			//utworzenie listy z obiektami z bazy
 			while(myRs.next()){
 				FormularzDetal temp = convertRowToFormularzDetal(myRs);
 				lista.add(temp);
@@ -256,7 +233,7 @@ public class Funkcje {
 		Double cena = myRs.getDouble("cena");
 		Date data_dodania = myRs.getDate("data_dodania");
 		
-		FormularzDetal temp = new FormularzDetal(id, imie, nazwisko, produkty, cena, data_dodania);//utworzenie obiektu
+		FormularzDetal temp = new FormularzDetal(id, imie, nazwisko, produkty, cena, data_dodania);
 		
 		return temp;
 	}
@@ -269,15 +246,12 @@ public class Funkcje {
 
 		try {
 			_nazwa = '%' + _nazwa + '%';
-			//przygotowanie zapytania
 			myStmt = myConn.prepareStatement("select * from produkty where nazwa like ?  order by nazwa");
 			
 			myStmt.setString(1, _nazwa);
 			
-			//wykonanie zapytania
 			myRs = myStmt.executeQuery();
 			
-			//utworzenie listy z obiektami z bazy
 			while (myRs.next()) {
 				Produkt tempProdukt = convertRowToProdukt(myRs);
 				lista.add(tempProdukt);
@@ -297,17 +271,14 @@ public class Funkcje {
 		ResultSet myRs = null;
 		
 		try {
-			//przygotowanie zapytania
 			myStmt = myConn.createStatement();
 			
 			String sql = "SELECT data_powstania,akcja "
 					+ "FROM logi "
 					+ "WHERE produkt_id=" + _produktId;
 			
-			//wykonanie zapytania
 			myRs = myStmt.executeQuery(sql);
 			
-			//utworzenie listy z obiektami z bazy
 			while (myRs.next()) {
 				
 				String akcja = myRs.getString("logi.akcja");
@@ -327,7 +298,7 @@ public class Funkcje {
 		}
 	}
 	
-	private static void close(Connection myConn, Statement myStmt, ResultSet myRs)//zamykane po³¹czeñ
+	private static void close(Connection myConn, Statement myStmt, ResultSet myRs)
 			throws SQLException {
 
 		if (myRs != null) {
@@ -368,13 +339,10 @@ public void deleteProdukt(int _id) throws SQLException {
 	PreparedStatement myStmt = null;
 	
 	try{
-		//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("delete from produkty where id = ?");
 		
-		//ustawianie parametrów
 		myStmt.setInt(1, _id);
 		
-		//wykonanie zapytania
 		myStmt.executeUpdate();
 	}
 	finally{
@@ -389,32 +357,26 @@ public void wyzeruj(Produkt _produkt) throws SQLException {
 	
 	try{
 		
-		//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("update produkty"
 				+ " set ilosc=0"
 				+ " where id=?");
 		
-		//ustawianie parametrów
 		myStmt.setInt(1,_id);
 		
-		//wykonanie zapytania
 		myStmt.executeUpdate();
 		
 		//LOGI
 		
-		//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("insert into logi"
 				+ " (data_powstania,akcja,produkt_id)"
 				+ " values (?, ?,?)");
 		
 		
-		//ustawianie parametrów
 		myStmt.setTimestamp(1, new Timestamp(System.currentTimeMillis()));
 		myStmt.setString(2, "Iloœæ produktu wyzerowana.");
 		myStmt.setInt(3, _produkt.getId());
 		
 		
-		//wykonanie zapytania
 		myStmt.executeUpdate();
 	}
 	finally{
@@ -426,11 +388,11 @@ public void wyzeruj(Produkt _produkt) throws SQLException {
 public void odswiezProdukty(JTable table) {
 	
 	try{
-		List<Produkt> produkty = getAllProdukty();//utworzenie listy z produktami
+		List<Produkt> produkty = getAllProdukty();
 		
 		ModelTablicyProduktow model = new ModelTablicyProduktow(produkty);
 		
-		table.setModel(model);//ustawienie modelu
+		table.setModel(model);
 	}
 	catch(Exception exc){
 		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu " + exc);
@@ -444,13 +406,10 @@ public void deleteFormularzDetal(FormularzDetal _formularzDetal) throws SQLExcep
 	
 	
 	try{
-		//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("delete from formularzedetal where id = ?");
 		
-		//ustawianie parametrów
 		myStmt.setInt(1, id);
 		
-		//wykonanie zapytania
 		myStmt.executeUpdate();
 	}
 	finally{
@@ -460,11 +419,11 @@ public void deleteFormularzDetal(FormularzDetal _formularzDetal) throws SQLExcep
 
 public void odswiezFormularzeDetal(JTable _table) {
 	try{
-		List<FormularzDetal> formularzeDetal = getAllFormularzeDetal();//utworzenie listy z formularzami
+		List<FormularzDetal> formularzeDetal = getAllFormularzeDetal();
 		
 		ModelTablicyFormularzyDetal model = new ModelTablicyFormularzyDetal(formularzeDetal);
 		
-		_table.setModel(model);//ustawienie modelu
+		_table.setModel(model);
 	}
 	catch(Exception exc){
 		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu formularzy detalicznych " + exc);
@@ -477,16 +436,13 @@ public void odejmijIlosc(Produkt _tempProdukt, int roznica) throws SQLException 
 	
 	try{
 		
-		//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("update produkty"
 				+ " set ilosc=?"
 				+ " where id=?");
 		
-		//ustawianie parametrów
 		myStmt.setInt(1, roznica);
 		myStmt.setInt(2,_id);
 		
-		//wykonanie zapytania
 		myStmt.executeUpdate();
 	}
 	finally{
@@ -501,16 +457,13 @@ public void zwrocIloscDoBazy(Produkt _tempProdukt, int _roznica) throws SQLExcep
 
 	try{
 		
-		//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("update produkty"
 				+ " set ilosc=ilosc+?"
 				+ " where nazwa=?");
 		
-		//ustawianie parametrów
 		myStmt.setInt(1,_roznica);
 		myStmt.setString(2,_nazwa);;
 		
-		//wykonanie zapytania
 		myStmt.executeUpdate();
 	}
 	finally{
@@ -526,13 +479,11 @@ public String wypiszListe(List<Produkt> kupione) {
 	String nazwa=null;
 	String ilosc=null;
 	String cena=null;
-	
 	for(Produkt p : kupione){
 		nazwa = p.getNazwa();
 		ilosc = Integer.toString(p.getIlosc());
 		cena = Double.toString(zaokraglij(p.getCena()));
 		
-		//w zaleznoœci od d³ugoœci stringa wypisuje z inn¹ iloœci¹ tabulatorów
 		if(nazwa.length()>26)
 			napis += nazwa + "\t" +  ilosc + '\t' +  cena + '\n';
 		else if(nazwa.length()>13)
@@ -546,8 +497,8 @@ public String wypiszListe(List<Produkt> kupione) {
 
 public void wypelnijComboboxaProduktami(JComboBox<Produkt> _comboBox) throws SQLException {
 	List<Produkt> lista = new ArrayList<Produkt>();
-	lista = getAllProdukty();//utworzenie listy
-	for(Produkt p : lista){//dodanie obiektów z listy do comboboxa
+	lista = getAllProdukty();
+	for(Produkt p : lista){
 		_comboBox.addItem(p);
 	}	
 }
@@ -559,12 +510,9 @@ public List<FormularzWysylka> getAllFormularzeWysylkowe() throws SQLException {
 	ResultSet myRs = null;
 	
 	try{
-		//przygotowanie zapytania
 		myStmt = myConn.createStatement();
-		//wykonanie zapytania
 		myRs = myStmt.executeQuery("select * from formularzewysylkowe");
 		
-		//utworzenie listy z obiektami z bazy
 		while(myRs.next()){
 			FormularzWysylka temp = convertRowToFormularzWysylkowy(myRs);
 			lista.add(temp);
@@ -584,15 +532,15 @@ private FormularzWysylka convertRowToFormularzWysylkowy(ResultSet myRs) throws S
 	Double cena = myRs.getDouble("cena");
 	Date data_dodania = myRs.getDate("data_dodania");
 	
-	FormularzWysylka temp = new FormularzWysylka(id, miejsce_docelowe, produkty, samochod, cena, data_dodania);//utworzenie obiektu
+	FormularzWysylka temp = new FormularzWysylka(id, miejsce_docelowe, produkty, samochod, cena, data_dodania);
 	//JOptionPane.showMessageDialog(null, temp.toString());
 	return temp;
 }
 
 public void wypelnijComboboxaMiejscamiDocelowymi(JComboBox _comboBox) throws SQLException {
 	List<MiejsceDocelowe> lista = new ArrayList<MiejsceDocelowe>();
-	lista = getAllMiejscaDocelowe();//utworzenie listy
-	for(MiejsceDocelowe m : lista){//dodanie obiektów z listy do comboboxa
+	lista = getAllMiejscaDocelowe();
+	for(MiejsceDocelowe m : lista){
 		_comboBox.addItem(m);
 	}	
 	
@@ -605,12 +553,9 @@ private List<MiejsceDocelowe> getAllMiejscaDocelowe() throws SQLException {
 	ResultSet myRs = null;
 	
 	try{
-		//przygotowanie zapytania
 		myStmt = myConn.createStatement();
-		//wykonanie zapytania
 		myRs = myStmt.executeQuery("select * from miejsca_docelowe order by adres");
 		
-		//utworzenie listy z obiektami z bazy
 		while(myRs.next()){
 			MiejsceDocelowe temp = convertRowToMiejsceDocelowe(myRs);
 			lista.add(temp);
@@ -627,15 +572,15 @@ private MiejsceDocelowe convertRowToMiejsceDocelowe(ResultSet myRs) throws SQLEx
 	String adres = myRs.getString("adres");
 	int odleglosc = myRs.getInt("odleglosc");
 	
-	MiejsceDocelowe temp = new MiejsceDocelowe(id, adres, odleglosc);//utworzenie obiektu
+	MiejsceDocelowe temp = new MiejsceDocelowe(id, adres, odleglosc);
 	
 	return temp;
 }
 
 public void wypelnijComboboxaAutami(JComboBox _comboBox) throws SQLException {
 	List<Samochod> lista = new ArrayList<Samochod>();
-	lista = getAllSamochody();//utworzenie listy
-	for(Samochod s : lista){//dodanie obiektów z listy do comboboxa
+	lista = getAllSamochody();
+	for(Samochod s : lista){
 		_comboBox.addItem(s);
 	}	
 }
@@ -647,12 +592,9 @@ List<Samochod> lista = new ArrayList<Samochod>();
 	ResultSet myRs = null;
 	
 	try{
-		//przygotowanie zapytania
 		myStmt = myConn.createStatement();
-		//wykonanie zapytania
 		myRs = myStmt.executeQuery("select * from samochody order by model");
 		
-		//utworzenie listy z obiektami z bazy
 		while(myRs.next()){
 			Samochod temp = convertRowToSamochod(myRs);
 			lista.add(temp);
@@ -671,29 +613,30 @@ private Samochod convertRowToSamochod(ResultSet myRs) throws SQLException {
 	Double ladownosc = myRs.getDouble("ladownosc");
 	boolean czy_jest_na_stanie = myRs.getBoolean("czy_jest_na_stanie");
 	
-	Samochod temp = new Samochod(id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie);//utworzenie obiektu
+	Samochod temp = new Samochod(id, model, nr_rejestracyjny, ladownosc, czy_jest_na_stanie);
 	
 	return temp;
 }
 
+public void odswiezComboBoxProdukty(JComboBox comboBoxProdukty) {
+	
+	
+}
 
 public void addFormularzWysylka(FormularzWysylka _formularz) {
 	PreparedStatement myStmt = null;
 	
 	try{
-		//przygotowanie zapytania
 	myStmt = myConn.prepareStatement("insert into formularzewysylkowe "
 			+ " (miejsce_docelowe,produkty,samochod,cena,data_dodania)"
 			+ " values (?, ?, ?, ?, ?)");
 	
-	//ustawianie parametrów
 	myStmt.setString(1, _formularz.getMiejsce_docelowe());
 	myStmt.setString(2, _formularz.getProdukty());
 	myStmt.setString(3, _formularz.getSamochod());
 	myStmt.setDouble(4, _formularz.getCena());
 	myStmt.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
 	
-	//wykonanie zapytania
 	myStmt.executeUpdate();
 	
 	/*ResultSet kluczeId = myStmt.getGeneratedKeys();
@@ -705,7 +648,6 @@ public void addFormularzWysylka(FormularzWysylka _formularz) {
 	
 	// LOGI
 	
-	//przygotowanie zapytania
 			myStmt = myConn.prepareStatement("insert into logi"
 					+ " (data_powstania,akcja,produkt_id)"
 					+ " values (?, ?,?)");
@@ -715,7 +657,7 @@ public void addFormularzWysylka(FormularzWysylka _formularz) {
 			myStmt.setString(2, "Dodano produkt do bazy.");
 			myStmt.setInt(3, _produkt.getId());
 			
-			//wykonanie zapytania
+			
 			myStmt.executeUpdate();
 		*/	
 	}
@@ -729,11 +671,11 @@ public void addFormularzWysylka(FormularzWysylka _formularz) {
 
 public void odswiezFormularzewysylkowe(JTable _table) {
 	try{
-		List<FormularzWysylka> formularze = getAllFormularzeWysylkowe();//utworzenie listy
+		List<FormularzWysylka> formularze = getAllFormularzeWysylkowe();
 		
 		ModelTablicyFormularzyWysylkowych model = new ModelTablicyFormularzyWysylkowych(formularze);
 		
-		_table.setModel(model);//ustawienie modelu
+		_table.setModel(model);
 	}
 	catch(Exception exc){
 		JOptionPane.showMessageDialog(null,"B³¹d przy odswiezaniu formularzy wysylkowych " + exc);
@@ -746,13 +688,10 @@ public void deleteFormularzWysylka(FormularzWysylka _formularzWysylka) throws SQ
 	
 	
 	try{
-		//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("delete from formularzewysylkowe where id = ?");
 		
-		//ustawianie parametrów
 		myStmt.setInt(1, id);
 		
-		//wykonanie zapytania
 		myStmt.executeUpdate();
 	}
 	finally{
@@ -761,7 +700,7 @@ public void deleteFormularzWysylka(FormularzWysylka _formularzWysylka) throws SQ
 	
 }
 
-public Double zaokraglij(Double suma) {//mno¿y x100, zaokr¹gla i dzieli \100 ¿eby nie gubiæ koñcówek
+public Double zaokraglij(Double suma) {
 	suma  *= 100;
 	suma = (double) Math.round(suma);
 	suma  /= 100;
@@ -772,9 +711,9 @@ public Double getNajwiekszaLadownosc() throws SQLException {
 	Double max=0.0;
 	
 	List<Samochod> lista = new ArrayList<Samochod>();
-	lista = getAllSamochody();//tworzenie listy aut
+	lista = getAllSamochody();
 	
-	for(Samochod s : lista){//wyznaczenie najwiêkszej ³adownoœci spoœród aut z listy
+	for(Samochod s : lista){
 		if(s.getLadownosc() > max && s.isCzy_jest_na_stanie()){
 			max = s.getLadownosc();
 		}
@@ -806,13 +745,10 @@ public int ileJestNaMagazynie(Produkt p) throws SQLException
 
 	try {
 		_nazwa = '%' + _nazwa + '%';
-		//przygotowanie zapytania
 		myStmt = myConn.prepareStatement("select ilosc from produkty where nazwa like ?");
 		
-		//ustawianie parametrów
 		myStmt.setString(1, _nazwa);
 		
-		//wykonanie zapytania
 		myRs = myStmt.executeQuery();
 		
 		while (myRs.next()) {
