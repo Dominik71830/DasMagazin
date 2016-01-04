@@ -1,6 +1,4 @@
-Ostatnia rzecza ktora trzeba zrobic jest dokumentacja. Z tego co pamitam to robota dla Tomka.<br>
-Co do komentarzy to dalem wszedzie oprocz tych funkcji tomkowych z usuwaniem. Moze niech Tomek tam cos napisze.<br>
-Natalia wypali calosc na plycie.<br>
+Teraz niech Natalia wypali calosc na plytce i sie odda.<br>
 
 #Importante<br>
 Zaliczenie u Seby bedzie na zasadzie projektu ktory powinno sie oddac do 11 stycznia. Ma to byc jakas wymyslona aplikacja bazodanowa w Javie. Jedyne wymogi jakie Seba powiedzial to:<br>
